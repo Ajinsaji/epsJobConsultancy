@@ -1,0 +1,44 @@
+Plan for exact EPS HomePage redesign (SECTION 1–3 only)
+
+1) Replace client/src/pages/public/HomePage.jsx completely.
+2) Keep functionality unchanged but UI-only: no new routes.
+3) SECTION 1 — Hero
+   - Small pill text: “Smart Hiring. Better Careers. Stronger Futures.”
+   - H1: “Find Jobs. Hire Talent. Grow Faster.” with purple gradient text.
+   - Description paragraph exactly as spec.
+   - Buttons: Primary “Find Jobs →” and Secondary “Hire Talent”.
+   - 4 stat cards labels: Registered Candidates, Hiring Companies, Active Jobs, Successful Placements.
+   - Right side: single floating laptop mockup (dark glass, purple glow) containing: Sidebar, Dashboard UI, Stats cards, Candidate list, Analytics chart.
+   - Remove candidate/employer preview cards.
+4) SECTION 2 — Platform Preview
+   - White/light section background.
+   - Top badge: “PLATFORM PREVIEW”.
+   - Heading: “See EPS in Action”.
+   - Subtext: “A quick animated preview of the candidate and employer portals.”
+   - Horizontal carousel with 5 cards:
+     Talent Search
+     Candidate Profile
+     Communication Center
+     Interview Management
+     Analytics Dashboard
+   - Each card: dark thumbnail area, centered play button, duration badge, title + description.
+   - Middle card highlighted: purple border, glow, larger scale.
+   - Arrows left/right + pagination dots.
+5) SECTION 3 — Feature Strip
+   - 4 equal columns.
+   - Items:
+     Secure & Reliable — Your data is protected with enterprise security.
+     Fast & Efficient — Streamlined processes save time and effort.
+     Built for Everyone — For job seekers, employers and consultants.
+     24/7 Support — We’re here to help you anytime, anywhere.
+   - Purple icons + minimal text.
+6) Styling:
+   - Colors: background #050816/#0B1023/#111827; primary purple #8B5CF6; accent purple #7C3AED; text #FFFFFF; secondary rgba(255,255,255,0.75).
+7) Responsive:
+   - Desktop exact layout.
+   - Tablet: stack hero.
+   - Mobile: single column; carousel swipeable.
+
+Implementation note
+- Use existing GlassCard/GlassButton where feasible.
+- Use framer-motion for glow/float and carousel transitions.

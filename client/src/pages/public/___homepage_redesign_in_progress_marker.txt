@@ -1,0 +1,1 @@
+In progress: next step is to fully replace client/src/pages/public/HomePage.jsx with the required SECTION 1–3 layout (Hero + Platform Preview carousel + Feature strip) and remove all disallowed sections.

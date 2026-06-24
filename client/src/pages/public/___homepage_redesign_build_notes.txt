@@ -1,0 +1,4 @@
+TRACKING: Need to replace HomePage.jsx with exact EPS landing sections 1-4 (navbar handled in PublicLayout.jsx).
+Current state: HomePage.jsx still has disallowed sections (Search, Featured Jobs, Built For Everyone, Why Choose EPS, Success Stories, final CTA).
+Next implementation step: Replace HomePage.jsx entirely with required hero + platform preview + feature strip; remove all disallowed sections.
+STATUS: Blocking task—HomePage redesign not implemented yet (Sections 1–4 not updated; disallowed sections remain).
