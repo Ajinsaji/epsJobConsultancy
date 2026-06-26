@@ -11,8 +11,10 @@ import {
   PlacementsSection,
   TestimonialsSection,
   FAQSection,
-  CTASection
+  CTASection,
+  PlacementAssuranceSection
 } from './sections'
+
 
 export default function HomePage() {
   const [config, setConfig] = useState(null)
@@ -50,6 +52,8 @@ export default function HomePage() {
     how_it_works: () => <HowItWorksSection key="how_it_works" />,
     featured_jobs: () => <FeaturedJobsSection key="featured_jobs" />,
     partners: () => <PartnersSection key="partners" />,
+
+    placement_assurance: () => <PlacementAssuranceSection key="placement_assurance" />,
     
     // Secondary sections loaded dynamically
     testimonials: () => loadSecondary ? <TestimonialsSection key="testimonials" /> : null,
@@ -57,6 +61,7 @@ export default function HomePage() {
     faqs: () => loadSecondary ? <FAQSection key="faqs" /> : null,
     cta: () => loadSecondary ? <CTASection key="cta" /> : null
   }
+
 
   if (loading) {
     return (
@@ -72,6 +77,7 @@ export default function HomePage() {
   // Fallback defaults if no configuration has been seeded in DB
   const order = config?.sectionOrder || [
     'hero',
+    'placement_assurance',
     'benefits_candidate',
     'benefits_employer',
     'statistics',
@@ -83,6 +89,7 @@ export default function HomePage() {
     'faqs',
     'cta'
   ]
+
 
   // Map to hold visibility checks (defaulting to true if not explicitly false)
   const visible = config?.visibleSections || {}

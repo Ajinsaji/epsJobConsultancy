@@ -15,6 +15,7 @@ import {
   RegisterPage,
   ForgotPasswordPage,
   AdminLoginPage,
+  RegisterCompanyPage,
 } from './pages/public'
 
 
@@ -81,6 +82,7 @@ export default function App() {
         <Route path="/super-admin" element={<AdminLoginPage />} />
 
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/register/company" element={<RegisterCompanyPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
       </Route>
