@@ -9,12 +9,14 @@ export function errorHandler(err, req, res, next) {
   // express-validator errors shape (we normalize)
   if (err?.errors && Array.isArray(err.errors)) {
     return res.status(400).json({
+      success: false,
       message: 'Validation failed',
       errors: err.errors,
     })
   }
 
   res.status(statusCode).json({
+    success: false,
     message,
     ...(process.env.NODE_ENV === 'development' ? { stack: err.stack } : {}),
   })

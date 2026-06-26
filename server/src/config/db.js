@@ -14,5 +14,11 @@ export async function connectDB() {
 
   // eslint-disable-next-line no-console
   console.log('MongoDB connected')
+
+  try {
+    await mongoose.connection.db.collection('homepageconfigs').dropIndex('key_1')
+  } catch (err) {
+    // Ignore if index doesn't exist
+  }
 }
 

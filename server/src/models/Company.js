@@ -13,6 +13,13 @@ const CompanySchema = new mongoose.Schema(
     website: { type: String },
 
     verified: { type: Boolean, default: false },
+
+    // Landing page & partner program additions
+    logo: { type: String },
+    companySize: { type: String },
+    isPartner: { type: Boolean, default: false },
+    showOnHomepage: { type: Boolean, default: false },
+    displayOrder: { type: Number, default: 0 },
   },
   { timestamps: true },
 )

@@ -14,6 +14,7 @@ function EPSSidebar() {
     { to: '/eps/applications', label: 'Applications' },
     { to: '/eps/interviews', label: 'Interviews' },
     { to: '/eps/analytics', label: 'Analytics' },
+    { to: '/eps/homepage', label: 'Homepage CMS' },
   ]
 
   return (

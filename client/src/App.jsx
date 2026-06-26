@@ -36,6 +36,7 @@ import {
   Applications,
   Interviews,
   Analytics,
+  HomepageCMS,
 } from './pages/eps'
 import {
   CompanyDashboard,
@@ -127,6 +128,7 @@ export default function App() {
           <Route path="applications" element={<Applications />} />
           <Route path="interviews" element={<Interviews />} />
           <Route path="analytics" element={<Analytics />} />
+          <Route path="homepage" element={<HomepageCMS />} />
         </Route>
       </Route>
 

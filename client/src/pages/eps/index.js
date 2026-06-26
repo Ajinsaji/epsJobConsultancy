@@ -4,4 +4,6 @@ export { default as ManageJobs } from './ManageJobs'
 export { default as Applications } from './Applications'
 export { default as Interviews } from './Interviews'
 export { default as Analytics } from './Analytics'
+export { default as HomepageCMS } from './HomepageCMS'
+
 
