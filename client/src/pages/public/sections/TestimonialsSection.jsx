@@ -51,13 +51,13 @@ export default function TestimonialsSection() {
   return (
     <section className="py-24 bg-[#030611]/85 border-y border-white/5 relative">
       {/* Background glare */}
-      <div className="absolute top-1/2 right-1/4 w-[380px] h-[380px] rounded-full bg-violet-600/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 w-[380px] h-[380px] rounded-full bg-[#0B4C8C]/5 blur-[120px] pointer-events-none" />
 
       <div className="mx-auto max-w-[1400px] px-6 relative z-10 text-center space-y-12">
         
         {/* Header */}
         <div className="space-y-4 max-w-2xl mx-auto">
-          <div className="inline-block text-xs uppercase font-extrabold tracking-wider px-3 py-1 rounded bg-[#7C3AED]/10 text-[#A78BFA] border border-[#7C3AED]/15">
+          <div className="inline-block text-xs uppercase font-extrabold tracking-wider px-3 py-1 rounded bg-[#CCA43B]/10 text-[#CCA43B] border border-[#CCA43B]/15">
             Success Stories
           </div>
           <h2 className="text-3xl font-extrabold sm:text-4xl">What Our Users Say</h2>
@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
               className={
                 'px-5 py-2 text-xs font-extrabold rounded-lg transition ' +
                 (activeTab === 'candidate'
-                  ? 'bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white shadow-md'
+                  ? 'bg-gradient-to-r from-[#0B4C8C] to-[#CCA43B] text-white shadow-md'
                   : 'text-white/60 hover:text-white')
               }
             >
@@ -83,7 +83,7 @@ export default function TestimonialsSection() {
               className={
                 'px-5 py-2 text-xs font-extrabold rounded-lg transition ' +
                 (activeTab === 'employer'
-                  ? 'bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white shadow-md'
+                  ? 'bg-gradient-to-r from-[#0B4C8C] to-[#CCA43B] text-white shadow-md'
                   : 'text-white/60 hover:text-white')
               }
             >

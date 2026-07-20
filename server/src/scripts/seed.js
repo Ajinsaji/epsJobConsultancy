@@ -502,6 +502,7 @@ async function seed() {
     ],
     sectionOrder: [
       'hero',
+      'placement_assurance',
       'benefits_candidate',
       'benefits_employer',
       'statistics',

@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "concurrently -k -n client,server -c cyan,magenta \"npm run client\" \"npm run server\"",
-
     "client": "npm --prefix client run dev",
     "server": "npm --prefix server run dev",
     "install-all": "npm install --prefix client && npm install --prefix server && npm install",
@@ -12,7 +11,8 @@
   },
   "devDependencies": {
     "concurrently": "^9.0.1"
+  },
+  "dependencies": {
+    "lucide-react": "^1.21.0"
   }
 }
-
-

@@ -3,13 +3,32 @@ import { useNavigate } from 'react-router-dom'
 import { GlassButton } from '../../../components/ui/GlassButton'
 import GlassCard from '../../../components/ui/GlassCard'
 
+import {
+  ShieldCheck,
+  Wallet,
+  CalendarDays,
+  Headset,
+  CircleX,
+  CircleCheck,
+  BrainCircuit,
+  Building2,
+  Users,
+  GraduationCap,
+  Shield,
+  Award,
+  Rocket,
+  ArrowRight
+} from 'lucide-react'
+
 function FeatureCard({ icon, title, value, footer }) {
   return (
-    <GlassCard className="p-6 bg-slate-950/50 border-white/10 hover:border-violet-500/20 hover:bg-white/[0.02] transition duration-300 h-full relative overflow-hidden">
-      <div className="absolute -inset-[1px] rounded-[24px] bg-gradient-to-r from-[#7C3AED]/25 via-[#8B5CF6]/20 to-[#3B82F6]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+    <GlassCard className="p-6 bg-slate-950/50 border-white/10 hover:border-[#CCA43B]/20 hover:bg-white/[0.02] transition duration-300 h-full relative overflow-hidden">
+      <div className="absolute -inset-[1px] rounded-[24px] bg-gradient-to-r from-[#0B4C8C]/25 via-[#CCA43B]/20 to-[#1F7BE5]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div className="relative z-10 space-y-4">
-        <div className="text-2xl leading-none">{icon}</div>
+        <div className="h-[72px] w-[72px] rounded-full bg-gradient-to-br from-[#0B4C8C]/25 via-[#CCA43B]/20 to-[#1F7BE5]/20 ring-1 ring-white/10 backdrop-blur flex items-center justify-center shadow-xl">
+          <div className="h-9 w-9 text-[#CCA43B]">{icon}</div>
+        </div>
         <div>
           <div className="text-[11px] uppercase tracking-wider font-extrabold text-white/50">{title}</div>
           <div className="mt-2 text-xl font-extrabold">
@@ -39,13 +58,13 @@ function TrustComparisonCard({ variant, title, items }) {
         'p-6 border-white/10 relative overflow-hidden transition-all duration-300 h-full ' +
         (isLeft
           ? 'bg-slate-950/40 hover:border-red-500/20'
-          : 'bg-gradient-to-br from-[#7C3AED]/15 via-[#8B5CF6]/10 to-[#3B82F6]/10 border-white/10 hover:border-[#7C3AED]/30')
+          : 'bg-gradient-to-br from-[#0B4C8C]/15 via-[#CCA43B]/10 to-[#1F7BE5]/10 border-white/10 hover:border-[#0B4C8C]/30')
       }
     >
       <div
         className={
           'absolute -top-16 -right-16 h-48 w-48 rounded-full blur-3xl pointer-events-none opacity-70 ' +
-          (isLeft ? 'bg-red-500/10' : 'bg-[#7C3AED]/20')
+          (isLeft ? 'bg-red-500/10' : 'bg-[#0B4C8C]/20')
         }
       />
 
@@ -55,7 +74,15 @@ function TrustComparisonCard({ variant, title, items }) {
         <ul className="space-y-2">
           {items.map((it, idx) => (
             <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-white/70">
-              <span className={isLeft ? 'text-red-300 mt-0.5' : 'text-emerald-300 mt-0.5'}>{it.icon}</span>
+              <span
+                className={
+                  isLeft
+                    ? 'mt-0.5 h-6 w-6 rounded-full border border-red-400/30 text-red-300 flex items-center justify-center'
+                    : 'mt-0.5 h-6 w-6 rounded-full border border-emerald-400/30 text-emerald-300 flex items-center justify-center'
+                }
+              >
+                {it.icon}
+              </span>
               <span className="leading-relaxed">{it.text}</span>
             </li>
           ))}
@@ -72,11 +99,11 @@ export default function PlacementAssuranceSection() {
     variant: 'left',
     title: 'Without EPS',
     items: [
-      { icon: '❌', text: 'Applying manually to hundreds of jobs' },
-      { icon: '❌', text: 'No resume optimization' },
-      { icon: '❌', text: 'Low interview response rate' },
-      { icon: '❌', text: 'No placement guidance' },
-      { icon: '❌', text: 'No interview scheduling support' }
+      { icon: <CircleX aria-hidden="true" size={16} />, text: 'Applying manually to hundreds of jobs' },
+      { icon: <CircleX aria-hidden="true" size={16} />, text: 'No resume optimization' },
+      { icon: <CircleX aria-hidden="true" size={16} />, text: 'Low interview response rate' },
+      { icon: <CircleX aria-hidden="true" size={16} />, text: 'No placement guidance' },
+      { icon: <CircleX aria-hidden="true" size={16} />, text: 'No interview scheduling support' }
     ]
   }
 
@@ -84,35 +111,35 @@ export default function PlacementAssuranceSection() {
     variant: 'right',
     title: 'With EPS',
     items: [
-      { icon: '✅', text: 'AI Skill Matching' },
-      { icon: '✅', text: 'Resume Review & Optimization' },
-      { icon: '✅', text: 'Direct Company Connections' },
-      { icon: '✅', text: 'Interview Coordination' },
-      { icon: '✅', text: 'Dedicated Placement Assistance' }
+      { icon: <CircleCheck aria-hidden="true" size={16} />, text: 'AI Skill Matching' },
+      { icon: <CircleCheck aria-hidden="true" size={16} />, text: 'Resume Review & Optimization' },
+      { icon: <CircleCheck aria-hidden="true" size={16} />, text: 'Direct Company Connections' },
+      { icon: <CircleCheck aria-hidden="true" size={16} />, text: 'Interview Coordination' },
+      { icon: <CircleCheck aria-hidden="true" size={16} />, text: 'Dedicated Placement Assistance' }
     ]
   }
 
   const features = [
     {
-      icon: '💰',
+      icon: <Wallet aria-hidden="true" className="h-8 w-8" />,
       title: 'Registration Fee',
       value: '₹250',
       footer: 'One-Time Payment'
     },
     {
-      icon: '🚀',
+      icon: <CalendarDays aria-hidden="true" className="h-8 w-8" />,
       title: 'Placement Timeline',
       value: 'Within\n45 Days',
       footer: 'Eligibility + scheduled interviews'
     },
     {
-      icon: '🛡️',
+      icon: <ShieldCheck aria-hidden="true" className="h-8 w-8" />,
       title: 'Refund Protection',
       value: '100%',
       footer: 'Registration Fee Refund*'
     },
     {
-      icon: '🤝',
+      icon: <Headset aria-hidden="true" className="h-8 w-8" />,
       title: 'Career Support',
       value: 'Resume Review',
       footer: 'Interview Preparation • Placement Assistance'
@@ -120,22 +147,22 @@ export default function PlacementAssuranceSection() {
   ]
 
   const trustBar = [
-    { icon: '✔', label: 'AI Resume Analysis' },
-    { icon: '✔', label: 'Verified Hiring Companies' },
-    { icon: '✔', label: 'Interview Coordination' },
-    { icon: '✔', label: 'Career Mentorship' },
-    { icon: '✔', label: 'Placement Support' }
+    { icon: <BrainCircuit aria-hidden="true" size={16} />, label: 'AI Resume Analysis' },
+    { icon: <Building2 aria-hidden="true" size={16} />, label: 'Verified Hiring Companies' },
+    { icon: <Users aria-hidden="true" size={16} />, label: 'Interview Coordination' },
+    { icon: <GraduationCap aria-hidden="true" size={16} />, label: 'Career Mentorship' },
+    { icon: <Shield aria-hidden="true" size={16} />, label: 'Placement Support' }
   ]
 
   return (
     <section className="py-16 bg-[#050816] text-white relative overflow-hidden">
       {/* Animated glowing background */}
-      <div className="pointer-events-none absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-[#7C3AED]/25 to-[#3B82F6]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-32 -right-16 h-[460px] w-[460px] rounded-full bg-gradient-to-tr from-[#8B5CF6]/20 to-[#3B82F6]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-[#0B4C8C]/25 to-[#CCA43B]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-32 -right-16 h-[460px] w-[460px] rounded-full bg-gradient-to-tr from-[#CCA43B]/15 to-[#0B4C8C]/10 blur-[120px]" />
 
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 -top-10 h-[380px] w-[380px] rounded-full bg-gradient-to-r from-[#7C3AED]/10 via-[#8B5CF6]/10 to-[#3B82F6]/10 blur-[130px]"
+        className="pointer-events-none absolute left-1/2 -top-10 h-[380px] w-[380px] rounded-full bg-gradient-to-r from-[#0B4C8C]/10 via-[#CCA43B]/10 to-[#1F7BE5]/10 blur-[130px]"
         animate={{ y: [0, 18, 0], opacity: [0.65, 0.9, 0.65], scale: [1, 1.03, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -155,10 +182,11 @@ export default function PlacementAssuranceSection() {
               whileInView={{ opacity: 1, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-950/20 px-5 py-2 text-xs font-extrabold tracking-wider text-[#A78BFA] backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-950/20 px-5 py-2 text-xs font-extrabold tracking-wider text-[#CCA43B] backdrop-blur"
             >
-              <span className="h-2 w-2 rounded-full bg-[#8B5CF6] animate-pulse" />
-              🚀 45-Day Placement Assurance
+              <span className="h-2 w-2 rounded-full bg-[#CCA43B] animate-pulse" />
+              <ShieldCheck aria-hidden="true" size={16} className="text-[#CCA43B]" />
+              45-Day Placement Assurance
             </motion.div>
 
             <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
@@ -240,8 +268,9 @@ export default function PlacementAssuranceSection() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/register')}
-                className="px-8 py-3 font-extrabold text-sm bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#3B82F6] shadow-[0_0_28px_rgba(139,92,246,0.28)] rounded-xl"
+                className="px-8 py-3 font-extrabold text-sm bg-gradient-to-r from-[#0B4C8C] via-[#CCA43B] to-[#1F7BE5] shadow-[0_0_28px_rgba(11,76,140,0.28)] rounded-xl inline-flex items-center gap-2"
               >
+                <Rocket aria-hidden="true" className="h-4 w-4" />
                 Start Your Career Journey
               </GlassButton>
 
@@ -251,9 +280,11 @@ export default function PlacementAssuranceSection() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/register')}
-                className="px-8 py-3 font-extrabold text-sm border border-white/10 bg-white/[0.04] rounded-xl hover:bg-white/[0.06]"
+                className="px-8 py-3 font-extrabold text-sm border border-white/10 bg-white/[0.04] rounded-xl hover:bg-white/[0.06] inline-flex items-center gap-2"
               >
+                <Award aria-hidden="true" className="h-4 w-4" />
                 View Success Stories
+                <ArrowRight aria-hidden="true" className="h-4 w-4 ml-1" />
               </GlassButton>
             </div>
 

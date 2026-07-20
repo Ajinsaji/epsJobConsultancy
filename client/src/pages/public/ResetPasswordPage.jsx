@@ -1,25 +1,38 @@
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-export default function ForgotPasswordPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm()
+export default function ResetPasswordPage() {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSent, setIsSent] = useState(false)
   const [inlineError, setInlineError] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+
+  const token = searchParams.get('token')
+  const newPassword = watch('password')
 
   const onSubmit = async (data) => {
+    if (!token) {
+      toast.error('Reset token is missing from the URL')
+      return
+    }
+
     setInlineError('')
     setIsSubmitting(true)
     try {
-      await axios.post('/api/auth/forgot-password', data)
-      setIsSent(true)
-      toast.success('Reset instructions sent successfully')
+      await axios.post('/api/auth/reset-password', {
+        token,
+        password: data.password,
+      })
+      toast.success('Password reset successfully. Please log in.')
+      navigate('/login')
     } catch (e) {
-      const msg = e?.response?.data?.message || 'Request failed'
+      const msg = e?.response?.data?.message || 'Password reset failed'
       setInlineError(msg)
       toast.error(msg)
     } finally {
@@ -49,25 +62,64 @@ export default function ForgotPasswordPage() {
           </div>
 
           <h2 className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-[#0B4C8C] to-[#CCA43B] bg-clip-text text-transparent">
-            Reset Password
+            Choose New Password
           </h2>
           <p className="mt-2 text-sm text-white/70">
-            {isSent 
-              ? "We've sent a link to your email to reset your password." 
-              : "Enter your email address and we'll send you a link to reset your password."}
+            Set your new login credentials below.
           </p>
 
-          {!isSent ? (
+          {!token ? (
+            <div className="mt-6 rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-200">
+              Invalid or missing password reset link. Please check your email or request another link.
+              <div className="mt-4">
+                <Link to="/forgot-password" className="font-semibold text-white underline">
+                  Request New Link
+                </Link>
+              </div>
+            </div>
+          ) : (
             <form className="mt-7 space-y-4" onSubmit={handleSubmit(onSubmit)}>
               <div>
-                <label className="block text-xs font-semibold text-white/70 uppercase tracking-wider">Email Address</label>
+                <label className="block text-xs font-semibold text-white/70 uppercase tracking-wider">New Password</label>
+                <div className="mt-1 relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className="w-full rounded-xl border border-white/10 bg-white/5 p-3 pr-28 text-sm outline-none transition focus:border-[#CCA43B] focus:ring-1 focus:ring-[#CCA43B]/40"
+                    placeholder="Min 6 characters"
+                    required
+                    {...register('password', { 
+                      required: 'Password is required',
+                      minLength: { value: 6, message: 'Password must be at least 6 characters' }
+                    })}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((v) => !v)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-lg border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80 hover:bg-white/10 transition"
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+                {errors.password && (
+                  <p className="text-red-400 text-xs mt-1">{errors.password.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-white/70 uppercase tracking-wider">Confirm Password</label>
                 <input
+                  type={showPassword ? 'text' : 'password'}
                   className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm outline-none transition focus:border-[#CCA43B] focus:ring-1 focus:ring-[#CCA43B]/40"
-                  placeholder="name@example.com"
-                  type="email"
+                  placeholder="Re-enter password"
                   required
-                  {...register('email', { required: 'Email is required' })}
+                  {...register('confirmPassword', {
+                    required: 'Confirm your password',
+                    validate: (value) => value === newPassword || 'Passwords do not match',
+                  })}
                 />
+                {errors.confirmPassword && (
+                  <p className="text-red-400 text-xs mt-1">{errors.confirmPassword.message}</p>
+                )}
               </div>
 
               {inlineError && (
@@ -88,27 +140,17 @@ export default function ForgotPasswordPage() {
                       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.25" strokeWidth="4" />
                       <path d="M22 12a10 10 0 0 0-10-10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                     </svg>
-                    Sending...
+                    Saving...
                   </span>
                 ) : (
-                  'Send Reset Link'
+                  'Reset Password'
                 )}
               </button>
             </form>
-          ) : (
-            <div className="mt-8 text-center">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20 text-green-400 mb-4">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M20 6L9 17L4 12" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <p className="text-sm font-semibold text-white/90">Email Sent!</p>
-              <p className="text-xs text-white/50 mt-1">Please check your inbox (and spam folder) for password recovery instructions.</p>
-            </div>
           )}
 
           <div className="mt-6 text-center text-xs text-white/60">
-            Remember your password?{' '}
+            Back to{' '}
             <Link className="font-semibold text-[#CCA43B] hover:text-[#E5C56E] transition" to="/login">
               Log In
             </Link>

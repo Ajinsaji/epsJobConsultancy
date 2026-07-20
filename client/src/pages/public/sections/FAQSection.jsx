@@ -51,7 +51,8 @@ export default function FAQSection() {
         
         {/* Header */}
         <div className="space-y-4 text-center">
-          <div className="inline-block text-xs uppercase font-extrabold tracking-wider px-3 py-1 rounded bg-[#7C3AED]/10 text-[#A78BFA] border border-[#7C3AED]/15">
+            <div className="inline-block text-xs uppercase font-extrabold tracking-wider px-3 py-1 rounded bg-[#1F7BE5]/10 text-[#25C4F5] border border-[#1F7BE5]/15">
+
             General Queries
           </div>
           <h2 className="text-3xl font-extrabold sm:text-4xl">Frequently Asked Questions</h2>
@@ -63,8 +64,10 @@ export default function FAQSection() {
         {faqs.length === 0 ? (
           /* Empty state */
           <GlassCard className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
-            <div className="text-2xl mb-2">❓</div>
+            <div className="text-2xl mb-2">?</div>
+
             <h4 className="text-sm font-bold text-white mb-2">FAQ Content Coming Soon</h4>
+
             <p className="text-xs text-white/50 leading-relaxed">
               We are compiling answers to candidate and employer queries. Contact our help desk for immediate assistance.
             </p>
@@ -82,12 +85,14 @@ export default function FAQSection() {
                   {/* Collapsed/Expanded Question Header */}
                   <button
                     onClick={() => toggleAccordion(idx)}
-                    className="w-full flex items-center justify-between p-5 text-left font-bold text-sm sm:text-base hover:text-indigo-300 transition duration-200"
+                    className="w-full flex items-center justify-between p-5 text-left font-bold text-sm sm:text-base hover:text-[#25C4F5] transition duration-200"
                   >
+
                     <span>{faq.question}</span>
-                    <span className={`text-indigo-400 text-lg transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                    <span className={`text-[#25C4F5] text-lg transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
                       ▼
                     </span>
+
                   </button>
 
                   {/* Expanded Answer Content */}

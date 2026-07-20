@@ -31,6 +31,7 @@ export const getHomepageConfig = asyncHandler(async (req, res) => {
         ],
         sectionOrder: [
           'hero',
+          'placement_assurance',
           'benefits_candidate',
           'benefits_employer',
           'statistics',
@@ -44,6 +45,7 @@ export const getHomepageConfig = asyncHandler(async (req, res) => {
         ],
         visibleSections: {
           hero: true,
+          placement_assurance: true,
           benefits_candidate: true,
           benefits_employer: true,
           statistics: true,
@@ -57,6 +59,26 @@ export const getHomepageConfig = asyncHandler(async (req, res) => {
         }
       }
     }
+  }
+
+  // Backward-compatible runtime migration for older DB configs.
+  // Ensures the new `placement_assurance` section always exists in the response.
+  const placementKey = 'placement_assurance'
+
+  // Normalize missing containers
+  config.sectionOrder = Array.isArray(config.sectionOrder) ? config.sectionOrder : []
+  config.visibleSections = config.visibleSections || {}
+
+  // If `placement_assurance` missing from sectionOrder, insert immediately after 'hero'
+  if (!config.sectionOrder.includes(placementKey)) {
+    const heroIndex = config.sectionOrder.indexOf('hero')
+    const insertAt = heroIndex >= 0 ? heroIndex + 1 : 0
+    config.sectionOrder.splice(insertAt, 0, placementKey)
+  }
+
+  // If visibleSections.placement_assurance undefined, set to true
+  if (typeof config.visibleSections[placementKey] === 'undefined') {
+    config.visibleSections[placementKey] = true
   }
 
   res.json({

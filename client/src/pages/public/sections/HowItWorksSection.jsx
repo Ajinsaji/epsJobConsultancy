@@ -26,7 +26,7 @@ export default function HowItWorksSection() {
   return (
     <section className="py-24 bg-[#050816] text-white relative">
       {/* Background glare */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#0B4C8C]/5 blur-[120px] pointer-events-none" />
 
       <div className="mx-auto max-w-[1400px] px-6 relative z-10 text-center space-y-12">
         
@@ -46,7 +46,7 @@ export default function HowItWorksSection() {
               className={
                 'px-5 py-2 text-xs font-extrabold rounded-lg transition ' +
                 (activeRole === 'candidate'
-                  ? 'bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white shadow-md'
+                  ? 'bg-gradient-to-r from-[#0B4C8C] to-[#CCA43B] text-white shadow-md'
                   : 'text-white/60 hover:text-white')
               }
             >
@@ -57,7 +57,7 @@ export default function HowItWorksSection() {
               className={
                 'px-5 py-2 text-xs font-extrabold rounded-lg transition ' +
                 (activeRole === 'employer'
-                  ? 'bg-gradient-to-r from-[#7C3AED] to-[#8B5CF6] text-white shadow-md'
+                  ? 'bg-gradient-to-r from-[#0B4C8C] to-[#CCA43B] text-white shadow-md'
                   : 'text-white/60 hover:text-white')
               }
             >
@@ -70,7 +70,7 @@ export default function HowItWorksSection() {
         <div className="relative max-w-4xl mx-auto pt-6">
           
           {/* Vertical Connecting Line (desktop only) */}
-          <div className="absolute left-[33px] md:left-1/2 top-10 bottom-10 w-[2px] bg-gradient-to-b from-[#7C3AED] via-[#3B82F6] to-transparent hidden md:block -translate-x-1/2" />
+          <div className="absolute left-[33px] md:left-1/2 top-10 bottom-10 w-[2px] bg-gradient-to-b from-[#0B4C8C] via-[#CCA43B] to-transparent hidden md:block -translate-x-1/2" />
 
           {/* Timeline steps */}
           <div className="space-y-12">
@@ -91,7 +91,7 @@ export default function HowItWorksSection() {
                     
                     {/* Step Card container */}
                     <div className="w-full md:w-[42%] text-left">
-                      <GlassCard className="p-5 bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:scale-101 transition duration-300">
+                      <GlassCard className="p-5 bg-slate-950/40 border-white/5 hover:border-[#CCA43B]/20 hover:scale-101 transition duration-300">
                         <div className="flex items-center gap-3 mb-2">
                           <span className="text-xl">{step.icon}</span>
                           <h4 className="text-sm font-extrabold text-white">{step.title}</h4>
@@ -101,7 +101,7 @@ export default function HowItWorksSection() {
                     </div>
 
                     {/* Step Center Circle Number */}
-                    <div className="absolute left-0 md:left-1/2 top-4 md:top-auto md:-translate-y-1/2 -translate-x-1/2 h-10 w-10 rounded-full bg-[#080E24] border-2 border-indigo-500 flex items-center justify-center text-xs font-black text-indigo-300 z-10 shadow-[0_0_15px_rgba(99,102,241,0.25)]">
+                    <div className="absolute left-0 md:left-1/2 top-4 md:top-auto md:-translate-y-1/2 -translate-x-1/2 h-10 w-10 rounded-full bg-[#080E24] border-2 border-[#CCA43B] flex items-center justify-center text-xs font-black text-[#CCA43B] z-10 shadow-[0_0_15px_rgba(204,164,59,0.25)]">
                       {step.num}
                     </div>
 

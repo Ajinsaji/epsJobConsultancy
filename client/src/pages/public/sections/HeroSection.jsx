@@ -20,7 +20,8 @@ export default function HeroSection({ config }) {
       id: 'candidate',
       title: 'Candidate Portal',
       subtitle: 'Career Tracking & AI Scoring',
-      color: 'from-[#7C3AED] to-[#8B5CF6]',
+      color: 'from-[#1F7BE5] to-[#25C4F5]',
+
       render: () => (
         <div className="space-y-3">
           <div className="flex items-center justify-between border-b border-white/5 pb-2 text-[10px] text-white/50">
@@ -189,13 +190,15 @@ export default function HeroSection({ config }) {
         <motion.div
           animate={{ y: [0, 25, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -left-20 top-20 h-[350px] w-[350px] rounded-full bg-[#7C3AED]/20 blur-[120px]"
+          className="absolute -left-20 top-20 h-[350px] w-[350px] rounded-full bg-[#1F7BE5]/20 blur-[120px]"
         />
+
         <motion.div
           animate={{ y: [0, -30, 0], scale: [1, 1.05, 1] }}
           transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -right-20 top-40 h-[380px] w-[380px] rounded-full bg-[#3B82F6]/15 blur-[120px]"
+          className="absolute -right-20 top-40 h-[380px] w-[380px] rounded-full bg-[#25C4F5]/15 blur-[120px]"
         />
+
       </div>
 
       <div className="mx-auto max-w-[1400px] px-6">
@@ -208,9 +211,10 @@ export default function HeroSection({ config }) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center rounded-full border border-violet-500/20 bg-violet-950/20 px-4 py-1.5 text-xs font-semibold text-[#A78BFA] backdrop-blur"
+              className="inline-flex items-center rounded-full border border-[#1F7BE5]/20 bg-[#1F7BE5]/10 px-4 py-1.5 text-xs font-semibold text-[#25C4F5] backdrop-blur"
             >
-              <span className="mr-1.5 flex h-2 w-2 rounded-full bg-[#8B5CF6] animate-pulse" />
+              <span className="mr-1.5 flex h-2 w-2 rounded-full bg-[#25C4F5] animate-pulse" />
+
               {badge}
             </motion.div>
 
@@ -221,7 +225,7 @@ export default function HeroSection({ config }) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
             >
-              <span className="bg-gradient-to-r from-[#A78BFA] via-[#C084FC] to-[#60A5FA] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#25C4F5] via-[#1F7BE5] to-[#25C4F5] bg-clip-text text-transparent">
                 {headline}
               </span>
             </motion.h1>
@@ -249,7 +253,7 @@ export default function HeroSection({ config }) {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/register')}
-                className="px-6 py-3 font-extrabold min-h-[48px] bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#3B82F6] shadow-[0_0_20px_rgba(139,92,246,0.25)]"
+                className="px-6 py-3 font-extrabold min-h-[48px] bg-gradient-to-r from-[#0B4C8C] via-[#CCA43B] to-[#1F7BE5] shadow-[0_0_20px_rgba(11,76,140,0.25)]"
               >
                 Find Jobs (Register)
               </GlassButton>

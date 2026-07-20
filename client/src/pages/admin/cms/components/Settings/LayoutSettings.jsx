@@ -5,6 +5,7 @@ import { CMSSkeleton } from '../shared/CMSSkeleton'
 
 const ORDER_DEFAULT = [
   'hero',
+  'placement_assurance',
   'benefits_candidate',
   'benefits_employer',
   'statistics',
@@ -16,6 +17,10 @@ const ORDER_DEFAULT = [
   'faqs',
   'cta'
 ]
+
+// Backward/forward compatibility: ensure CMS layout always includes
+// the new section so saving does not accidentally remove it.
+// (Server already performs runtime migration for public response.)
 
 export default function LayoutSettings({ draft, onSave, saving }) {
   const [form, setForm] = useState(() => ({

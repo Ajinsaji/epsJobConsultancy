@@ -16,6 +16,8 @@ import {
   ForgotPasswordPage,
   AdminLoginPage,
   RegisterCompanyPage,
+  ResetPasswordPage,
+  VerifyEmailPage,
 } from './pages/public'
 
 
@@ -84,7 +86,8 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/register/company" element={<RegisterCompanyPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
       </Route>
 
       {/* Candidate SaaS */}

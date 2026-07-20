@@ -17,14 +17,16 @@ export const theme = {
 
   gradients: {
     hero:
-      'radial-gradient(800px circle at 10% 10%, rgba(99,102,241,0.35), transparent 40%), radial-gradient(700px circle at 90% 20%, rgba(139,92,246,0.28), transparent 40%), radial-gradient(500px circle at 50% 90%, rgba(6,182,212,0.22), transparent 45%)',
+      'radial-gradient(800px circle at 10% 10%, rgba(11,76,140,0.35), transparent 40%), radial-gradient(700px circle at 90% 20%, rgba(204,164,59,0.25), transparent 40%), radial-gradient(500px circle at 50% 90%, rgba(204,164,59,0.15), transparent 45%)',
     border:
-      'linear-gradient(135deg, rgba(99,102,241,0.9), rgba(139,92,246,0.85), rgba(6,182,212,0.75))',
+      'linear-gradient(135deg, rgba(11,76,140,0.9), rgba(204,164,59,0.85), rgba(204,164,59,0.7))',
     stripe:
-      'linear-gradient(90deg, rgba(99,102,241,0.9), rgba(139,92,246,0.9), rgba(6,182,212,0.85))',
+      'linear-gradient(90deg, rgba(11,76,140,0.9), rgba(204,164,59,0.9), rgba(204,164,59,0.8))',
   },
 
   radius: tokens.radius,
-  shadow: tokens.shadow,
+  shadow: {
+    soft: tokens.shadow.soft,
+    glow: '0 0 0 1px rgba(11,76,140,0.35), 0 0 30px rgba(11,76,140,0.22)',
+  },
 }
-

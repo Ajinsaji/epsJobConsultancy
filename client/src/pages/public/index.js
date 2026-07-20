@@ -8,6 +8,8 @@ export { default as RegisterPage } from './RegisterPage'
 export { default as ForgotPasswordPage } from './ForgotPasswordPage'
 export { default as AdminLoginPage } from './AdminLoginPage'
 export { default as RegisterCompanyPage } from './RegisterCompanyPage'
+export { default as ResetPasswordPage } from './ResetPasswordPage'
+export { default as VerifyEmailPage } from './VerifyEmailPage'
 
 
 

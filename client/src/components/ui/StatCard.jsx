@@ -9,12 +9,13 @@ export default function StatCard({
 }) {
   const toneClass =
     tone === 'accent'
-      ? 'from-cyan-400/30 to-indigo-500/30'
+      ? 'from-[#25C4F5]/30 to-[#1F7BE5]/30'
       : tone === 'success'
-        ? 'from-emerald-400/25 to-indigo-500/30'
+        ? 'from-emerald-400/25 to-[#1F7BE5]/30'
         : tone === 'secondary'
-          ? 'from-violet-400/25 to-indigo-500/30'
-          : 'from-indigo-500/30 to-violet-500/30'
+          ? 'from-[#25C4F5]/25 to-[#1F7BE5]/30'
+          : 'from-[#1F7BE5]/30 to-[#25C4F5]/30'
+
 
   return (
     <GlassCard
