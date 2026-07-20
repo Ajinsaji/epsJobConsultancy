@@ -11,9 +11,10 @@ import { Job } from '../models/Job.js'
 import { Candidate } from '../models/Candidate.js'
 import { User } from '../models/User.js'
 
-// System logs placeholder
+// System logs / Audit logs
 export const getSystemLogs = asyncHandler(async (req, res) => {
-  res.json({ logs: [] })
+  const logs = await ActivityLog.find().sort({ createdAt: -1 }).limit(200).lean()
+  res.json({ logs })
 })
 
 // Activity logs endpoint
@@ -448,4 +449,36 @@ export const deleteTestimonial = asyncHandler(async (req, res) => {
   })
 
   res.json({ message: 'Testimonial deleted successfully' })
+})
+
+// Candidates management
+export const getAllCandidates = asyncHandler(async (req, res) => {
+  const candidates = await Candidate.find().populate('userId', 'email').sort({ createdAt: -1 })
+  res.json(candidates)
+})
+
+// Users management
+export const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find().select('-password').sort({ createdAt: -1 })
+  res.json(users)
+})
+
+export const updateUserStatus = asyncHandler(async (req, res) => {
+  const { id } = req.params
+  const { isActive, role } = req.body
+
+  const user = await User.findById(id)
+  if (!user) return res.status(404).json({ message: 'User not found' })
+
+  if (isActive !== undefined) user.isActive = isActive
+  if (role !== undefined) user.role = role
+
+  await user.save()
+
+  await ActivityLog.create({
+    action: `Updated User status/role for: ${user.email}`,
+    user: req.user?.email || 'System'
+  })
+
+  res.json({ message: 'User updated successfully', user })
 })

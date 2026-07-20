@@ -15,51 +15,22 @@ const transporter = nodemailer.createTransport({
 const clientUrl = process.env.CLIENT_ORIGIN || 'http://localhost:5173'
 
 /**
- * Helper to send email or print to console if credentials are not configured or email fails.
+ * Helper to send email using Nodemailer
  */
 async function sendMailHelper(options) {
-  const isDefaultCredentials =
-    !process.env.EMAIL_USER ||
-    process.env.EMAIL_USER === 'your_email@example.com' ||
-    !process.env.EMAIL_PASSWORD ||
-    process.env.EMAIL_PASSWORD === 'your_email_password'
-
-  if (isDefaultCredentials) {
-    // eslint-disable-next-line no-console
-    console.log('\n==================================================')
-    // eslint-disable-next-line no-console
-    console.log(`[EMAIL SIMULATOR] Sending email to: ${options.to}`)
-    // eslint-disable-next-line no-console
-    console.log(`Subject: ${options.subject}`)
-    // eslint-disable-next-line no-console
-    console.log(`Body:\n${options.text}`)
-    // eslint-disable-next-line no-console
-    console.log('==================================================\n')
-    return true
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+    throw new Error('Email credentials not configured. Please set EMAIL_USER and EMAIL_PASSWORD in .env')
   }
 
   try {
     const info = await transporter.sendMail({
-      from: `"EPS Consultancy" <${process.env.EMAIL_USER}>`,
+      from: process.env.EMAIL_FROM || `"EPS Consultancy" <${process.env.EMAIL_USER}>`,
       ...options,
     })
-    // eslint-disable-next-line no-console
-    console.log(`Email sent: ${info.messageId}`)
-    return true
+    return info
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Email failed to send, falling back to simulator:', error)
-    // eslint-disable-next-line no-console
-    console.log('\n==================================================')
-    // eslint-disable-next-line no-console
-    console.log(`[EMAIL SIMULATOR] Sending email to: ${options.to}`)
-    // eslint-disable-next-line no-console
-    console.log(`Subject: ${options.subject}`)
-    // eslint-disable-next-line no-console
-    console.log(`Body:\n${options.text}`)
-    // eslint-disable-next-line no-console
-    console.log('==================================================\n')
-    return true
+    console.error('Email failed to send:', error)
+    throw error
   }
 }
 

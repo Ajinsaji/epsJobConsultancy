@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
-import GlassCard from '../../../../components/ui/GlassCard'
-import { GlassButton } from '../../../../components/ui/GlassButton'
+import GlassCard from '../../../../../components/ui/GlassCard'
+import { GlassButton } from '../../../../../components/ui/GlassButton'
 import { CMSSkeleton } from '../shared/CMSSkeleton'
 
 const SEO_KEYS = [

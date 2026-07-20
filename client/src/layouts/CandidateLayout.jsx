@@ -11,9 +11,11 @@ function CandidateSidebar() {
     { to: '/candidate', label: 'Dashboard' },
     { to: '/candidate/jobs', label: 'Jobs' },
     { to: '/candidate/applied', label: 'Applications' },
+    { to: '/candidate/interviews', label: 'Interviews' },
+    { to: '/candidate/placements', label: 'Placements' },
     { to: '/candidate/notifications', label: 'Notifications' },
     { to: '/candidate/profile', label: 'Profile' },
-    { to: '/candidate/resume-analyzer', label: 'Interviews' },
+    { to: '/candidate/resume-analyzer', label: 'AI Analyzer' },
   ]
 
   return (
@@ -21,31 +23,19 @@ function CandidateSidebar() {
       <div className="sticky top-[5.25rem] rounded-2xl border border-white/10 bg-white/5 p-4">
         <div className="text-xs font-semibold text-white/70 mb-3">Candidate</div>
         <nav className="space-y-2">
-          {nav
-            .filter((n) => !n.to.includes('resume-analyzer'))
-            .map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                className={
-                  location.pathname === n.to
-                    ? 'block rounded-xl bg-indigo-500/20 text-indigo-200 px-3 py-2 text-sm font-semibold'
-                    : 'block rounded-xl text-white/70 hover:bg-white/10 hover:text-white px-3 py-2 text-sm transition'
-                }
-              >
-                {n.label}
-              </Link>
-            ))}
-          <Link
-            to="/candidate/resume-analyzer"
-            className={
-              location.pathname === '/candidate/resume-analyzer'
-                ? 'block rounded-xl bg-indigo-500/20 text-indigo-200 px-3 py-2 text-sm font-semibold'
-                : 'block rounded-xl text-white/70 hover:bg-white/10 hover:text-white px-3 py-2 text-sm transition'
-            }
-          >
-            Interviews
-          </Link>
+          {nav.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              className={
+                location.pathname === n.to
+                  ? 'block rounded-xl bg-[#CCA43B]/20 text-[#CCA43B] px-3 py-2 text-sm font-bold'
+                  : 'block rounded-xl text-white/70 hover:bg-white/10 hover:text-white px-3 py-2 text-sm font-semibold transition'
+              }
+            >
+              {n.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </aside>

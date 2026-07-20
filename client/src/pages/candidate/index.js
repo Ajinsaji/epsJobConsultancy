@@ -6,4 +6,6 @@ export { default as SavedJobs } from './SavedJobs'
 export { default as Notifications } from './Notifications'
 export { default as ResumeBuilder } from './ResumeBuilder'
 export { default as ResumeAnalyzer } from './ResumeAnalyzer'
+export { default as InterviewSchedule } from './InterviewSchedule'
+export { default as PlacementTracking } from './PlacementTracking'
 

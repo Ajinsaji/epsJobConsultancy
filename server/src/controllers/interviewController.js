@@ -17,14 +17,8 @@ export const createInterview = asyncHandler(async (req, res) => {
 
   if (!applicationId) return res.status(400).json({ message: 'applicationId is required' })
 
-  const application = await Application.findById(applicationId).lean()
+  const application = await Application.findById(applicationId)
   if (!application) return res.status(404).json({ message: 'Application not found' })
-
-  if (application.status !== 'Interview Scheduled') {
-    return res.status(400).json({
-      message: 'Interview can only be scheduled for applications in Interview Scheduled status.',
-    })
-  }
 
   const interview = await Interview.create({
     applicationId,
@@ -47,6 +41,10 @@ export const createInterview = asyncHandler(async (req, res) => {
     remarks,
     status: 'Scheduled',
   })
+
+  // Automatically update Application status
+  application.status = 'Interview Scheduled'
+  await application.save()
 
   res.status(201).json({ interview })
 })
@@ -78,6 +76,16 @@ export const updateInterview = asyncHandler(async (req, res) => {
   if (remarks !== undefined) interview.remarks = remarks
 
   const updated = await interview.save()
+
+  // Auto-cascade to Application if Interview is completed
+  if (nextStatus === 'Completed') {
+    const application = await Application.findById(interview.applicationId)
+    if (application && application.status === 'Interview Scheduled') {
+      application.status = 'Interview Completed'
+      await application.save()
+    }
+  }
+
   res.json({ interview: updated })
 })
 

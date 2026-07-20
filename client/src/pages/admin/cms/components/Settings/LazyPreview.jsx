@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import GlassCard from '../../../../components/ui/GlassCard'
+import GlassCard from '../../../../../components/ui/GlassCard'
 import { CMSSkeleton } from '../shared/CMSSkeleton'
 
 import {

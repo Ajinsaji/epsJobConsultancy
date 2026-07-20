@@ -25,6 +25,9 @@ import {
   createTestimonial,
   updateTestimonial,
   deleteTestimonial,
+  getAllCandidates,
+  getAllUsers,
+  updateUserStatus,
 } from '../controllers/adminController.js'
 
 export const adminRoutes = express.Router()
@@ -69,3 +72,10 @@ adminRoutes.get('/testimonials', getAdminTestimonials)
 adminRoutes.post('/testimonials', createTestimonial)
 adminRoutes.put('/testimonials/:id', updateTestimonial)
 adminRoutes.delete('/testimonials/:id', deleteTestimonial)
+
+// Candidates management
+adminRoutes.get('/candidates', getAllCandidates)
+
+// Users management
+adminRoutes.get('/users', getAllUsers)
+adminRoutes.put('/users/:id/status', updateUserStatus)

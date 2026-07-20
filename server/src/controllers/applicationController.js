@@ -4,20 +4,14 @@ import { Job } from '../models/Job.js'
 import { Candidate } from '../models/Candidate.js'
 import { Company } from '../models/Company.js'
 
+import { Placement } from '../models/Placement.js'
+import { ActivityLog } from '../models/ActivityLog.js'
+
 const getCanonicalStatus = (s) => (s && typeof s === 'string' ? s : undefined)
 
-const EPS_ALLOWED_TRANSITIONS = {
-  'Applied': ['Under Review'],
-  'Under Review': ['Shortlisted'],
-  'Shortlisted': ['Forwarded'],
-  'Forwarded': ['Interview Scheduled'],
-  'Interview Scheduled': [], // company controls selection/rejection
-  'Selected': [],
-  'Rejected': [],
-}
-
 const COMPANY_ALLOWED_TRANSITIONS = {
-  'Interview Scheduled': ['Selected', 'Rejected'],
+  'Interview Completed': ['Selected', 'Rejected'],
+  'Interview Scheduled': ['Interview Completed', 'Selected', 'Rejected'],
 }
 
 export const applyJob = asyncHandler(async (req, res) => {
@@ -90,11 +84,6 @@ export const getApplicationsByJob = asyncHandler(async (req, res) => {
   res.json({ applications })
 })
 
-const canEPSUpdate = (currentStatus, nextStatus) => {
-  const allowed = EPS_ALLOWED_TRANSITIONS[currentStatus] || []
-  return allowed.includes(nextStatus)
-}
-
 export const updateApplicationStatus = asyncHandler(async (req, res) => {
   const { status, remarks } = req.body
   const nextStatus = getCanonicalStatus(status)
@@ -107,20 +96,32 @@ export const updateApplicationStatus = asyncHandler(async (req, res) => {
 
   const currentStatus = application.status
 
-  if (!canEPSUpdate(currentStatus, nextStatus)) {
-    return res.status(403).json({ message: 'Invalid EPS status transition' })
-  }
-
   application.status = nextStatus
 
-  if (nextStatus === 'Under Review' || nextStatus === 'Shortlisted') {
-    // no-op timestamps for now
-  }
-
-  // Company will handle interview scheduled onward.
   if (remarks !== undefined) application.remarks = remarks
 
   const updated = await application.save()
+
+  // Log activity
+  await ActivityLog.create({
+    action: `Application status for candidate ${application.candidateId} on job ${application.jobId} updated to ${nextStatus}`,
+    user: req.user?.email || 'System'
+  })
+
+  // If status is Offer Generated, auto-create a Placement draft if it doesn't exist
+  if (nextStatus === 'Offer Generated') {
+    const existingPlacement = await Placement.findOne({ applicationId: application._id })
+    if (!existingPlacement) {
+      await Placement.create({
+        applicationId: application._id,
+        candidateId: application.candidateId,
+        companyId: application.companyId,
+        jobId: application.jobId,
+        status: 'Draft',
+      })
+    }
+  }
+
   res.json({ application: updated })
 })
 

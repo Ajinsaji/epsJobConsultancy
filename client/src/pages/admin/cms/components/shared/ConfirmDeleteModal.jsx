@@ -1,6 +1,6 @@
 import React from 'react'
-import GlassCard from '../../../../components/ui/GlassCard'
-import { GlassButton } from '../../../../components/ui/GlassButton'
+import GlassCard from '../../../../../components/ui/GlassCard'
+import { GlassButton } from '../../../../../components/ui/GlassButton'
 
 export default function ConfirmDeleteModal({ isOpen, onClose, onConfirm, title, message }) {
   if (!isOpen) return null

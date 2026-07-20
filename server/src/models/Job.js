@@ -34,6 +34,8 @@ const JobSchema = new mongoose.Schema(
   { timestamps: true },
 )
 
+JobSchema.index({ companyId: 1 })
+JobSchema.index({ status: 1 })
 
 export const Job = mongoose.model('Job', JobSchema)
 

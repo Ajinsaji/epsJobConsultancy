@@ -11,6 +11,7 @@ import {
   getPublicFAQs,
   getPublicServices,
 } from '../controllers/publicController.js'
+import { getBlogs, getBlogBySlug } from '../controllers/blogController.js'
 
 export const publicRoutes = express.Router()
 
@@ -24,3 +25,5 @@ publicRoutes.get('/testimonials/employers', getPublicEmployerTestimonials)
 publicRoutes.get('/placements', getPublicPlacements)
 publicRoutes.get('/faqs', getPublicFAQs)
 publicRoutes.get('/services', getPublicServices)
+publicRoutes.get('/blogs', getBlogs)
+publicRoutes.get('/blogs/:slug', getBlogBySlug)

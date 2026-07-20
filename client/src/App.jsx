@@ -31,6 +31,8 @@ import {
   Notifications,
   ResumeBuilder,
   ResumeAnalyzer,
+  InterviewSchedule,
+  PlacementTracking,
 } from './pages/candidate'
 import {
   EPSDashboard,
@@ -102,6 +104,8 @@ export default function App() {
           <Route path="notifications" element={<Notifications />} />
           <Route path="resume-builder" element={<ResumeBuilder />} />
           <Route path="resume-analyzer" element={<ResumeAnalyzer />} />
+          <Route path="interviews" element={<InterviewSchedule />} />
+          <Route path="placements" element={<PlacementTracking />} />
         </Route>
       </Route>
 
