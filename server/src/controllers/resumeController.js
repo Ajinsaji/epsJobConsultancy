@@ -1,5 +1,7 @@
 import { asyncHandler } from '../utils/asyncHandler.js'
-import pdfParse from 'pdf-parse/lib/pdf-parse.js'
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+const pdfParse = require('pdf-parse')
 import OpenAI from 'openai'
 
 const openai = new OpenAI({
