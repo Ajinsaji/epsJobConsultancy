@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
-import GlassCard from '../../../../../components/ui/GlassCard'
-import { GlassButton } from '../../../../../components/ui/GlassButton'
+import { Card, CardContent } from '../../../../../components/ui/Card'
+import { Button } from '../../../../../components/ui/Button'
 import { CMSSkeleton } from '../shared/CMSSkeleton'
 
 export default function HeroSettings({ draft, onSave, saving }) {
@@ -34,7 +34,7 @@ export default function HeroSettings({ draft, onSave, saving }) {
 
   return (
     <form onSubmit={save} className="space-y-6">
-      <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+      <Card className="p-6 bg-slate-900/50 border-white/10">
         <h2 className="text-lg font-bold text-white mb-2">Hero</h2>
         <p className="text-xs text-white/60 mb-6">Primary announcement badge, headline and subheading.</p>
 
@@ -67,12 +67,12 @@ export default function HeroSettings({ draft, onSave, saving }) {
             />
           </div>
         </div>
-      </GlassCard>
+      </Card>
 
       <div className="flex justify-end">
-        <GlassButton type="submit" variant="primary" className="px-6 py-2.5 text-sm" disabled={saving || !dirty}>
+        <Button type="submit" variant="primary" className="px-6 py-2.5 text-sm" disabled={saving || !dirty}>
           {saving ? 'Saving…' : 'Save Hero'}
-        </GlassButton>
+        </Button>
       </div>
     </form>
   )

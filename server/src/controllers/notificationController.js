@@ -39,4 +39,21 @@ export const deleteNotification = asyncHandler(async (req, res) => {
   res.json({ message: 'Notification deleted successfully' })
 })
 
+export const createNotification = asyncHandler(async (req, res) => {
+  const { userId, type, title, message, link } = req.body
 
+  if (!userId || !type || !title || !message) {
+    return res.status(400).json({ message: 'Missing required notification fields' })
+  }
+
+  const notification = await Notification.create({
+    userId,
+    type,
+    title,
+    message,
+    link,
+    read: false,
+  })
+
+  res.status(201).json({ notification })
+})

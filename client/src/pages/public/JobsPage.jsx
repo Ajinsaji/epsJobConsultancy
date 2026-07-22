@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import axios from 'axios'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 import RevealOnScroll from '../../animations/RevealOnScroll'
 import { useNavigate } from 'react-router-dom'
 
@@ -84,7 +84,7 @@ export default function JobsPage() {
         <RevealOnScroll>
           <div className="mt-6 grid gap-4 md:grid-cols-12">
             <div className="md:col-span-5">
-              <GlassCard className="p-4">
+              <Card className="p-4">
                 <div className="text-xs font-semibold text-white/70">Search</div>
                 <input
                   value={query}
@@ -92,11 +92,11 @@ export default function JobsPage() {
                   className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-400/60"
                   placeholder="Job title or company"
                 />
-              </GlassCard>
+              </Card>
             </div>
 
             <div className="md:col-span-3">
-              <GlassCard className="p-4">
+              <Card className="p-4">
                 <div className="text-xs font-semibold text-white/70">Location</div>
                 <select
                   value={locationFilter}
@@ -110,11 +110,11 @@ export default function JobsPage() {
                     </option>
                   ))}
                 </select>
-              </GlassCard>
+              </Card>
             </div>
 
             <div className="md:col-span-4">
-              <GlassCard className="p-4">
+              <Card className="p-4">
                 <div className="text-xs font-semibold text-white/70">Job type</div>
                 <select
                   value={typeFilter}
@@ -128,7 +128,7 @@ export default function JobsPage() {
                     </option>
                   ))}
                 </select>
-              </GlassCard>
+              </Card>
             </div>
           </div>
         </RevealOnScroll>
@@ -154,7 +154,7 @@ export default function JobsPage() {
                     whileHover={{ y: -3 }}
                     transition={{ type: 'spring', stiffness: 420, damping: 28 }}
                   >
-                    <GlassCard className="flex h-full flex-col justify-between p-6">
+                    <Card className="flex h-full flex-col justify-between p-6">
                       <div>
                         <div className="flex items-start justify-between">
                           <span className="rounded-full bg-indigo-500/20 px-2.5 py-1 text-xs font-semibold text-indigo-300">
@@ -170,15 +170,15 @@ export default function JobsPage() {
                       </div>
 
                       <div className="mt-6">
-                        <GlassButton
+                        <Button
                           className="w-full text-center"
                           variant="primary"
                           onClick={() => navigate('/login')}
                         >
                           Apply
-                        </GlassButton>
+                        </Button>
                       </div>
-                    </GlassCard>
+                    </Card>
                   </motion.div>
                 ))}
               </div>

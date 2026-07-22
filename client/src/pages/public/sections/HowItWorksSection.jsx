@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 export default function HowItWorksSection() {
   const [activeRole, setActiveRole] = useState('candidate')
@@ -91,13 +91,13 @@ export default function HowItWorksSection() {
                     
                     {/* Step Card container */}
                     <div className="w-full md:w-[42%] text-left">
-                      <GlassCard className="p-5 bg-slate-950/40 border-white/5 hover:border-[#CCA43B]/20 hover:scale-101 transition duration-300">
+                      <Card className="p-5 bg-slate-950/40 border-white/5 hover:border-[#CCA43B]/20 hover:scale-101 transition duration-300">
                         <div className="flex items-center gap-3 mb-2">
                           <span className="text-xl">{step.icon}</span>
                           <h4 className="text-sm font-extrabold text-white">{step.title}</h4>
                         </div>
                         <p className="text-xs leading-relaxed text-white/60">{step.desc}</p>
-                      </GlassCard>
+                      </Card>
                     </div>
 
                     {/* Step Center Circle Number */}

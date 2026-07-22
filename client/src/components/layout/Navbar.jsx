@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import { selectAuth } from '../../redux/slices/authSlice'
-import { GlassButton } from '../ui/GlassButton'
+import { Button } from '../ui/Button'
 
 export default function Navbar() {
   const { user } = useSelector(selectAuth)
@@ -48,15 +48,15 @@ export default function Navbar() {
               <span>Hi, {user.name}</span>
             </div>
           ) : (
-            <GlassButton as={Link} to="/login" variant="primary" className="hidden md:inline-flex">
+            <Button as={Link} to="/login" variant="primary" className="hidden md:inline-flex">
               Login
-            </GlassButton>
+            </Button>
           )}
 
           {!user ? (
-            <GlassButton as={Link} to="/login" variant="ghost" className="md:hidden">
+            <Button as={Link} to="/login" variant="ghost" className="md:hidden">
               Sign in
-            </GlassButton>
+            </Button>
           ) : null}
         </div>
       </div>

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { selectAuth, logout } from '../redux/slices/authSlice'
-import { GlassButton } from '../components/ui/GlassButton'
+import { Button } from '../components/ui/Button'
 
 function PublicTopNav() {
   const location = useLocation()
@@ -64,23 +64,23 @@ export default function PublicLayout() {
     return (
       <div className="hidden items-center gap-4 md:flex text-sm">
         <Link to="/login">
-          <GlassButton
+          <Button
             variant="ghost"
             style={{ minHeight: '40px', padding: '0 16px', borderColor: 'rgba(255,255,255,0.1)' }}
             className="text-xs font-bold hover:bg-white/5 transition"
           >
             Login
-          </GlassButton>
+          </Button>
         </Link>
         <Link to="/register">
-          <GlassButton
+          <Button
             as={motion.button}
             variant="primary"
             style={{ minHeight: '40px', padding: '0 16px', background: 'linear-gradient(90deg,#7C3AED 0%, #8B5CF6 50%, #3B82F6 100%)' }}
             className="text-xs font-bold shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] transition"
           >
             Register
-          </GlassButton>
+          </Button>
         </Link>
       </div>
     )

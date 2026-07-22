@@ -17,6 +17,7 @@ import {
   getSavedCandidates,
   getShortlistedCandidates,
   getInteractionHistory,
+  getCandidateProfileForEmployer
 } from '../controllers/employerCandidateController.js'
 
 export const companyRoutes = express.Router()
@@ -31,61 +32,65 @@ companyRoutes.post('/', authorizeRoles('eps_admin'), createCompany)
 companyRoutes.get('/', authorizeRoles('eps_admin'), getAllCompanies)
 companyRoutes.delete('/:id', authorizeRoles('eps_admin'), deleteCompany)
 
-// Both EPS Admin and the Company itself can access/update details
-companyRoutes.get('/:id', authorizeRoles('company', 'eps_admin'), getCompanyById)
-companyRoutes.put('/:id', authorizeRoles('company', 'eps_admin'), updateCompanyProfile)
-
 // Phase E.2 — Employer <-> Candidate interactions (job-independent)
-// Company should manage candidates even without creating jobs.
 
-// POST /api/company/candidates/:id/save
-companyRoutes.post(
-  '/candidates/:id/save',
-  authorizeRoles('company'),
-  saveCandidate,
-)
-
-// POST /api/company/candidates/:id/shortlist
-companyRoutes.post(
-  '/candidates/:id/shortlist',
-  authorizeRoles('company'),
-  shortlistCandidate,
-)
-
-// POST /api/company/candidates/:id/contact
-companyRoutes.post(
-  '/candidates/:id/contact',
-  authorizeRoles('company'),
-  contactCandidate,
-)
-
-// GET /api/company/candidates/saved
+// GET /api/companies/:companyId/candidates/saved
 companyRoutes.get(
-  '/candidates/saved',
+  '/:companyId/candidates/saved',
   authorizeRoles('company'),
   getSavedCandidates,
 )
 
-// GET /api/company/candidates/shortlisted
+// GET /api/companies/:companyId/candidates/shortlisted
 companyRoutes.get(
-  '/candidates/shortlisted',
+  '/:companyId/candidates/shortlisted',
   authorizeRoles('company'),
   getShortlistedCandidates,
 )
 
-// GET /api/company/candidates/history
+// GET /api/companies/:companyId/candidates/history
 companyRoutes.get(
-  '/candidates/history',
+  '/:companyId/candidates/history',
   authorizeRoles('company'),
   getInteractionHistory,
 )
 
-// Phase E.3 — Talent search (job-independent)
-// GET /api/company/talent-search
+// GET /api/companies/:companyId/talent-search
 companyRoutes.get(
-  '/talent-search',
+  '/:companyId/talent-search',
   authorizeRoles('company'),
   talentSearch,
 )
 
+// GET /api/companies/:companyId/candidates/:candidateId
+companyRoutes.get(
+  '/:companyId/candidates/:candidateId',
+  authorizeRoles('company'),
+  getCandidateProfileForEmployer,
+)
 
+// POST /api/companies/:companyId/candidates/:candidateId/save
+companyRoutes.post(
+  '/:companyId/candidates/:candidateId/save',
+  authorizeRoles('company'),
+  saveCandidate,
+)
+
+// POST /api/companies/:companyId/candidates/:candidateId/shortlist
+companyRoutes.post(
+  '/:companyId/candidates/:candidateId/shortlist',
+  authorizeRoles('company'),
+  shortlistCandidate,
+)
+
+// POST /api/companies/:companyId/candidates/:candidateId/contact
+companyRoutes.post(
+  '/:companyId/candidates/:candidateId/contact',
+  authorizeRoles('company'),
+  contactCandidate,
+)
+
+// Both EPS Admin and the Company itself can access/update details
+// Put these at the bottom so they don't catch the /candidates routes if anything is malformed
+companyRoutes.get('/:id', authorizeRoles('company', 'eps_admin'), getCompanyById)
+companyRoutes.put('/:id', authorizeRoles('company', 'eps_admin'), updateCompanyProfile)

@@ -5,8 +5,8 @@ import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Plus, Search, Edit2, Trash2, Power, Briefcase, Eye, Users } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 import moment from 'moment'
 
 export default function CompanyJobs() {
@@ -87,13 +87,13 @@ export default function CompanyJobs() {
             Create, edit, and track the status of your job postings.
           </p>
         </div>
-        <GlassButton variant="primary" className="flex items-center gap-2" as={Link} to="/company/jobs/new">
+        <Button variant="primary" className="flex items-center gap-2" as={Link} to="/company/jobs/new">
           <Plus className="h-4 w-4" /> Post New Job
-        </GlassButton>
+        </Button>
       </div>
 
       {/* Toolbar */}
-      <GlassCard className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
+      <Card className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
@@ -107,13 +107,13 @@ export default function CompanyJobs() {
         <div className="flex gap-2">
           {/* Add filters here if needed */}
         </div>
-      </GlassCard>
+      </Card>
 
       {/* Jobs Table/List */}
       {loading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <GlassCard key={i} className="h-24 animate-pulse bg-white/5 border-white/5" />
+            <Card key={i} className="h-24 animate-pulse bg-white/5 border-white/5" />
           ))}
         </div>
       ) : filteredJobs.length === 0 ? (
@@ -130,9 +130,9 @@ export default function CompanyJobs() {
             {searchTerm ? 'Try adjusting your search terms.' : "You haven't posted any jobs yet."}
           </p>
           {!searchTerm && (
-            <GlassButton variant="primary" as={Link} to="/company/jobs/new">
+            <Button variant="primary" as={Link} to="/company/jobs/new">
               Post Your First Job
-            </GlassButton>
+            </Button>
           )}
         </motion.div>
       ) : (
@@ -144,7 +144,7 @@ export default function CompanyJobs() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
             >
-              <GlassCard className="p-5 bg-slate-950/40 border-white/10 hover:border-white/20 transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <Card className="p-5 bg-slate-950/40 border-white/10 hover:border-white/20 transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 
                 {/* Info */}
                 <div className="flex-1 min-w-0">
@@ -207,7 +207,7 @@ export default function CompanyJobs() {
                   </button>
                 </div>
 
-              </GlassCard>
+              </Card>
             </motion.div>
           ))}
         </div>

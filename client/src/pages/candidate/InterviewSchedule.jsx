@@ -3,8 +3,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import moment from 'moment'
 import { Calendar, Video, MapPin, Clock, Briefcase, FileText, ExternalLink, CheckCircle } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function InterviewSchedule() {
   const [interviews, setInterviews] = useState([])
@@ -55,14 +55,14 @@ export default function InterviewSchedule() {
           <h2 className="text-lg font-bold text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Upcoming Interviews</h2>
           
           {upcoming.length === 0 ? (
-            <GlassCard className="p-10 text-center text-white/50 border-dashed border-2">
+            <Card className="p-10 text-center text-white/50 border-dashed border-2">
               <Calendar className="w-10 h-10 mx-auto mb-4 opacity-20" />
               <p>No upcoming interviews scheduled right now.</p>
               <p className="text-xs mt-2">Keep applying to jobs to increase your chances!</p>
-            </GlassCard>
+            </Card>
           ) : (
             upcoming.map(interview => (
-              <GlassCard key={interview._id} className="p-6 bg-slate-950/40 border-l-4 border-l-[#CCA43B] border-t-white/10 border-r-white/10 border-b-white/10">
+              <Card key={interview._id} className="p-6 bg-slate-950/40 border-l-4 border-l-[#CCA43B] border-t-white/10 border-r-white/10 border-b-white/10">
                 <div className="flex justify-between items-start mb-6">
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">
@@ -96,27 +96,27 @@ export default function InterviewSchedule() {
 
                 <div className="flex gap-4">
                   {interview.meetingLink && interview.mode === 'Online' && (
-                    <GlassButton as="a" href={interview.meetingLink} target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2">
+                    <Button as="a" href={interview.meetingLink} target="_blank" rel="noreferrer" className="flex-1 flex justify-center items-center gap-2">
                       <Video className="w-4 h-4" /> Join Meeting
-                    </GlassButton>
+                    </Button>
                   )}
                   {interview.location && interview.mode === 'Offline' && (
-                    <GlassButton variant="secondary" className="flex-1 flex justify-center items-center gap-2">
+                    <Button variant="secondary" className="flex-1 flex justify-center items-center gap-2">
                       <MapPin className="w-4 h-4" /> View Location
-                    </GlassButton>
+                    </Button>
                   )}
-                  <GlassButton variant="danger" outline className="px-4">
+                  <Button variant="danger" outline className="px-4">
                     Request Reschedule
-                  </GlassButton>
+                  </Button>
                 </div>
-              </GlassCard>
+              </Card>
             ))
           )}
         </div>
 
         {/* Tips & Past */}
         <div className="space-y-6">
-          <GlassCard className="p-6 bg-gradient-to-br from-[#0B4C8C]/20 to-[#CCA43B]/20 border-white/10">
+          <Card className="p-6 bg-gradient-to-br from-[#0B4C8C]/20 to-[#CCA43B]/20 border-white/10">
             <h3 className="font-bold text-white mb-4 flex items-center gap-2">
               <FileText className="w-5 h-5 text-[#CCA43B]" />
               Preparation Tips
@@ -135,7 +135,7 @@ export default function InterviewSchedule() {
                 <span>Research the company profile and values thoroughly.</span>
               </li>
             </ul>
-          </GlassCard>
+          </Card>
 
           <div>
             <h2 className="text-sm font-bold text-white/50 uppercase tracking-wider mb-4">Past Interviews</h2>
@@ -144,7 +144,7 @@ export default function InterviewSchedule() {
                 <div className="text-center py-6 text-sm text-white/40">No past interviews.</div>
               ) : (
                 past.map(interview => (
-                  <GlassCard key={interview._id} className="p-4 bg-white/5 border-white/5">
+                  <Card key={interview._id} className="p-4 bg-white/5 border-white/5">
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-bold text-white text-sm">
                         {interview.applicationId?.jobId?.title}
@@ -156,7 +156,7 @@ export default function InterviewSchedule() {
                     <div className="text-xs text-white/50">
                       {moment(interview.interviewDate).format('MMM D, YYYY')}
                     </div>
-                  </GlassCard>
+                  </Card>
                 ))
               )}
             </div>

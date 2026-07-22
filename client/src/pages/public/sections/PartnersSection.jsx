@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { publicApi } from '../../../api/publicApi'
 import { motion } from 'framer-motion'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 export default function PartnersSection() {
   const [partners, setPartners] = useState([])
@@ -101,13 +101,13 @@ export default function PartnersSection() {
 
           {partners.length === 0 ? (
             /* Empty state */
-            <GlassCard className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
+            <Card className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
               <div className="text-2xl mb-2">🏢</div>
               <h4 className="text-sm font-bold text-white mb-2">Hiring Network Under Assembly</h4>
               <p className="text-xs text-white/50 leading-relaxed">
                 We are currently onboarding verified tech companies into our partner program. Check back shortly to explore open positions.
               </p>
-            </GlassCard>
+            </Card>
           ) : (
             /* Partner Grid */
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left">
@@ -119,7 +119,7 @@ export default function PartnersSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                 >
-                  <GlassCard className="p-6 bg-slate-950/40 border-white/5 hover:border-blue-500/20 hover:bg-white/[0.01] transition-all duration-300 h-full flex flex-col justify-between">
+                  <Card className="p-6 bg-slate-950/40 border-white/5 hover:border-blue-500/20 hover:bg-white/[0.01] transition-all duration-300 h-full flex flex-col justify-between">
                     <div className="space-y-4">
                       
                       {/* Logo and Head */}
@@ -178,7 +178,7 @@ export default function PartnersSection() {
                       )}
                     </div>
 
-                  </GlassCard>
+                  </Card>
                 </motion.div>
               ))}
             </div>

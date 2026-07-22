@@ -29,7 +29,7 @@ export const fetchSavedCandidates = createAsyncThunk(
   'company/fetchSaved',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/companies/candidates/saved')
+      const response = await axios.get('/api/companies/me/candidates/saved')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch saved candidates')
@@ -41,7 +41,7 @@ export const toggleSaveCandidate = createAsyncThunk(
   'company/toggleSave',
   async (candidateId, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`/api/companies/candidates/${candidateId}/save`)
+      const response = await axios.post(`/api/companies/me/candidates/${candidateId}/save`)
       return { candidateId, data: response.data }
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update candidate save status')

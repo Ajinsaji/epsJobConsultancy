@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import GlassCard from '../../../../../components/ui/GlassCard'
+import { Card, CardContent } from '../../../../../components/ui/Card'
 import { CMSSkeleton } from '../shared/CMSSkeleton'
 
 import {
@@ -165,7 +165,7 @@ export default function LazyPreview({ draft }) {
 
   const responsiveWrap = (children) => (
     <div className="space-y-6">
-      <GlassCard className="p-4 bg-slate-900/50 border-white/10">
+      <Card className="p-4 bg-slate-900/50 border-white/10">
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="text-[10px] font-extrabold tracking-widest text-indigo-300 uppercase">DRAFT PREVIEW</div>
@@ -176,7 +176,7 @@ export default function LazyPreview({ draft }) {
           </div>
           <div className="text-[10px] text-white/50 whitespace-nowrap">{loading ? 'Loading…' : 'Ready'}</div>
         </div>
-      </GlassCard>
+      </Card>
 
       <div className="flex flex-col gap-6">
         <div className="rounded-3xl border border-white/10 bg-[#050816] overflow-hidden">

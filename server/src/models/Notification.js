@@ -2,19 +2,26 @@ import mongoose from 'mongoose'
 
 const NotificationSchema = new mongoose.Schema(
   {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    recipientId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    recipientRole: { type: String, enum: ['Candidate', 'Company', 'Admin'], required: true },
+    
+    type: { type: String, required: true },
+    channels: [{ type: String, enum: ['in_app', 'email', 'whatsapp', 'push', 'sms'] }],
+    
     title: { type: String, required: true },
     message: { type: String, required: true },
-
-    // Keep existing field name
+    
+    status: { 
+      type: String, 
+      enum: ['Pending', 'Queued', 'Sent', 'Delivered', 'Failed'], 
+      default: 'Pending' 
+    },
+    
     read: { type: Boolean, default: false },
+    readAt: { type: Date },
+    
+    metadata: { type: mongoose.Schema.Types.Mixed, default: {} },
 
-    // Phase-5 target fields (additive)
-    type: { type: String },
-    entityType: { type: String },
-    entityId: { type: mongoose.Schema.Types.ObjectId },
-
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   { timestamps: true },
 )

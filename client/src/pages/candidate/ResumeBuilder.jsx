@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Briefcase, GraduationCap, User, FileText, Download, Plus, Trash2 } from 'lucide-react'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Button } from '../../components/ui/Button'
 
 export default function ResumeBuilder() {
   const [activeTab, setActiveTab] = useState('personal')
@@ -142,9 +142,9 @@ export default function ResumeBuilder() {
                   </div>
                 </div>
               ))}
-              <GlassButton variant="ghost" onClick={addExperience} className="w-full py-3 flex items-center justify-center gap-2">
+              <Button variant="ghost" onClick={addExperience} className="w-full py-3 flex items-center justify-center gap-2">
                 <Plus className="w-4 h-4" /> Add Experience
-              </GlassButton>
+              </Button>
             </motion.div>
           )}
 
@@ -164,9 +164,9 @@ export default function ResumeBuilder() {
                   </div>
                 </div>
               ))}
-              <GlassButton variant="ghost" onClick={addEducation} className="w-full py-3 flex items-center justify-center gap-2">
+              <Button variant="ghost" onClick={addEducation} className="w-full py-3 flex items-center justify-center gap-2">
                 <Plus className="w-4 h-4" /> Add Education
-              </GlassButton>
+              </Button>
             </motion.div>
           )}
 
@@ -188,9 +188,9 @@ export default function ResumeBuilder() {
         </div>
 
         <div className="p-4 border-t border-white/10 bg-white/5">
-          <GlassButton variant="primary" className="w-full py-3 flex justify-center items-center gap-2" onClick={handlePrint}>
+          <Button variant="primary" className="w-full py-3 flex justify-center items-center gap-2" onClick={handlePrint}>
             <Download className="w-4 h-4" /> Download PDF
-          </GlassButton>
+          </Button>
         </div>
       </div>
 

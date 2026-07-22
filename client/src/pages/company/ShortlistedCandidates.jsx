@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 function asArray(v) {
   if (!v) return []
@@ -25,7 +25,7 @@ export default function ShortlistedCandidates() {
   const fetchShortlisted = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('/api/company/candidates/shortlisted')
+      const res = await axios.get('/api/companies/me/candidates/shortlisted')
       setCandidates(res.data?.candidates || res.data || [])
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to load shortlisted candidates')
@@ -42,7 +42,7 @@ export default function ShortlistedCandidates() {
 
   const handleContact = async (candidateId) => {
     try {
-      await axios.post(`/api/company/candidates/${candidateId}/contact`)
+      await axios.post(`/api/companies/me/candidates/${candidateId}/contact`)
       toast.success('Contact request sent')
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to contact candidate')
@@ -74,7 +74,7 @@ export default function ShortlistedCandidates() {
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {candidates.map((c) => (
-            <GlassCard key={c._id} className="bg-white p-5 shadow-sm">
+            <Card key={c._id} className="bg-white p-5 shadow-sm">
               <div className="flex items-start gap-3">
                 <div className="h-14 w-14 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
                   {c.photo ? (
@@ -104,23 +104,23 @@ export default function ShortlistedCandidates() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
-                <GlassButton
+                <Button
                   variant="ghost"
                   className="col-span-1 text-xs py-2"
                   onClick={() => navigate(`/company/candidates/${c._id}`)}
                 >
                   View Profile
-                </GlassButton>
+                </Button>
 
-                <GlassButton
+                <Button
                   variant="primary"
                   className="col-span-1 text-xs py-2"
                   onClick={() => handleContact(c._id)}
                 >
                   Contact Candidate
-                </GlassButton>
+                </Button>
               </div>
-            </GlassCard>
+            </Card>
           ))}
         </div>
       )}

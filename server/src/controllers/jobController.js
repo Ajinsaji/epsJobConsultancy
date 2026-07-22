@@ -165,14 +165,21 @@ export const closeJob = asyncHandler(async (req, res) => {
 export const listCompanyJobs = asyncHandler(async (req, res) => {
   const { companyId } = req.params
 
-  if (req.user.role === 'company') {
+  let targetCompanyId = companyId
+
+  if (companyId === 'me') {
+    if (req.user.role !== 'company') return res.status(403).json({ message: 'Forbidden' })
+    const company = await Company.findOne({ userId: req.user._id }).lean()
+    if (!company) return res.status(404).json({ message: 'Company not found' })
+    targetCompanyId = company._id
+  } else if (req.user.role === 'company') {
     const company = await Company.findOne({ userId: req.user._id }).lean()
     if (!company || company._id.toString() !== companyId) {
       return res.status(403).json({ message: 'Forbidden: access denied to other company jobs' })
     }
   }
 
-  const jobs = await Job.find({ companyId })
+  const jobs = await Job.find({ companyId: targetCompanyId })
     .populate('companyId', 'companyName location')
     .lean()
 

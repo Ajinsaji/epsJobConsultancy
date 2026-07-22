@@ -3,8 +3,10 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
+import { FileUploader } from '../../components/shared/FileUploader'
+import { ResumeUploadFlow } from '../../components/shared/resume/ResumeUploadFlow'
 import { useFieldArray, useForm } from 'react-hook-form'
 
 function ProjectsEditor({ register, control }) {
@@ -165,7 +167,7 @@ function CertificationsEditor({ register, control }) {
 }
 
 export default function CandidateProfile() {
-  const { register, handleSubmit, reset, control, watch } = useForm()
+  const { register, handleSubmit, reset, control, watch, setValue } = useForm()
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [profile, setProfile] = useState(null)
@@ -310,17 +312,18 @@ export default function CandidateProfile() {
             <div className="mt-1 text-lg font-extrabold text-slate-900">{completion}%</div>
           </div>
           <Link to="/candidate">
-            <GlassButton variant="ghost">Back to Dashboard</GlassButton>
+            <Button variant="ghost">Back to Dashboard</Button>
           </Link>
         </div>
       </div>
-
+      
+      <ResumeUploadFlow onComplete={fetchProfile} />
 
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <GlassCard className="bg-white p-6 shadow-sm">
+        <Card className="bg-white p-6 shadow-sm">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             
             <div className="grid gap-6 sm:grid-cols-2">
@@ -505,39 +508,53 @@ export default function CandidateProfile() {
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Resume File Link / Path</label>
-                  <input
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm outline-none transition focus:border-indigo-500 focus:bg-white"
-                    placeholder="/uploads/resume.pdf"
-                    {...register('resumePath')}
+                <div className="flex flex-col h-full">
+                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Resume</label>
+                  <FileUploader 
+                    category="resume"
+                    accept={{ 'application/pdf': ['.pdf'], 'application/msword': ['.doc', '.docx'] }}
+                    onUploadComplete={(metadata) => setValue('resumePath', metadata.url, { shouldDirty: true })}
+                    className="flex-1"
                   />
+                  {watch('resumePath') && (
+                    <p className="mt-2 text-xs text-indigo-600 font-semibold truncate">
+                      Current: {watch('resumePath')}
+                    </p>
+                  )}
+                  <input type="hidden" {...register('resumePath')} />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Photo URL / Path</label>
-                  <input
-                    className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm outline-none transition focus:border-indigo-500 focus:bg-white"
-                    placeholder="/uploads/photo.jpg"
-                    {...register('photoPath')}
+                <div className="flex flex-col h-full">
+                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Profile Photo</label>
+                  <FileUploader 
+                    category="profile-image"
+                    accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}
+                    onUploadComplete={(metadata) => setValue('photoPath', metadata.url, { shouldDirty: true })}
+                    className="flex-1"
                   />
+                  {watch('photoPath') && (
+                    <p className="mt-2 text-xs text-indigo-600 font-semibold truncate">
+                      Current: {watch('photoPath')}
+                    </p>
+                  )}
+                  <input type="hidden" {...register('photoPath')} />
                 </div>
               </div>
             </div>
 
 
             <div className="flex justify-end pt-4">
-              <GlassButton
+              <Button
                 variant="primary"
                 type="submit"
                 disabled={saving}
                 style={{ minHeight: '44px' }}
               >
                 {saving ? 'Saving...' : 'Save Profile Changes'}
-              </GlassButton>
+              </Button>
             </div>
           </form>
-        </GlassCard>
+        </Card>
       </motion.div>
     </div>
   )

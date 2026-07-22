@@ -1,13 +1,13 @@
 import React from 'react'
-import GlassCard from '../../../../../components/ui/GlassCard'
-import { GlassButton } from '../../../../../components/ui/GlassButton'
+import { Card, CardContent } from '../../../../../components/ui/Card'
+import { Button } from '../../../../../components/ui/Button'
 
 export default function ConfirmDeleteModal({ isOpen, onClose, onConfirm, title, message }) {
   if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <GlassCard className="max-w-md w-full p-6 bg-slate-900 border-white/10 flex flex-col gap-4">
+      <Card className="max-w-md w-full p-6 bg-slate-900 border-white/10 flex flex-col gap-4">
         <div>
           <h3 className="text-lg font-bold text-white mb-2">{title || 'Confirm Action'}</h3>
           <p className="text-sm text-white/70 leading-relaxed">
@@ -15,9 +15,9 @@ export default function ConfirmDeleteModal({ isOpen, onClose, onConfirm, title, 
           </p>
         </div>
         <div className="flex justify-end gap-3 pt-2">
-          <GlassButton variant="ghost" onClick={onClose} className="px-4 py-2 text-xs">
+          <Button variant="ghost" onClick={onClose} className="px-4 py-2 text-xs">
             Cancel
-          </GlassButton>
+          </Button>
           <button
             onClick={() => {
               onConfirm()
@@ -28,7 +28,7 @@ export default function ConfirmDeleteModal({ isOpen, onClose, onConfirm, title, 
             Confirm & Delete
           </button>
         </div>
-      </GlassCard>
+      </Card>
     </div>
   )
 }

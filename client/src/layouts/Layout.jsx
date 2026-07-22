@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { selectAuth, logout } from '../redux/slices/authSlice'
-import { GlassButton } from '../components/ui/GlassButton'
+import { Button } from '../components/ui/Button'
 
 
 export default function Layout() {
@@ -99,9 +99,9 @@ export default function Layout() {
               </div>
             ) : (
               <Link to="/login">
-                <GlassButton variant="primary" style={{ minHeight: '38px', padding: '0 16px' }}>
+                <Button variant="primary" style={{ minHeight: '38px', padding: '0 16px' }}>
                   Login
-                </GlassButton>
+                </Button>
               </Link>
             )}
           </div>
@@ -274,7 +274,7 @@ Layout.NotFound = function NotFound() {
       <h1 className="text-2xl font-bold text-slate-800">404 - Page Not Found</h1>
       <p className="mt-2 text-slate-500 text-sm">The route you requested does not exist.</p>
       <Link className="mt-6 inline-block" to="/">
-        <GlassButton variant="primary">Go to Home</GlassButton>
+        <Button variant="primary">Go to Home</Button>
       </Link>
     </div>
   )

@@ -3,8 +3,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { ShieldCheck, Activity, Users, Building2, Briefcase, FileText, Database, Server, ChevronRight } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 import moment from 'moment'
 
 export default function AdminDashboard() {
@@ -45,7 +45,7 @@ export default function AdminDashboard() {
   const { overview, health } = healthData || {}
 
   const StatCard = ({ title, value, icon: Icon, to }) => (
-    <GlassCard className="p-5 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group">
+    <Card className="p-5 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group">
       <Link to={to} className="flex justify-between items-center h-full">
         <div>
           <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-1">{title}</p>
@@ -55,7 +55,7 @@ export default function AdminDashboard() {
           <Icon className="w-5 h-5 text-white/40 group-hover:text-[#CCA43B] transition" />
         </div>
       </Link>
-    </GlassCard>
+    </Card>
   )
 
   return (
@@ -85,7 +85,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* System Health */}
-          <GlassCard className="p-6 bg-slate-950/40 border-white/10">
+          <Card className="p-6 bg-slate-950/40 border-white/10">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-2">
               <Server className="w-4 h-4 text-[#CCA43B]" />
               System Health Overview
@@ -124,12 +124,12 @@ export default function AdminDashboard() {
               </div>
 
             </div>
-          </GlassCard>
+          </Card>
         </div>
 
         {/* Right Column: Activity Feed */}
         <div className="lg:col-span-1">
-          <GlassCard className="p-6 bg-slate-950/40 border-white/10 h-full flex flex-col">
+          <Card className="p-6 bg-slate-950/40 border-white/10 h-full flex flex-col">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                 <Activity className="w-4 h-4 text-[#CCA43B]" />
@@ -161,11 +161,11 @@ export default function AdminDashboard() {
             </div>
 
             <div className="mt-6 pt-4 border-t border-white/10">
-              <GlassButton variant="secondary" as={Link} to="/admin/system-logs" className="w-full flex justify-center items-center gap-2 text-xs">
+              <Button variant="secondary" as={Link} to="/admin/system-logs" className="w-full flex justify-center items-center gap-2 text-xs">
                 Open Full System Logs <ChevronRight className="w-3 h-3" />
-              </GlassButton>
+              </Button>
             </div>
-          </GlassCard>
+          </Card>
         </div>
 
       </div>

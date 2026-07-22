@@ -1,0 +1,742 @@
+[
+  {
+    "method": "get",
+    "url": "/api/public/stats",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/jobs",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/partners",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/services",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/placements",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/testimonials/candidates",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/testimonials/employers",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/faqs",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/config",
+    "file": "\\client\\src\\api\\publicApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/health",
+    "file": "\\client\\src\\pages\\admin\\AdminDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/activities",
+    "file": "\\client\\src\\pages\\admin\\AdminDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/faqs",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\faqApi.js"
+  },
+  {
+    "method": "post",
+    "url": "/api/admin/faqs",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\faqApi.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/faqs/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\faqApi.js"
+  },
+  {
+    "method": "delete",
+    "url": "/api/admin/faqs/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\faqApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/homepage-config",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\homepageApi.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/homepage-config",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\homepageApi.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/homepage-config/publish",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\homepageApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/health",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\homepageApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/activities",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\homepageApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/companies",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\partnerApi.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/companies/${id}/homepage",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\partnerApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/placements",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\placementApi.js"
+  },
+  {
+    "method": "post",
+    "url": "/api/admin/placements",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\placementApi.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/placements/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\placementApi.js"
+  },
+  {
+    "method": "delete",
+    "url": "/api/admin/placements/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\placementApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/stats",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/jobs",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/partners",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/services",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/placements",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/testimonials/candidates",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/testimonials/employers",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/faqs",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/config",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\publicPreviewApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/services",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\serviceApi.js"
+  },
+  {
+    "method": "post",
+    "url": "/api/admin/services",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\serviceApi.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/services/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\serviceApi.js"
+  },
+  {
+    "method": "delete",
+    "url": "/api/admin/services/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\serviceApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/testimonials",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\testimonialApi.js"
+  },
+  {
+    "method": "post",
+    "url": "/api/admin/testimonials",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\testimonialApi.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/testimonials/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\testimonialApi.js"
+  },
+  {
+    "method": "delete",
+    "url": "/api/admin/testimonials/${id}",
+    "file": "\\client\\src\\pages\\admin\\cms\\api\\testimonialApi.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/companies",
+    "file": "\\client\\src\\pages\\admin\\ManageCompanies.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/companies/${companyId}/homepage",
+    "file": "\\client\\src\\pages\\admin\\ManageCompanies.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/users",
+    "file": "\\client\\src\\pages\\admin\\ManageUsers.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/users/${userId}/status",
+    "file": "\\client\\src\\pages\\admin\\ManageUsers.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/users/${userId}/status",
+    "file": "\\client\\src\\pages\\admin\\ManageUsers.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/system-logs",
+    "file": "\\client\\src\\pages\\admin\\SystemLogs.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications/me",
+    "file": "\\client\\src\\pages\\candidate\\AppliedJobs.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/candidates/me",
+    "file": "\\client\\src\\pages\\candidate\\CandidateDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications/me",
+    "file": "\\client\\src\\pages\\candidate\\CandidateDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/interviews/me",
+    "file": "\\client\\src\\pages\\candidate\\CandidateDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/notifications/me",
+    "file": "\\client\\src\\pages\\candidate\\CandidateDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/jobs/recommended",
+    "file": "\\client\\src\\pages\\candidate\\CandidateDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/candidates/me",
+    "file": "\\client\\src\\pages\\candidate\\CandidateProfile.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/candidates/profile",
+    "file": "\\client\\src\\pages\\candidate\\CandidateProfile.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/interviews/me",
+    "file": "\\client\\src\\pages\\candidate\\InterviewSchedule.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/jobs",
+    "file": "\\client\\src\\pages\\candidate\\JobSearch.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/applications",
+    "file": "\\client\\src\\pages\\candidate\\JobSearch.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/notifications/me",
+    "file": "\\client\\src\\pages\\candidate\\Notifications.jsx"
+  },
+  {
+    "method": "patch",
+    "url": "/api/notifications/${id}/read",
+    "file": "\\client\\src\\pages\\candidate\\Notifications.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/placements/me",
+    "file": "\\client\\src\\pages\\candidate\\PlacementTracking.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/resume/analyze",
+    "file": "\\client\\src\\pages\\candidate\\ResumeAnalyzer.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/saved-jobs",
+    "file": "\\client\\src\\pages\\candidate\\SavedJobs.jsx"
+  },
+  {
+    "method": "delete",
+    "url": "/api/saved-jobs/${jobId}",
+    "file": "\\client\\src\\pages\\candidate\\SavedJobs.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/${id}",
+    "file": "\\client\\src\\pages\\company\\CandidateProfileView.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/communications",
+    "file": "\\client\\src\\pages\\company\\CommunicationCenter.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/companies/me",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/jobs",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/saved",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/shortlisted",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/history",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/communications",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/jobs/company/${user.companyId}",
+    "file": "\\client\\src\\pages\\company\\CompanyJobs.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/jobs/${jobId}",
+    "file": "\\client\\src\\pages\\company\\CompanyJobs.jsx"
+  },
+  {
+    "method": "delete",
+    "url": "/api/jobs/${jobId}",
+    "file": "\\client\\src\\pages\\company\\CompanyJobs.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/feedback/company",
+    "file": "\\client\\src\\pages\\company\\FeedbackPage.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/saved",
+    "file": "\\client\\src\\pages\\company\\SavedCandidates.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/shortlist",
+    "file": "\\client\\src\\pages\\company\\SavedCandidates.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/shortlisted",
+    "file": "\\client\\src\\pages\\company\\ShortlistedCandidates.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/contact",
+    "file": "\\client\\src\\pages\\company\\ShortlistedCandidates.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/talent-search?${query.toString()}",
+    "file": "\\client\\src\\pages\\company\\TalentSearch.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/save",
+    "file": "\\client\\src\\pages\\company\\TalentSearch.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/shortlist",
+    "file": "\\client\\src\\pages\\company\\TalentSearch.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/analytics/dashboard",
+    "file": "\\client\\src\\pages\\eps\\Analytics.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications",
+    "file": "\\client\\src\\pages\\eps\\Applications.jsx"
+  },
+  {
+    "method": "patch",
+    "url": "/api/applications/${draggedApp._id}/status",
+    "file": "\\client\\src\\pages\\eps\\Applications.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/stats",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/jobs",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/interviews",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/companies",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "patch",
+    "url": "/api/applications/${appId}/status",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/interviews",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/notifications",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/homepage-config",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/placements",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/testimonials",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/faqs",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/services",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/companies",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/activities",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/health",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/homepage-config",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/admin/placements/${editingPlacement._id}",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/admin/placements",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "delete",
+    "url": "/api/admin/placements/${id}",
+    "file": "\\client\\src\\pages\\eps\\HomepageCMS.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/interviews",
+    "file": "\\client\\src\\pages\\eps\\Interviews.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/admin/candidates",
+    "file": "\\client\\src\\pages\\eps\\ManageCandidates.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/jobs",
+    "file": "\\client\\src\\pages\\eps\\ManageJobs.jsx"
+  },
+  {
+    "method": "put",
+    "url": "/api/jobs/${jobId}",
+    "file": "\\client\\src\\pages\\eps\\ManageJobs.jsx"
+  },
+  {
+    "method": "delete",
+    "url": "/api/jobs/${jobId}",
+    "file": "\\client\\src\\pages\\eps\\ManageJobs.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/auth/login",
+    "file": "\\client\\src\\pages\\public\\AdminLoginPage.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/auth/forgot-password",
+    "file": "\\client\\src\\pages\\public\\ForgotPasswordPage.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/config",
+    "file": "\\client\\src\\pages\\public\\HomePage.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/jobs",
+    "file": "\\client\\src\\pages\\public\\JobsPage.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/auth/login",
+    "file": "\\client\\src\\pages\\public\\LoginPage.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/auth/register",
+    "file": "\\client\\src\\pages\\public\\RegisterCompanyPage.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/auth/register",
+    "file": "\\client\\src\\pages\\public\\RegisterPage.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/auth/reset-password",
+    "file": "\\client\\src\\pages\\public\\ResetPasswordPage.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/public/stats",
+    "file": "\\client\\src\\pages\\public\\sections\\StatisticsSection.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/auth/verify-email",
+    "file": "\\client\\src\\pages\\public\\VerifyEmailPage.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/applications",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "delete",
+    "url": "/api/applications/${id}",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications/my-applications",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications/company-applications",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/applications/${id}/status",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/candidates/profile",
+    "file": "\\client\\src\\redux\\slices\\candidateSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/candidates/profile",
+    "file": "\\client\\src\\redux\\slices\\candidateSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/companies/me",
+    "file": "\\client\\src\\redux\\slices\\companySlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/companies/${id}",
+    "file": "\\client\\src\\redux\\slices\\companySlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/companies/candidates/saved",
+    "file": "\\client\\src\\redux\\slices\\companySlice.js"
+  },
+  {
+    "method": "post",
+    "url": "/api/companies/candidates/${candidateId}/save",
+    "file": "\\client\\src\\redux\\slices\\companySlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/interviews",
+    "file": "\\client\\src\\redux\\slices\\interviewSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/interviews/me",
+    "file": "\\client\\src\\redux\\slices\\interviewSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/interviews/company/${companyId}",
+    "file": "\\client\\src\\redux\\slices\\interviewSlice.js"
+  },
+  {
+    "method": "post",
+    "url": "/api/interviews",
+    "file": "\\client\\src\\redux\\slices\\interviewSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/interviews/${id}",
+    "file": "\\client\\src\\redux\\slices\\interviewSlice.js"
+  },
+  {
+    "method": "delete",
+    "url": "/api/interviews/${id}",
+    "file": "\\client\\src\\redux\\slices\\interviewSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/jobs",
+    "file": "\\client\\src\\redux\\slices\\jobSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/jobs/${id}",
+    "file": "\\client\\src\\redux\\slices\\jobSlice.js"
+  },
+  {
+    "method": "post",
+    "url": "/api/jobs",
+    "file": "\\client\\src\\redux\\slices\\jobSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/jobs/${id}",
+    "file": "\\client\\src\\redux\\slices\\jobSlice.js"
+  },
+  {
+    "method": "delete",
+    "url": "/api/jobs/${id}",
+    "file": "\\client\\src\\redux\\slices\\jobSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/notifications",
+    "file": "\\client\\src\\redux\\slices\\notificationSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/notifications/${id}/read",
+    "file": "\\client\\src\\redux\\slices\\notificationSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/notifications/read-all",
+    "file": "\\client\\src\\redux\\slices\\notificationSlice.js"
+  }
+]

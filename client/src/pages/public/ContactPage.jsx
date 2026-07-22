@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
-import GlassCard from '../../components/ui/GlassCard'
+import { Card, CardContent } from '../../components/ui/Card'
 import SectionTitle from '../../components/ui/SectionTitle'
 import RevealOnScroll from '../../animations/RevealOnScroll'
 import { motion } from 'framer-motion'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Button } from '../../components/ui/Button'
 
 
 export default function ContactPage() {
@@ -31,25 +31,25 @@ export default function ContactPage() {
         {/* CONTACT INFORMATION */}
         <section className="mt-6 grid gap-4 md:grid-cols-3">
           <RevealOnScroll>
-            <GlassCard>
+            <Card>
               <div className="text-sm font-semibold">Business Enquiries</div>
               <div className="mt-2 text-xs text-white/60">hello@epsjobs.com</div>
               <div className="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-300" />
-            </GlassCard>
+            </Card>
           </RevealOnScroll>
           <RevealOnScroll>
-            <GlassCard>
+            <Card>
               <div className="text-sm font-semibold">Hiring Support</div>
               <div className="mt-2 text-xs text-white/60">support@epsjobs.com</div>
               <div className="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-300" />
-            </GlassCard>
+            </Card>
           </RevealOnScroll>
           <RevealOnScroll>
-            <GlassCard>
+            <Card>
               <div className="text-sm font-semibold">Response Times</div>
               <div className="mt-2 text-xs text-white/60">Mon–Fri • 9:00–18:00</div>
               <div className="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-300" />
-            </GlassCard>
+            </Card>
           </RevealOnScroll>
         </section>
 
@@ -58,7 +58,7 @@ export default function ContactPage() {
           <div className="md:col-span-3">
             <RevealOnScroll>
               <motion.div whileHover={{ y: -2 }} transition={{ type: 'spring', stiffness: 420, damping: 28 }}>
-                <GlassCard className="p-6 md:p-7">
+                <Card className="p-6 md:p-7">
                   <form onSubmit={onSubmit} className="space-y-4">
                     <div>
                       <div className="text-sm font-semibold">Contact form</div>
@@ -105,16 +105,16 @@ export default function ContactPage() {
                           <span>Ready when you are.</span>
                         )}
                       </div>
-                      <GlassButton
+                      <Button
                         type="submit"
                         variant="primary"
                         className={'px-5 ' + (!canSend ? 'opacity-60 pointer-events-none' : '')}
                       >
                         Send Message
-                      </GlassButton>
+                      </Button>
                     </div>
                   </form>
-                </GlassCard>
+                </Card>
               </motion.div>
             </RevealOnScroll>
           </div>
@@ -123,30 +123,30 @@ export default function ContactPage() {
           <div className="md:col-span-2">
             <div className="space-y-4">
               <RevealOnScroll>
-                <GlassCard className="p-5">
+                <Card className="p-5">
                   <div className="text-sm font-semibold">Hiring Support</div>
                   <div className="mt-2 text-sm text-white/70 leading-relaxed">
                     Need help with candidate discovery, shortlisting, or interview coordination? Send us your details and we’ll respond.
                   </div>
-                </GlassCard>
+                </Card>
               </RevealOnScroll>
 
               <RevealOnScroll>
-                <GlassCard className="p-5">
+                <Card className="p-5">
                   <div className="text-sm font-semibold">Partnership Requests</div>
                   <div className="mt-2 text-sm text-white/70 leading-relaxed">
                     Interested in recruitment services, co-selling, or hiring collaboration? We’ll connect you with the right team.
                   </div>
-                </GlassCard>
+                </Card>
               </RevealOnScroll>
 
               <RevealOnScroll>
-                <GlassCard className="p-5">
+                <Card className="p-5">
                   <div className="text-sm font-semibold">Business Enquiries</div>
                   <div className="mt-2 text-sm text-white/70 leading-relaxed">
                     Want pricing, onboarding, or custom hiring solutions? Contact us and we’ll guide next steps.
                   </div>
-                </GlassCard>
+                </Card>
               </RevealOnScroll>
             </div>
           </div>

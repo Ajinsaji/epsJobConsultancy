@@ -3,8 +3,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { MessageSquare, Star, CheckCircle2, XCircle, Clock, Download, ChevronRight } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 import moment from 'moment'
 
 export default function FeedbackPage() {
@@ -44,7 +44,7 @@ export default function FeedbackPage() {
         <h1 className="text-2xl font-extrabold text-white">Interview Feedback</h1>
         <div className="grid gap-6 md:grid-cols-2">
           {[1, 2, 3, 4].map((i) => (
-            <GlassCard key={i} className="p-6 h-[180px] animate-pulse bg-white/5 border-white/5" />
+            <Card key={i} className="p-6 h-[180px] animate-pulse bg-white/5 border-white/5" />
           ))}
         </div>
       </div>
@@ -64,9 +64,9 @@ export default function FeedbackPage() {
             History of evaluations and recommendations for interviewed candidates.
           </p>
         </div>
-        <GlassButton variant="secondary" className="flex items-center gap-2" onClick={() => window.print()}>
+        <Button variant="secondary" className="flex items-center gap-2" onClick={() => window.print()}>
           <Download className="h-4 w-4" /> Export Report
-        </GlassButton>
+        </Button>
       </div>
 
       {feedbacks.length === 0 ? (
@@ -92,7 +92,7 @@ export default function FeedbackPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
             >
-              <GlassCard className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group h-full flex flex-col">
+              <Card className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group h-full flex flex-col">
                 
                 {/* Top Section */}
                 <div className="flex justify-between items-start mb-4">
@@ -159,7 +159,7 @@ export default function FeedbackPage() {
                   )}
                 </div>
 
-              </GlassCard>
+              </Card>
             </motion.div>
           ))}
         </div>

@@ -3,13 +3,4 @@ export { default as JobsPage } from './JobsPage'
 export { default as AboutPage } from './AboutPage'
 export { default as ServicesPage } from './ServicesPage'
 export { default as ContactPage } from './ContactPage'
-export { default as LoginPage } from './LoginPage'
-export { default as RegisterPage } from './RegisterPage'
-export { default as ForgotPasswordPage } from './ForgotPasswordPage'
-export { default as AdminLoginPage } from './AdminLoginPage'
-export { default as RegisterCompanyPage } from './RegisterCompanyPage'
-export { default as ResetPasswordPage } from './ResetPasswordPage'
-export { default as VerifyEmailPage } from './VerifyEmailPage'
-
-
 

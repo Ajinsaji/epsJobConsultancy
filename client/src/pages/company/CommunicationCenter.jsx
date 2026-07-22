@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 function EmptyState({ title, subtitle }) {
   return (
@@ -24,7 +24,7 @@ export default function CommunicationCenter() {
     const load = async () => {
       try {
         setLoading(true)
-        const res = await axios.get('/api/company/communications')
+        const res = await axios.get('/api/companies/me/communications')
         if (!active) return
         setCommunications(res.data?.communications || res.data || [])
       } catch (e) {
@@ -73,41 +73,41 @@ export default function CommunicationCenter() {
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-2">
-            <GlassButton
+            <Button
               variant={filter === 'all' ? 'primary' : 'ghost'}
               className="min-h-[38px]"
               onClick={() => setFilter('all')}
             >
               All
-            </GlassButton>
-            <GlassButton
+            </Button>
+            <Button
               variant={filter === 'contact_request' ? 'primary' : 'ghost'}
               className="min-h-[38px]"
               onClick={() => setFilter('contact_request')}
             >
               Contact Requests
-            </GlassButton>
-            <GlassButton
+            </Button>
+            <Button
               variant={filter === 'interview_invite' ? 'primary' : 'ghost'}
               className="min-h-[38px]"
               onClick={() => setFilter('interview_invite')}
             >
               Interview Invites
-            </GlassButton>
-            <GlassButton
+            </Button>
+            <Button
               variant={filter === 'hiring_message' ? 'primary' : 'ghost'}
               className="min-h-[38px]"
               onClick={() => setFilter('hiring_message')}
             >
               Messages
-            </GlassButton>
+            </Button>
           </div>
         </div>
 
         {loading ? (
           <div className="grid gap-4 sm:grid-cols-2">
             {[0, 1, 2, 3].map((n) => (
-              <GlassCard key={n} className="h-[110px] animate-pulse border border-white/10 bg-white/5 p-5" />
+              <Card key={n} className="h-[110px] animate-pulse border border-white/10 bg-white/5 p-5" />
             ))}
           </div>
         ) : sorted.length === 0 ? (
@@ -115,7 +115,7 @@ export default function CommunicationCenter() {
         ) : (
           <div className="grid gap-4">
             {sorted.slice(0, 50).map((c) => (
-              <GlassCard key={c._id} className="border border-white/10 bg-white/5 p-5">
+              <Card key={c._id} className="border border-white/10 bg-white/5 p-5">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
                     <div className="text-sm font-extrabold truncate">
@@ -143,7 +143,7 @@ export default function CommunicationCenter() {
                     {c.createdAt ? new Date(c.createdAt).toLocaleDateString() : '—'}
                   </div>
                 </div>
-              </GlassCard>
+              </Card>
             ))}
           </div>
         )}

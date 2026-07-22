@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import { motion } from 'framer-motion'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 // Animated Counter Component
 function AnimatedCounter({ value, suffix = '', duration = 1500 }) {
@@ -117,14 +117,14 @@ export default function StatisticsSection() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
             >
-              <GlassCard className="p-5 text-center bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:bg-white/[0.02] hover:scale-102 transition duration-300 h-full flex flex-col justify-center">
+              <Card className="p-5 text-center bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:bg-white/[0.02] hover:scale-102 transition duration-300 h-full flex flex-col justify-center">
                 <div className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-white via-white to-violet-300 bg-clip-text text-transparent">
                   <AnimatedCounter value={item.value} suffix={item.suffix} />
                 </div>
                 <div className="mt-2 text-xs font-semibold text-white/50 leading-relaxed uppercase tracking-wider">
                   {item.label}
                 </div>
-              </GlassCard>
+              </Card>
             </motion.div>
           ))}
         </div>

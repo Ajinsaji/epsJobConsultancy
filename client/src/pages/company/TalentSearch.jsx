@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import { GlassButton } from '../../components/ui/GlassButton'
-import GlassCard from '../../components/ui/GlassCard'
+import { Button } from '../../components/ui/Button'
+import { Card, CardContent } from '../../components/ui/Card'
 
 function parseSkills(value) {
   return String(value || '')
@@ -50,7 +50,7 @@ export default function TalentSearch() {
   const fetchCandidates = async () => {
     setLoading(true)
     try {
-      const res = await axios.get(`/api/company/talent-search?${query.toString()}`)
+      const res = await axios.get(`/api/companies/me/talent-search?${query.toString()}`)
       setCandidates(res.data?.candidates || [])
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to search candidates')
@@ -68,7 +68,7 @@ export default function TalentSearch() {
 
   const handleSave = async (candidateId) => {
     try {
-      await axios.post(`/api/company/candidates/${candidateId}/save`)
+      await axios.post(`/api/companies/me/candidates/${candidateId}/save`)
       toast.success('Candidate saved')
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to save candidate')
@@ -77,7 +77,7 @@ export default function TalentSearch() {
 
   const handleShortlist = async (candidateId) => {
     try {
-      await axios.post(`/api/company/candidates/${candidateId}/shortlist`)
+      await axios.post(`/api/companies/me/candidates/${candidateId}/shortlist`)
       toast.success('Candidate shortlisted')
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to shortlist candidate')
@@ -93,7 +93,7 @@ export default function TalentSearch() {
         <p className="text-sm text-slate-500">Find candidates by skills, location, availability, and expectations.</p>
       </div>
 
-      <GlassCard className="bg-white p-5 shadow-sm">
+      <Card className="bg-white p-5 shadow-sm">
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Keyword</label>
@@ -174,16 +174,16 @@ export default function TalentSearch() {
         </div>
 
         <div className="mt-4 flex justify-end">
-          <GlassButton
+          <Button
             variant="primary"
             onClick={fetchCandidates}
             disabled={loading}
             style={{ minHeight: '44px' }}
           >
             {loading ? 'Searching...' : 'Search'}
-          </GlassButton>
+          </Button>
         </div>
-      </GlassCard>
+      </Card>
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
@@ -205,7 +205,7 @@ export default function TalentSearch() {
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {candidates.map((c) => (
-              <GlassCard key={c._id} className="bg-white p-5 shadow-sm">
+              <Card key={c._id} className="bg-white p-5 shadow-sm">
                 <div className="flex items-start gap-3">
                   <div className="h-14 w-14 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
                     {c.photo ? (
@@ -259,31 +259,31 @@ export default function TalentSearch() {
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-2">
-                  <GlassButton
+                  <Button
                     as="a"
                     href={`/company/candidates/${c._id}`}
                     variant="ghost"
                     className="col-span-1 text-xs py-2"
                   >
                     View
-                  </GlassButton>
+                  </Button>
 
-                  <GlassButton
+                  <Button
                     variant="primary"
                     className="col-span-1 text-xs py-2"
                     onClick={() => handleSave(c._id)}
                   >
                     Save
-                  </GlassButton>
-                  <GlassButton
+                  </Button>
+                  <Button
                     variant="ghost"
                     className="col-span-1 text-xs py-2 border border-indigo-500/30"
                     onClick={() => handleShortlist(c._id)}
                   >
                     Shortlist
-                  </GlassButton>
+                  </Button>
                 </div>
-              </GlassCard>
+              </Card>
             ))}
           </div>
         )}

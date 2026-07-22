@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
+import { recommendationService } from '../../services/recommendation.service'
+import { RecommendationList, RecommendationReason } from '../../components/shared/ai'
+import { motion, AnimatePresence } from 'framer-motion'
 
 function SafeValue({ value, fallback = '—' }) {
   if (value === null || value === undefined || value === '') return fallback
@@ -11,24 +14,24 @@ function SafeValue({ value, fallback = '—' }) {
 
 function MetricCard({ title, value }) {
   return (
-    <GlassCard className="border border-white/10 bg-white/5 p-5">
+    <Card className="border border-white/10 bg-white/5 p-5">
       <div className="text-xs font-semibold text-white/60 uppercase tracking-wider">
         {title}
       </div>
       <div className="mt-2 text-3xl font-extrabold text-white">
         <SafeValue value={value} fallback={0} />
       </div>
-    </GlassCard>
+    </Card>
   )
 }
 
 function QuickActionCard({ title, onClick }) {
   return (
-    <GlassCard className="bg-white/5 p-4 border border-white/10">
+    <Card className="bg-white/5 p-4 border border-white/10">
       <button type="button" onClick={onClick} className="w-full text-left">
         <div className="text-sm font-extrabold text-white">{title}</div>
       </button>
-    </GlassCard>
+    </Card>
   )
 }
 
@@ -47,8 +50,12 @@ export default function CompanyDashboard() {
   const [savedCandidates, setSavedCandidates] = useState([])
   const [shortlistedCandidates, setShortlistedCandidates] = useState([])
   const [communications, setCommunications] = useState([])
-
   const [loading, setLoading] = useState(true)
+
+  // AI Recs
+  const [candidateRecs, setCandidateRecs] = useState([])
+  const [aiLoading, setAiLoading] = useState(true)
+  const [selectedRecModal, setSelectedRecModal] = useState(null)
 
   useEffect(() => {
     let mounted = true
@@ -60,21 +67,39 @@ export default function CompanyDashboard() {
         const [companyRes, jobsRes, savedRes, shortlistedRes, historyRes, commRes] =
           await Promise.all([
             axios.get('/api/companies/me'),
-            axios.get('/api/company/jobs'),
-            axios.get('/api/company/candidates/saved'),
-            axios.get('/api/company/candidates/shortlisted'),
-            axios.get('/api/company/candidates/history'),
-            axios.get('/api/company/communications'),
+            axios.get('/api/jobs/company/me'),
+            axios.get('/api/companies/me/candidates/saved'),
+            axios.get('/api/companies/me/candidates/shortlisted'),
+            axios.get('/api/companies/me/candidates/history'),
+            axios.get('/api/companies/me/communications'),
           ])
 
         if (!mounted) return
 
         setCompany(companyRes.data?.company || companyRes.data || null)
-        setJobs(jobsRes.data?.jobs || jobsRes.data || [])
+        const fetchedJobs = jobsRes.data?.jobs || jobsRes.data || []
+        setJobs(fetchedJobs)
         setSavedCandidates(savedRes.data?.candidates || savedRes.data || [])
         setShortlistedCandidates(shortlistedRes.data?.candidates || shortlistedRes.data || [])
         setHistory(historyRes.data?.history || historyRes.data || [])
         setCommunications(commRes.data || commRes.data?.communications || [])
+
+        if (fetchedJobs.length > 0) {
+          // fetch candidate recs for the first active job as an overview, or just pass the first job's ID.
+          const activeJob = fetchedJobs.find(j => j.status === 'Open' || j.status === 'Active') || fetchedJobs[0]
+          if (activeJob) {
+            recommendationService.getCandidateRecommendations(activeJob._id)
+              .then(res => {
+                if (mounted) setCandidateRecs(res?.data?.recommendations || [])
+              })
+              .catch(() => toast.error('Failed to load candidate recommendations'))
+              .finally(() => { if (mounted) setAiLoading(false) })
+          } else {
+            setAiLoading(false)
+          }
+        } else {
+          setAiLoading(false)
+        }
       } catch (err) {
         console.error(err)
         toast.error('Failed to load company dashboard')
@@ -252,9 +277,31 @@ export default function CompanyDashboard() {
           </div>
         </div>
 
+        {/* SECTION 3.5 — AI RECOMMENDED CANDIDATES */}
+        <div className="rounded-[20px] border border-white/10 bg-white/5 p-5">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <div className="text-lg font-extrabold text-white">AI Recommended Candidates</div>
+              <div className="text-sm text-white/60">Top talent scored against your active jobs.</div>
+            </div>
+            <Button variant="ghost" className="text-sm bg-white/10" onClick={openTalentSearch}>View All Matches</Button>
+          </div>
+          
+          <div className="dark">
+            <RecommendationList 
+              recommendations={candidateRecs}
+              isLoading={aiLoading}
+              emptyTitle="No Candidates Found"
+              emptyMessage="We couldn't find matching candidates at this time."
+              onAction={(cand) => window.location.href = `/company/talent-search?candId=${cand._id}`}
+              onViewDetails={(rec) => setSelectedRecModal(rec)}
+            />
+          </div>
+        </div>
+
         {/* SECTION 4 — RECENT CANDIDATE ACTIVITY */}
         <div className="grid gap-6 lg:grid-cols-2">
-          <GlassCard className="bg-white/5 border border-white/10 p-6">
+          <Card className="bg-white/5 border border-white/10 p-6">
             <div className="text-lg font-extrabold border-b border-white/10 pb-3">Recent Candidate Activity</div>
             {recentCandidates.length === 0 ? (
               <div className="mt-6 text-sm text-white/60">No candidate interactions yet.</div>
@@ -282,10 +329,10 @@ export default function CompanyDashboard() {
                 ))}
               </div>
             )}
-          </GlassCard>
+          </Card>
 
           {/* SECTION 5 — RECENT JOBS */}
-          <GlassCard className="bg-white/5 border border-white/10 p-6">
+          <Card className="bg-white/5 border border-white/10 p-6">
             <div className="text-lg font-extrabold border-b border-white/10 pb-3">Recent Jobs</div>
             {recentJobs.length === 0 ? (
               <div className="mt-6 text-sm text-white/60">No jobs posted yet.</div>
@@ -314,23 +361,23 @@ export default function CompanyDashboard() {
                       >
                         {job.status || '—'}
                       </span>
-                      <GlassButton
+                      <Button
                         variant="ghost"
                         className="text-xs min-h-[32px]"
                         onClick={() => toast('View job is not implemented in this phase.')}
                       >
                         View
-                      </GlassButton>
+                      </Button>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-          </GlassCard>
+          </Card>
         </div>
 
         {/* SECTION 6 — RECENT COMMUNICATIONS (E.7.2) */}
-        <GlassCard className="bg-white/5 border border-white/10 p-6">
+        <Card className="bg-white/5 border border-white/10 p-6">
           <div className="text-lg font-extrabold border-b border-white/10 pb-3">Recent Communications</div>
           {recentCommunications.length === 0 ? (
             <div className="mt-6 text-sm text-white/60">
@@ -360,10 +407,10 @@ export default function CompanyDashboard() {
               ))}
             </div>
           )}
-        </GlassCard>
+        </Card>
 
         {/* SECTION 7 — HIRING OVERVIEW */}
-        <GlassCard className="bg-white/5 border border-white/10 p-6">
+        <Card className="bg-white/5 border border-white/10 p-6">
           <div className="text-lg font-extrabold border-b border-white/10 pb-3">Hiring Overview</div>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
@@ -379,8 +426,37 @@ export default function CompanyDashboard() {
               <div className="mt-1 text-2xl font-extrabold">{candidateResponsesCount}</div>
             </div>
           </div>
-        </GlassCard>
+        </Card>
       </div>
+
+      {selectedRecModal && (
+        <AnimatePresence>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="w-full max-w-2xl rounded-2xl border border-white/10 bg-[#050816] p-6 shadow-2xl my-8 text-white"
+            >
+              <div className="flex justify-between items-center mb-4 border-b border-white/10 pb-4">
+                <h3 className="text-xl font-bold text-white">
+                  AI Recommendation Insights
+                </h3>
+                <button onClick={() => setSelectedRecModal(null)} className="text-white/40 hover:text-white">✕</button>
+              </div>
+              
+              <div className="dark">
+                <RecommendationReason explanation={selectedRecModal.explanation} />
+              </div>
+              
+              <div className="mt-6 flex justify-end gap-3 pt-4 border-t border-white/10">
+                <Button variant="ghost" onClick={() => setSelectedRecModal(null)}>Close</Button>
+                <Button variant="primary" onClick={() => window.location.href = `/company/talent-search?candId=${selectedRecModal.entity._id}`}>View Profile</Button>
+              </div>
+            </motion.div>
+          </div>
+        </AnimatePresence>
+      )}
     </div>
   )
 }

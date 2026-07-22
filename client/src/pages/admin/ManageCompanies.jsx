@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Building2, Search, Filter, CheckCircle2, XCircle, Star, Crown, MapPin } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
+import { Card, CardContent } from '../../components/ui/Card'
 import moment from 'moment'
 
 export default function ManageCompanies() {
@@ -59,7 +59,7 @@ export default function ManageCompanies() {
       </div>
 
       {/* Toolbar */}
-      <GlassCard className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
+      <Card className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
@@ -85,12 +85,12 @@ export default function ManageCompanies() {
             </select>
           </div>
         </div>
-      </GlassCard>
+      </Card>
 
       {/* Grid */}
       {loading ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3].map(i => <GlassCard key={i} className="h-48 animate-pulse bg-white/5" />)}
+          {[1, 2, 3].map(i => <Card key={i} className="h-48 animate-pulse bg-white/5" />)}
         </div>
       ) : filteredCompanies.length === 0 ? (
         <div className="text-center py-12 text-white/40">
@@ -99,7 +99,7 @@ export default function ManageCompanies() {
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCompanies.map((company) => (
-            <GlassCard key={company._id} className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group flex flex-col">
+            <Card key={company._id} className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group flex flex-col">
               
               {/* Header */}
               <div className="flex justify-between items-start mb-4">
@@ -185,7 +185,7 @@ export default function ManageCompanies() {
                 </button>
               </div>
 
-            </GlassCard>
+            </Card>
           ))}
         </div>
       )}

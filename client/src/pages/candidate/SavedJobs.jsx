@@ -4,8 +4,8 @@ import toast from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Bookmark, MapPin, Building2, IndianRupee, Briefcase, ExternalLink, Trash2 } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function SavedJobs() {
   const [savedJobs, setSavedJobs] = useState([])
@@ -46,7 +46,7 @@ export default function SavedJobs() {
         <h1 className="text-2xl font-extrabold text-white">Saved Jobs</h1>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <GlassCard key={i} className="p-6 h-[220px] animate-pulse bg-white/5 border-white/5" />
+            <Card key={i} className="p-6 h-[220px] animate-pulse bg-white/5 border-white/5" />
           ))}
         </div>
       </div>
@@ -79,9 +79,9 @@ export default function SavedJobs() {
           <p className="text-sm text-white/60 mt-2 mb-6">
             Start exploring the job board and bookmark opportunities you are interested in.
           </p>
-          <GlassButton as={Link} to="/candidate/search" variant="primary">
+          <Button as={Link} to="/candidate/search" variant="primary">
             Explore Jobs
-          </GlassButton>
+          </Button>
         </motion.div>
       ) : (
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -94,7 +94,7 @@ export default function SavedJobs() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 layout
               >
-                <GlassCard className="h-full flex flex-col p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition-all duration-300 group">
+                <Card className="h-full flex flex-col p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition-all duration-300 group">
                   
                   {/* Top Bar: Company Logo & Action */}
                   <div className="flex justify-between items-start mb-4">
@@ -149,7 +149,7 @@ export default function SavedJobs() {
 
                   {/* Bottom Action */}
                   <div className="mt-auto pt-6">
-                    <GlassButton
+                    <Button
                       as={Link}
                       to={`/jobs/${job._id}`}
                       variant="ghost"
@@ -157,10 +157,10 @@ export default function SavedJobs() {
                     >
                       View Details
                       <ExternalLink className="h-3 w-3" />
-                    </GlassButton>
+                    </Button>
                   </div>
 
-                </GlassCard>
+                </Card>
               </motion.div>
             ))}
           </AnimatePresence>

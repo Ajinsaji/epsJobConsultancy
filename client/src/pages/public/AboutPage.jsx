@@ -1,4 +1,4 @@
-import GlassCard from '../../components/ui/GlassCard'
+import { Card, CardContent } from '../../components/ui/Card'
 import RevealOnScroll from '../../animations/RevealOnScroll'
 
 function Bullets({ items }) {
@@ -42,22 +42,22 @@ export default function AboutPage() {
         {/* MISSION */}
         <section className="mt-10 grid gap-4 md:grid-cols-2">
           <RevealOnScroll>
-            <GlassCard className="h-full">
+            <Card className="h-full">
               <div className="text-sm font-semibold text-white/80">Mission</div>
               <p className="mt-2 text-sm leading-relaxed text-white/70">
                 Make job search and candidate discovery faster, more accurate, and less stressful—by aligning skills, roles, and
                 expectations.
               </p>
-            </GlassCard>
+            </Card>
           </RevealOnScroll>
           <RevealOnScroll>
-            <GlassCard className="h-full">
+            <Card className="h-full">
               <div className="text-sm font-semibold text-white/80">Who we are</div>
               <p className="mt-2 text-sm leading-relaxed text-white/70">
                 A recruitment platform and consultancy layer focused on high-signal hiring: AI-assisted matching + review-driven
                 confidence.
               </p>
-            </GlassCard>
+            </Card>
           </RevealOnScroll>
         </section>
 
@@ -70,22 +70,22 @@ export default function AboutPage() {
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <RevealOnScroll>
-              <GlassCard>
+              <Card>
                 <div className="text-sm font-semibold text-white/80">Candidates</div>
                 <Bullets items={['Right role recommendations', 'Resume score clarity', 'Interview readiness support']} />
-              </GlassCard>
+              </Card>
             </RevealOnScroll>
             <RevealOnScroll>
-              <GlassCard>
+              <Card>
                 <div className="text-sm font-semibold text-white/80">Employers</div>
                 <Bullets items={['Active job visibility', 'Candidate match signals', 'Shortlist confidence with review']} />
-              </GlassCard>
+              </Card>
             </RevealOnScroll>
             <RevealOnScroll>
-              <GlassCard>
+              <Card>
                 <div className="text-sm font-semibold text-white/80">Recruiters / Teams</div>
                 <Bullets items={['Faster screening outcomes', 'Structured interviewing workflow', 'Hiring decisions with context']} />
-              </GlassCard>
+              </Card>
             </RevealOnScroll>
           </div>
         </section>
@@ -113,10 +113,10 @@ export default function AboutPage() {
               },
             ].map((c) => (
               <RevealOnScroll key={c.t}>
-                <GlassCard>
+                <Card>
                   <div className="text-base font-bold">{c.t}</div>
                   <div className="mt-2 text-sm text-white/70 leading-relaxed">{c.d}</div>
-                </GlassCard>
+                </Card>
               </RevealOnScroll>
             ))}
           </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <RevealOnScroll>
-              <GlassCard>
+              <Card>
                 <div className="text-sm font-semibold text-white/80">For Candidates</div>
                 <Bullets
                   items={[
@@ -140,10 +140,10 @@ export default function AboutPage() {
                     'Interview support that improves readiness',
                   ]}
                 />
-              </GlassCard>
+              </Card>
             </RevealOnScroll>
             <RevealOnScroll>
-              <GlassCard>
+              <Card>
                 <div className="text-sm font-semibold text-white/80">For Employers</div>
                 <Bullets
                   items={[
@@ -152,7 +152,7 @@ export default function AboutPage() {
                     'A smoother hiring flow into interviews',
                   ]}
                 />
-              </GlassCard>
+              </Card>
             </RevealOnScroll>
           </div>
         </section>

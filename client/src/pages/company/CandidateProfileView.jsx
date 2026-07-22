@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { GlassButton } from '../../components/ui/GlassButton'
-import GlassCard from '../../components/ui/GlassCard'
+import { Button } from '../../components/ui/Button'
+import { Card, CardContent } from '../../components/ui/Card'
 
 function asArray(v) {
   if (!v) return []
@@ -65,7 +65,7 @@ export default function CandidateProfileView() {
     try {
       // Prefer existing candidate profile endpoint on company scope.
       // If it doesn't exist, server should add it per spec.
-      const res = await axios.get(`/api/company/candidates/${id}`)
+      const res = await axios.get(`/api/companies/me/candidates/${id}`)
       setCandidate(res.data?.candidate || res.data || null)
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to load candidate profile')
@@ -82,9 +82,9 @@ export default function CandidateProfileView() {
 
   const postAction = async (type) => {
     const map = {
-      save: { busyKey: 'save', url: `/api/company/candidates/${id}/save` },
-      shortlist: { busyKey: 'shortlist', url: `/api/company/candidates/${id}/shortlist` },
-      contact: { busyKey: 'contact', url: `/api/company/candidates/${id}/contact` },
+      save: { busyKey: 'save', url: `/api/companies/me/candidates/${id}/save` },
+      shortlist: { busyKey: 'shortlist', url: `/api/companies/me/candidates/${id}/shortlist` },
+      contact: { busyKey: 'contact', url: `/api/companies/me/candidates/${id}/contact` },
     }
 
     const cfg = map[type]
@@ -122,13 +122,13 @@ export default function CandidateProfileView() {
         </div>
 
         <div className="flex gap-2">
-          <GlassButton
+          <Button
             variant="ghost"
             className="text-xs py-2 border border-slate-200/60"
             onClick={() => navigate(-1)}
           >
             Back
-          </GlassButton>
+          </Button>
         </div>
       </div>
 
@@ -141,7 +141,7 @@ export default function CandidateProfileView() {
       ) : (
         <>
           {/* HEADER */}
-          <GlassCard className="bg-white p-5 shadow-sm">
+          <Card className="bg-white p-5 shadow-sm">
             <div className="grid gap-5 md:grid-cols-[180px_1fr]">
               <div className="flex justify-center md:justify-start">
                 <div className="h-[140px] w-[140px] rounded-[26px] overflow-hidden border border-slate-200 bg-slate-50">
@@ -188,54 +188,54 @@ export default function CandidateProfileView() {
                 </div>
               </div>
             </div>
-          </GlassCard>
+          </Card>
 
           {/* ACTIONS */}
           <div className="grid gap-3 sm:grid-cols-3">
-            <GlassButton
+            <Button
               variant="ghost"
               className="w-full bg-white border border-slate-200/60 text-slate-700 py-2"
               disabled={actionsBusy.save}
               onClick={() => postAction('save')}
             >
               Save Candidate
-            </GlassButton>
-            <GlassButton
+            </Button>
+            <Button
               variant="primary"
               className="w-full py-2"
               disabled={actionsBusy.shortlist}
               onClick={() => postAction('shortlist')}
             >
               Shortlist Candidate
-            </GlassButton>
-            <GlassButton
+            </Button>
+            <Button
               variant="ghost"
               className="w-full bg-white border border-slate-200/60 text-slate-700 py-2"
               onClick={() => setModal({ open: true, kind: 'contact' })}
               disabled={actionsBusy.save || actionsBusy.shortlist}
             >
               Contact Candidate
-            </GlassButton>
+            </Button>
           </div>
 
           {/* Communication CTAs */}
           <div className="grid gap-3 sm:grid-cols-2">
-            <GlassButton
+            <Button
               variant="ghost"
               className="w-full bg-white border border-slate-200/60 text-slate-700 py-2"
               onClick={() => setModal({ open: true, kind: 'interview' })}
               disabled={loading}
             >
               Invite To Interview
-            </GlassButton>
-            <GlassButton
+            </Button>
+            <Button
               variant="ghost"
               className="w-full bg-white border border-slate-200/60 text-slate-700 py-2"
               onClick={() => setModal({ open: true, kind: 'message' })}
               disabled={loading}
             >
               Send Message
-            </GlassButton>
+            </Button>
           </div>
 
           {/* MODAL */}
@@ -288,7 +288,7 @@ export default function CandidateProfileView() {
                   </div>
 
                   <div className="flex items-center justify-end gap-2 pt-1">
-                    <GlassButton
+                    <Button
                       variant="ghost"
                       className="min-h-[40px] border border-white/10 bg-white/5"
                       onClick={() => {
@@ -298,8 +298,8 @@ export default function CandidateProfileView() {
                       }}
                     >
                       Cancel
-                    </GlassButton>
-                    <GlassButton
+                    </Button>
+                    <Button
                       variant="primary"
                       className="min-h-[40px]"
                       onClick={async () => {
@@ -307,10 +307,10 @@ export default function CandidateProfileView() {
                           const kind = modal.kind
                           const url =
                             kind === 'contact'
-                              ? `/api/company/candidates/${id}/contact-request`
+                              ? `/api/companies/me/candidates/${id}/contact-request`
                               : kind === 'interview'
-                                ? `/api/company/candidates/${id}/interview-invite`
-                                : `/api/company/candidates/${id}/message`
+                                ? `/api/companies/me/candidates/${id}/interview-invite`
+                                : `/api/companies/me/candidates/${id}/message`
 
                           await axios.post(url, { subject, message })
                           toast.success('Communication sent')
@@ -323,7 +323,7 @@ export default function CandidateProfileView() {
                       }}
                     >
                       Send
-                    </GlassButton>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -333,31 +333,31 @@ export default function CandidateProfileView() {
 
           {/* SECTIONS */}
           <div className="grid gap-5">
-            <GlassCard className="bg-white p-5 shadow-sm">
+            <Card className="bg-white p-5 shadow-sm">
               <SectionBlock title="Skills" items={skills} />
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="bg-white p-5 shadow-sm">
+            <Card className="bg-white p-5 shadow-sm">
               <SectionBlock title="Education" items={education} />
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="bg-white p-5 shadow-sm">
+            <Card className="bg-white p-5 shadow-sm">
               <SectionBlock title="Experience" items={experience} />
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="bg-white p-5 shadow-sm">
+            <Card className="bg-white p-5 shadow-sm">
               <SectionBlock title="Projects" items={projects} />
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="bg-white p-5 shadow-sm">
+            <Card className="bg-white p-5 shadow-sm">
               <SectionBlock title="Certifications" items={certifications} />
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="bg-white p-5 shadow-sm">
+            <Card className="bg-white p-5 shadow-sm">
               <SectionBlock title="Languages" items={languages} />
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="bg-white p-5 shadow-sm">
+            <Card className="bg-white p-5 shadow-sm">
               <SectionBlock
                 title="Resume"
                 items={asArray(profile.resume || profile.resumeItems || profile.resumeSummary || profile.resumeText)}
@@ -376,7 +376,7 @@ export default function CandidateProfileView() {
                   ) : null
                 }
               />
-            </GlassCard>
+            </Card>
           </div>
         </>
       )}

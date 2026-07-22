@@ -27,5 +27,11 @@ const CompanySchema = new mongoose.Schema(
   { timestamps: true },
 )
 
+CompanySchema.index({
+  companyName: 'text',
+  industry: 'text',
+  location: 'text'
+})
+
 export const Company = mongoose.model('Company', CompanySchema)
 

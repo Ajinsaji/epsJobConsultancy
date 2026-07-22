@@ -36,6 +36,13 @@ const JobSchema = new mongoose.Schema(
 
 JobSchema.index({ companyId: 1 })
 JobSchema.index({ status: 1 })
+JobSchema.index({
+  title: 'text',
+  description: 'text',
+  skills: 'text',
+  skillsRequired: 'text',
+  location: 'text'
+})
 
 export const Job = mongoose.model('Job', JobSchema)
 

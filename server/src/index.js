@@ -34,7 +34,9 @@ import { blogRoutes } from './routes/blogRoutes.js'
 import { aiRoutes } from './routes/aiRoutes.js'
 import { paymentRoutes } from './routes/paymentRoutes.js'
 import employerCommunicationRoutes from './routes/employerCommunicationRoutes.js'
-
+import { uploadRoutes } from './routes/uploadRoutes.js'
+import { searchRoutes } from './routes/searchRoutes.js'
+import { communicationRoutes } from './routes/communicationRoutes.js'
 
 
 
@@ -82,10 +84,9 @@ app.get('/health', (req, res) => {
   res.json({ ok: true })
 })
 
+// Legacy routes (Temporary compatibility)
 app.use('/api/auth', authRoutes)
 app.use('/api/auth/me', meRoutes)
-
-
 app.use('/api/candidates', candidateRoutes)
 app.use('/api/saved-jobs', savedJobRoutes)
 app.use('/api/resume', resumeRoutes)
@@ -97,14 +98,36 @@ app.use('/api/placements', placementRoutes)
 app.use('/api/blogs', blogRoutes)
 app.use('/api/ai', aiRoutes)
 app.use('/api/payments', paymentRoutes)
-app.use('/api/employer-communication', employerCommunicationRoutes)
+app.use('/api/companies', employerCommunicationRoutes)
 app.use('/api/feedback', feedbackRoutes)
 app.use('/api/notifications', notificationRoutes)
-app.use('/api/company', employerCommunicationRoutes)
 app.use('/api/admin', adminRoutes)
 app.use('/api/analytics', analyticsRoutes)
-
 app.use('/api/public', publicRoutes)
+
+// v1 API Routes
+app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/auth/me', meRoutes)
+app.use('/api/v1/candidates', candidateRoutes)
+app.use('/api/v1/saved-jobs', savedJobRoutes)
+app.use('/api/v1/resume', resumeRoutes)
+app.use('/api/v1/companies', companyRoutes)
+app.use('/api/v1/jobs', jobRoutes)
+app.use('/api/v1/applications', applicationRoutes)
+app.use('/api/v1/interviews', interviewRoutes)
+app.use('/api/v1/placements', placementRoutes)
+app.use('/api/v1/blogs', blogRoutes)
+app.use('/api/v1/ai', aiRoutes)
+app.use('/api/v1/payments', paymentRoutes)
+app.use('/api/v1/companies', employerCommunicationRoutes)
+app.use('/api/v1/feedback', feedbackRoutes)
+app.use('/api/v1/notifications', notificationRoutes)
+app.use('/api/v1/admin', adminRoutes)
+app.use('/api/v1/analytics', analyticsRoutes)
+app.use('/api/v1/public', publicRoutes)
+app.use('/api/v1/uploads', uploadRoutes)
+app.use('/api/v1/search', searchRoutes)
+app.use('/api/v1/communication', communicationRoutes)
 
 // 404
 app.use((req, res) => {

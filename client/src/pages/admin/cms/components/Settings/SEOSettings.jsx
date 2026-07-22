@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
-import GlassCard from '../../../../../components/ui/GlassCard'
-import { GlassButton } from '../../../../../components/ui/GlassButton'
+import { Card, CardContent } from '../../../../../components/ui/Card'
+import { Button } from '../../../../../components/ui/Button'
 import { CMSSkeleton } from '../shared/CMSSkeleton'
 
 const SEO_KEYS = [
@@ -45,7 +45,7 @@ export default function SEOSettings({ draft, onSave, saving }) {
 
   return (
     <form onSubmit={save} className="space-y-6">
-      <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+      <Card className="p-6 bg-slate-900/50 border-white/10">
         <h2 className="text-lg font-bold text-white mb-2">SEO</h2>
         <p className="text-xs text-white/60 mb-6">Title/description and OpenGraph metadata.</p>
 
@@ -77,12 +77,12 @@ export default function SEOSettings({ draft, onSave, saving }) {
             <input className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white focus:outline-none" value={form.seoSocialImage} onChange={(e) => set('seoSocialImage', e.target.value)} />
           </div>
         </div>
-      </GlassCard>
+      </Card>
 
       <div className="flex justify-end">
-        <GlassButton type="submit" variant="primary" className="px-6 py-2.5 text-sm" disabled={saving || !dirty}>
+        <Button type="submit" variant="primary" className="px-6 py-2.5 text-sm" disabled={saving || !dirty}>
           {saving ? 'Saving…' : 'Save SEO'}
-        </GlassButton>
+        </Button>
       </div>
     </form>
   )

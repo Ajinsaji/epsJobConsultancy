@@ -30,7 +30,7 @@ export const fetchMyApplications = createAsyncThunk(
   'applications/fetchMy',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/applications/my-applications')
+      const response = await axios.get('/api/applications/me')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch your applications')
@@ -42,7 +42,7 @@ export const fetchCompanyApplications = createAsyncThunk(
   'applications/fetchCompany',
   async (params = {}, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/applications/company-applications', { params })
+      const response = await axios.get('/api/applications/company/me', { params })
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch company applications')

@@ -1,0 +1,577 @@
+[
+  {
+    "method": "get",
+    "route": "/system-logs",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/activities",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/health",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/homepage-config",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/homepage-config",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/homepage-config/publish",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/placements",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/placements",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/placements/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/placements/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/faqs",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/faqs",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/faqs/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/faqs/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/services",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/services",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/services/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/services/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/companies",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/companies/:id/homepage",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/testimonials",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/testimonials",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/testimonials/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/testimonials/:id",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/candidates",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/users",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/users/:id/status",
+    "file": "adminRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/parse-resume",
+    "file": "aiRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/rank-candidates/:jobId",
+    "file": "aiRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/dashboard",
+    "file": "analyticsRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/",
+    "file": "applicationRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/me",
+    "file": "applicationRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/",
+    "file": "applicationRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/job/:jobId",
+    "file": "applicationRoutes.js"
+  },
+  {
+    "method": "patch",
+    "route": "/:id/status",
+    "file": "applicationRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/company/:companyId",
+    "file": "applicationRoutes.js"
+  },
+  {
+    "method": "patch",
+    "route": "/:id/decision",
+    "file": "applicationRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/register",
+    "file": "authRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/login",
+    "file": "authRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/logout",
+    "file": "authRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/forgot-password",
+    "file": "authRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/reset-password",
+    "file": "authRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/verify-email",
+    "file": "authRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/admin",
+    "file": "blogRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/",
+    "file": "blogRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/:id",
+    "file": "blogRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/:id",
+    "file": "blogRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/me",
+    "file": "candidateRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/profile",
+    "file": "candidateRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/profile",
+    "file": "candidateRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/me",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/:id",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/:id",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/:id",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/candidates/:id/save",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/candidates/:id/shortlist",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/candidates/:id/contact",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/candidates/saved",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/candidates/shortlisted",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/candidates/history",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/talent-search",
+    "file": "companyRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/candidates/:id/contact-request",
+    "file": "employerCommunicationRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/candidates/:id/interview-invite",
+    "file": "employerCommunicationRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/candidates/:id/message",
+    "file": "employerCommunicationRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/communications",
+    "file": "employerCommunicationRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/communications/:candidateId",
+    "file": "employerCommunicationRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/",
+    "file": "feedbackRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/company",
+    "file": "feedbackRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/:id",
+    "file": "feedbackRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/",
+    "file": "interviewRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/",
+    "file": "interviewRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/:id",
+    "file": "interviewRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/:id",
+    "file": "interviewRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/me",
+    "file": "interviewRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/company/:companyId",
+    "file": "interviewRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/recommended",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/company/:companyId",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/:id",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/:id",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/:id",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "patch",
+    "route": "/:id/close",
+    "file": "jobRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/",
+    "file": "meRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/me",
+    "file": "notificationRoutes.js"
+  },
+  {
+    "method": "patch",
+    "route": "/:id/read",
+    "file": "notificationRoutes.js"
+  },
+  {
+    "method": "patch",
+    "route": "/read-all",
+    "file": "notificationRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/:id",
+    "file": "notificationRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/create-order",
+    "file": "paymentRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/verify",
+    "file": "paymentRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/me",
+    "file": "paymentRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/webhook",
+    "file": "paymentRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/me",
+    "file": "placementRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/company",
+    "file": "placementRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/",
+    "file": "placementRoutes.js"
+  },
+  {
+    "method": "put",
+    "route": "/:id",
+    "file": "placementRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/config",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/stats",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/jobs",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/partners",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/partners/marquee",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/testimonials/candidates",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/testimonials/employers",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/placements",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/faqs",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/services",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/blogs",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/blogs/:slug",
+    "file": "publicRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/analyze",
+    "file": "resumeRoutes.js"
+  },
+  {
+    "method": "post",
+    "route": "/",
+    "file": "savedJobRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/",
+    "file": "savedJobRoutes.js"
+  },
+  {
+    "method": "delete",
+    "route": "/:jobId",
+    "file": "savedJobRoutes.js"
+  },
+  {
+    "method": "get",
+    "route": "/check/:jobId",
+    "file": "savedJobRoutes.js"
+  }
+]

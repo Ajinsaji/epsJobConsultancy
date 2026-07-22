@@ -1,0 +1,106 @@
+Mismatches:
+[
+  {
+    "method": "get",
+    "url": "/api/company/candidates/${id}",
+    "file": "\\client\\src\\pages\\company\\CandidateProfileView.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/jobs",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/saved",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/shortlisted",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/history",
+    "file": "\\client\\src\\pages\\company\\CompanyDashboard.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/saved",
+    "file": "\\client\\src\\pages\\company\\SavedCandidates.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/shortlist",
+    "file": "\\client\\src\\pages\\company\\SavedCandidates.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/candidates/shortlisted",
+    "file": "\\client\\src\\pages\\company\\ShortlistedCandidates.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/contact",
+    "file": "\\client\\src\\pages\\company\\ShortlistedCandidates.jsx"
+  },
+  {
+    "method": "get",
+    "url": "/api/company/talent-search?${query.toString()}",
+    "file": "\\client\\src\\pages\\company\\TalentSearch.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/save",
+    "file": "\\client\\src\\pages\\company\\TalentSearch.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/company/candidates/${candidateId}/shortlist",
+    "file": "\\client\\src\\pages\\company\\TalentSearch.jsx"
+  },
+  {
+    "method": "post",
+    "url": "/api/notifications",
+    "file": "\\client\\src\\pages\\eps\\EPSDashboard.jsx"
+  },
+  {
+    "method": "delete",
+    "url": "/api/applications/${id}",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications/my-applications",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/applications/company-applications",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/applications/${id}/status",
+    "file": "\\client\\src\\redux\\slices\\applicationSlice.js"
+  },
+  {
+    "method": "get",
+    "url": "/api/notifications",
+    "file": "\\client\\src\\redux\\slices\\notificationSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/notifications/${id}/read",
+    "file": "\\client\\src\\redux\\slices\\notificationSlice.js"
+  },
+  {
+    "method": "put",
+    "url": "/api/notifications/read-all",
+    "file": "\\client\\src\\redux\\slices\\notificationSlice.js"
+  }
+]
+
+Matched: 128
+Mismatched: 20

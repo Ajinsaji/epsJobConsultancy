@@ -11,14 +11,15 @@ import {
   AboutPage,
   ServicesPage,
   ContactPage,
-  LoginPage,
-  RegisterPage,
-  ForgotPasswordPage,
-  AdminLoginPage,
-  RegisterCompanyPage,
-  ResetPasswordPage,
-  VerifyEmailPage,
 } from './pages/public'
+
+import LoginPage from './features/auth/pages/LoginPage'
+import RegisterPage from './features/auth/pages/RegisterPage'
+import ForgotPasswordPage from './features/auth/pages/ForgotPasswordPage'
+import AdminLoginPage from './features/auth/pages/AdminLoginPage'
+import RegisterCompanyPage from './features/auth/pages/RegisterCompanyPage'
+import ResetPasswordPage from './features/auth/pages/ResetPasswordPage'
+import VerifyEmailPage from './features/auth/pages/VerifyEmailPage'
 
 
 

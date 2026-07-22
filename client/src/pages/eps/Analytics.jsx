@@ -3,7 +3,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { PieChart, TrendingUp, Users, Briefcase, Building2, Calendar, Target, Award, ArrowUpRight } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
+import { Card, CardContent } from '../../components/ui/Card'
 import moment from 'moment'
 
 export default function Analytics() {
@@ -36,7 +36,7 @@ export default function Analytics() {
   const { kpis, applicationStatusDistribution, recentPlacements } = data
 
   const StatCard = ({ title, value, icon: Icon, trend }) => (
-    <GlassCard className="p-6 bg-slate-950/40 border-white/10 relative overflow-hidden group hover:border-[#CCA43B]/30 transition">
+    <Card className="p-6 bg-slate-950/40 border-white/10 relative overflow-hidden group hover:border-[#CCA43B]/30 transition">
       <div className="absolute -right-4 -top-4 w-24 h-24 bg-[#0B4C8C]/20 rounded-full blur-2xl group-hover:bg-[#CCA43B]/20 transition" />
       <div className="flex justify-between items-start relative z-10">
         <div>
@@ -52,7 +52,7 @@ export default function Analytics() {
           <Icon className="w-6 h-6 text-[#CCA43B]" />
         </div>
       </div>
-    </GlassCard>
+    </Card>
   )
 
   // Calculate percentages for the CSS "chart"
@@ -84,7 +84,7 @@ export default function Analytics() {
         
         {/* Application Funnel Chart (CSS Based) */}
         <div className="lg:col-span-2">
-          <GlassCard className="p-6 bg-slate-950/40 border-white/10 h-full">
+          <Card className="p-6 bg-slate-950/40 border-white/10 h-full">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-2">
               <Target className="w-4 h-4 text-[#CCA43B]" />
               Application Pipeline Distribution
@@ -136,12 +136,12 @@ export default function Analytics() {
                 <div className="text-2xl font-black text-white">{kpis.totalApplications}</div>
               </div>
             </div>
-          </GlassCard>
+          </Card>
         </div>
 
         {/* Recent Placements Feed */}
         <div className="lg:col-span-1">
-          <GlassCard className="p-6 bg-[#0B4C8C]/10 border-[#0B4C8C]/30 h-full">
+          <Card className="p-6 bg-[#0B4C8C]/10 border-[#0B4C8C]/30 h-full">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-2">
               <Award className="w-4 h-4 text-[#CCA43B]" />
               Recent Placements
@@ -176,7 +176,7 @@ export default function Analytics() {
                 </div>
               )}
             </div>
-          </GlassCard>
+          </Card>
         </div>
 
       </div>

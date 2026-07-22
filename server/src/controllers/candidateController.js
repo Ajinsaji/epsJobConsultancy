@@ -41,6 +41,7 @@ function calculateCompletion(profile) {
     'jobCategories',
     'projects',
     'certifications',
+    'summary'
   ]
 
   let present = 0
@@ -114,8 +115,9 @@ export const updateCandidateProfile = asyncHandler(async (req, res) => {
     dob: req.body.dob ? new Date(req.body.dob) : undefined,
     gender: req.body.gender,
     address: req.body.address,
-    education: req.body.education,
-    experience: req.body.experience,
+    summary: req.body.summary,
+    education: normalizeObjectArrayField(normalizePotentialJsonArray(req.body.education)),
+    experience: normalizeObjectArrayField(normalizePotentialJsonArray(req.body.experience)),
     skills: normalizeArrayField(req.body.skills),
     languages: normalizeArrayField(req.body.languages),
     resume: req.body.resumePath,

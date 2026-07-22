@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { GlassButton } from '../../../components/ui/GlassButton'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Button } from '../../../components/ui/Button'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 export default function EmployerSection() {
   const navigate = useNavigate()
@@ -54,7 +54,7 @@ export default function EmployerSection() {
             </div>
 
             <div className="pt-4">
-              <GlassButton
+              <Button
                 as={motion.button}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
@@ -62,7 +62,7 @@ export default function EmployerSection() {
                 className="px-6 py-3 font-extrabold text-sm border border-blue-500/30 bg-blue-950/20 text-[#60A5FA] hover:bg-blue-900/30 shadow-[0_0_20px_rgba(59,130,246,0.15)] transition"
               >
                 Register Company Account
-              </GlassButton>
+              </Button>
             </div>
           </motion.div>
 
@@ -77,7 +77,7 @@ export default function EmployerSection() {
             <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full" />
             
             {/* Talent Pipeline columns mockup */}
-            <GlassCard className="p-6 bg-slate-950/60 border-white/10 w-full max-w-[420px] shadow-2xl relative z-10 space-y-5">
+            <Card className="p-6 bg-slate-950/60 border-white/10 w-full max-w-[420px] shadow-2xl relative z-10 space-y-5">
               <div className="flex items-center justify-between border-b border-white/5 pb-3">
                 <span className="text-xs font-bold text-white/60">Candidate Pipeline: Vercel</span>
                 <span className="text-[10px] bg-blue-500/10 px-2 py-0.5 rounded text-blue-300 font-bold">Manager View</span>
@@ -120,7 +120,7 @@ export default function EmployerSection() {
                 </div>
 
               </div>
-            </GlassCard>
+            </Card>
           </motion.div>
 
         </div>

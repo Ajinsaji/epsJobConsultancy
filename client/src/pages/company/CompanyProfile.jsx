@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { Building2, Save, MapPin, Globe, Users, Loader2, Camera, ShieldCheck } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 import { fetchCompanyProfile, updateCompanyProfile } from '../../redux/slices/companySlice'
 
 export default function CompanyProfile() {
@@ -90,7 +90,7 @@ export default function CompanyProfile() {
         
         {/* Left Column - Branding & Quick Stats */}
         <div className="lg:col-span-1 space-y-6">
-          <GlassCard className="p-6 bg-slate-950/40 border-white/10 text-center">
+          <Card className="p-6 bg-slate-950/40 border-white/10 text-center">
             <div className="relative inline-block mb-4 group cursor-pointer">
               <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#0B4C8C] to-[#CCA43B] p-[2px]">
                 <div className="w-full h-full rounded-2xl bg-[#070B1A] flex items-center justify-center overflow-hidden">
@@ -131,9 +131,9 @@ export default function CompanyProfile() {
                 <span>{formData.companySize || 'Size not specified'} employees</span>
               </div>
             </div>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="p-6 bg-[#0B4C8C]/10 border-[#CCA43B]/30">
+          <Card className="p-6 bg-[#0B4C8C]/10 border-[#CCA43B]/30">
             <h3 className="text-sm font-bold text-white mb-2">Subscription</h3>
             <div className="flex justify-between items-center mb-4">
               <span className="text-xl font-black text-[#CCA43B]">Premium Plan</span>
@@ -141,15 +141,15 @@ export default function CompanyProfile() {
             <p className="text-xs text-white/60 mb-4">
               You have unlimited job postings and access to the AI matching engine.
             </p>
-            <GlassButton variant="secondary" className="w-full text-xs">
+            <Button variant="secondary" className="w-full text-xs">
               Manage Subscription
-            </GlassButton>
-          </GlassCard>
+            </Button>
+          </Card>
         </div>
 
         {/* Right Column - Edit Form */}
         <div className="lg:col-span-2">
-          <GlassCard className="p-6 bg-slate-950/40 border-white/10">
+          <Card className="p-6 bg-slate-950/40 border-white/10">
             <form onSubmit={handleSubmit} className="space-y-6">
               
               <div className="space-y-4">
@@ -240,14 +240,14 @@ export default function CompanyProfile() {
               </div>
 
               <div className="pt-6 flex justify-end">
-                <GlassButton type="submit" variant="primary" className="flex items-center gap-2 px-8" disabled={isSaving}>
+                <Button type="submit" variant="primary" className="flex items-center gap-2 px-8" disabled={isSaving}>
                   {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                   {isSaving ? 'Saving...' : 'Save Changes'}
-                </GlassButton>
+                </Button>
               </div>
 
             </form>
-          </GlassCard>
+          </Card>
         </div>
       </div>
     </div>

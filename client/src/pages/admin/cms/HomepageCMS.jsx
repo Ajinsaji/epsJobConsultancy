@@ -4,8 +4,8 @@ import toast from 'react-hot-toast'
 import { getHomepageConfig, updateHomepageConfig, publishHomepageConfig } from './api/homepageApi'
 
 
-import GlassCard from '../../../components/ui/GlassCard'
-import { GlassButton } from '../../../components/ui/GlassButton'
+import { Card, CardContent } from '../../../components/ui/Card'
+import { Button } from '../../../components/ui/Button'
 
 import HeroSettings from './components/Settings/HeroSettings'
 import LayoutSettings from './components/Settings/LayoutSettings'
@@ -111,14 +111,14 @@ export default function HomepageCMS() {
             {loading ? 'Loading…' : 'Refresh'}
           </button>
 
-          <GlassButton
+          <Button
             variant="primary"
             onClick={publish}
             className="px-4 py-2 rounded-xl text-sm font-semibold"
             disabled={loading || saving}
           >
             Publish
-          </GlassButton>
+          </Button>
         </div>
       </div>
     )
@@ -172,7 +172,7 @@ export default function HomepageCMS() {
         </div>
 
         <aside className="space-y-4">
-          <GlassCard className="p-4 bg-slate-900/40 border-white/10">
+          <Card className="p-4 bg-slate-900/40 border-white/10">
             <h3 className="text-sm font-bold text-white/80 mb-2">Publish Status</h3>
             <div className="text-xs text-white/60 space-y-2">
               <div className="flex justify-between gap-3">
@@ -188,16 +188,16 @@ export default function HomepageCMS() {
                 <span className="text-white">{publishedMeta.lastPublishedBy ?? '—'}</span>
               </div>
             </div>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="p-4 bg-slate-900/40 border-white/10">
+          <Card className="p-4 bg-slate-900/40 border-white/10">
             <h3 className="text-sm font-bold text-white/80 mb-2">Rules</h3>
             <ul className="text-xs text-white/60 space-y-2">
               <li>Preview uses <span className="text-white">draft</span>.</li>
               <li>Public website uses <span className="text-white">published</span> only.</li>
               <li>Never expose draft via public APIs.</li>
             </ul>
-          </GlassCard>
+          </Card>
         </aside>
       </div>
     </div>

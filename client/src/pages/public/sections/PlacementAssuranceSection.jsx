@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { GlassButton } from '../../../components/ui/GlassButton'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Button } from '../../../components/ui/Button'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 import {
   ShieldCheck,
@@ -22,7 +22,7 @@ import {
 
 function FeatureCard({ icon, title, value, footer }) {
   return (
-    <GlassCard className="p-6 bg-slate-950/50 border-white/10 hover:border-[#CCA43B]/20 hover:bg-white/[0.02] transition duration-300 h-full relative overflow-hidden">
+    <Card className="p-6 bg-slate-950/50 border-white/10 hover:border-[#CCA43B]/20 hover:bg-white/[0.02] transition duration-300 h-full relative overflow-hidden">
       <div className="absolute -inset-[1px] rounded-[24px] bg-gradient-to-r from-[#0B4C8C]/25 via-[#CCA43B]/20 to-[#1F7BE5]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div className="relative z-10 space-y-4">
@@ -45,7 +45,7 @@ function FeatureCard({ icon, title, value, footer }) {
           {footer ? <div className="mt-2 text-[10px] text-white/60 leading-relaxed">{footer}</div> : null}
         </div>
       </div>
-    </GlassCard>
+    </Card>
   )
 }
 
@@ -53,7 +53,7 @@ function TrustComparisonCard({ variant, title, items }) {
   const isLeft = variant === 'left'
 
   return (
-    <GlassCard
+    <Card
       className={
         'p-6 border-white/10 relative overflow-hidden transition-all duration-300 h-full ' +
         (isLeft
@@ -88,7 +88,7 @@ function TrustComparisonCard({ variant, title, items }) {
           ))}
         </ul>
       </div>
-    </GlassCard>
+    </Card>
   )
 }
 
@@ -262,7 +262,7 @@ export default function PlacementAssuranceSection() {
           {/* CTA + Social proof */}
           <div className="space-y-4 text-center">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <GlassButton
+              <Button
                 as={motion.button}
                 variant="primary"
                 whileHover={{ scale: 1.03 }}
@@ -272,9 +272,9 @@ export default function PlacementAssuranceSection() {
               >
                 <Rocket aria-hidden="true" className="h-4 w-4" />
                 Start Your Career Journey
-              </GlassButton>
+              </Button>
 
-              <GlassButton
+              <Button
                 as={motion.button}
                 variant="ghost"
                 whileHover={{ scale: 1.03 }}
@@ -285,7 +285,7 @@ export default function PlacementAssuranceSection() {
                 <Award aria-hidden="true" className="h-4 w-4" />
                 View Success Stories
                 <ArrowRight aria-hidden="true" className="h-4 w-4 ml-1" />
-              </GlassButton>
+              </Button>
             </div>
 
             <div className="pt-1">

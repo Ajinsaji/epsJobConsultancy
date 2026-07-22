@@ -1,4 +1,4 @@
-import GlassCard from './GlassCard'
+import { Card, CardContent } from './Card'
 
 export default function StatCard({
   label,
@@ -18,7 +18,7 @@ export default function StatCard({
 
 
   return (
-    <GlassCard
+    <Card
       className={
         'relative overflow-hidden ' +
         className
@@ -41,7 +41,7 @@ export default function StatCard({
           <div className="mt-1 text-sm text-white/70">{sublabel}</div>
         ) : null}
       </div>
-    </GlassCard>
+    </Card>
   )
 }
 

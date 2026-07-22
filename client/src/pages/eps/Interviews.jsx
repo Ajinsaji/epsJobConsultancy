@@ -3,7 +3,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { Calendar, Clock, Video, Building2, User, Search, MapPin, Link2 } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
+import { Card, CardContent } from '../../components/ui/Card'
 import moment from 'moment'
 
 export default function Interviews() {
@@ -55,7 +55,7 @@ export default function Interviews() {
       </div>
 
       {/* Toolbar */}
-      <GlassCard className="p-4 bg-slate-950/40 border-white/10">
+      <Card className="p-4 bg-slate-950/40 border-white/10">
         <div className="relative max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
@@ -66,13 +66,13 @@ export default function Interviews() {
             className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:border-[#CCA43B] transition"
           />
         </div>
-      </GlassCard>
+      </Card>
 
       {/* List */}
       {loading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <GlassCard key={i} className="h-32 animate-pulse bg-white/5 border-white/5" />
+            <Card key={i} className="h-32 animate-pulse bg-white/5 border-white/5" />
           ))}
         </div>
       ) : filteredInterviews.length === 0 ? (
@@ -98,7 +98,7 @@ export default function Interviews() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
             >
-              <GlassCard className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group h-full flex flex-col">
+              <Card className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group h-full flex flex-col">
                 
                 {/* Header */}
                 <div className="flex justify-between items-start mb-4">
@@ -182,7 +182,7 @@ export default function Interviews() {
                   )}
                 </div>
 
-              </GlassCard>
+              </Card>
             </motion.div>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { publicApi } from '../../../api/publicApi'
 import { motion } from 'framer-motion'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 export default function PlacementsSection() {
   const [placements, setPlacements] = useState([])
@@ -57,13 +57,13 @@ export default function PlacementsSection() {
 
         {placements.length === 0 ? (
           /* Empty state */
-          <GlassCard className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
+          <Card className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
             <div className="text-2xl mb-2">🎓</div>
             <h4 className="text-sm font-bold text-white mb-2">Placement Success Stories Brewing</h4>
             <p className="text-xs text-white/50 leading-relaxed">
               We are currently coordinating final offers for this month\'s candidates. Placement cards will be published as candidate consents are completed.
             </p>
-          </GlassCard>
+          </Card>
         ) : (
           /* Cards Grid */
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 text-left">
@@ -75,7 +75,7 @@ export default function PlacementsSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
               >
-                <GlassCard className="p-5 bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:bg-white/[0.01] hover:scale-102 transition duration-300 h-full flex flex-col justify-between relative group">
+                <Card className="p-5 bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:bg-white/[0.01] hover:scale-102 transition duration-300 h-full flex flex-col justify-between relative group">
                   
                   {/* Glowing border detail on hover */}
                   <div className="absolute -inset-[1px] rounded-[20px] bg-gradient-to-r from-[#7C3AED]/20 to-[#3B82F6]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -123,7 +123,7 @@ export default function PlacementsSection() {
                     </div>
                   </div>
 
-                </GlassCard>
+                </Card>
               </motion.div>
             ))}
           </div>

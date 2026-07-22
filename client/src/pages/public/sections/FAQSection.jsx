@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { publicApi } from '../../../api/publicApi'
 import { motion, AnimatePresence } from 'framer-motion'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 export default function FAQSection() {
   const [faqs, setFaqs] = useState([])
@@ -63,7 +63,7 @@ export default function FAQSection() {
 
         {faqs.length === 0 ? (
           /* Empty state */
-          <GlassCard className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
+          <Card className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
             <div className="text-2xl mb-2">?</div>
 
             <h4 className="text-sm font-bold text-white mb-2">FAQ Content Coming Soon</h4>
@@ -71,14 +71,14 @@ export default function FAQSection() {
             <p className="text-xs text-white/50 leading-relaxed">
               We are compiling answers to candidate and employer queries. Contact our help desk for immediate assistance.
             </p>
-          </GlassCard>
+          </Card>
         ) : (
           /* Accordion List */
           <div className="space-y-4">
             {faqs.map((faq, idx) => {
               const isOpen = openIndex === idx
               return (
-                <GlassCard 
+                <Card 
                   key={faq._id}
                   className="bg-slate-950/40 border-white/5 overflow-hidden transition-all duration-300 rounded-xl"
                 >
@@ -110,7 +110,7 @@ export default function FAQSection() {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </GlassCard>
+                </Card>
               )
             })}
           </div>

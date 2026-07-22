@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { GlassButton } from '../../../components/ui/GlassButton'
+import { Button } from '../../../components/ui/Button'
 
 export default function HeroSection({ config }) {
   const navigate = useNavigate()
@@ -247,7 +247,7 @@ export default function HeroSection({ config }) {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-wrap gap-4"
             >
-              <GlassButton
+              <Button
                 as={motion.button}
                 variant="primary"
                 whileHover={{ scale: 1.03 }}
@@ -256,8 +256,8 @@ export default function HeroSection({ config }) {
                 className="px-6 py-3 font-extrabold min-h-[48px] bg-gradient-to-r from-[#0B4C8C] via-[#CCA43B] to-[#1F7BE5] shadow-[0_0_20px_rgba(11,76,140,0.25)]"
               >
                 Find Jobs (Register)
-              </GlassButton>
-              <GlassButton
+              </Button>
+              <Button
                 as={motion.button}
                 variant="ghost"
                 whileHover={{ scale: 1.03 }}
@@ -266,7 +266,7 @@ export default function HeroSection({ config }) {
                 className="px-6 py-3 font-extrabold min-h-[48px] border border-white/10 bg-white/5 hover:bg-white/10 transition"
               >
                 Hire Talent
-              </GlassButton>
+              </Button>
             </motion.div>
           </div>
 

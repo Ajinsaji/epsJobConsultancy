@@ -3,8 +3,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { Users, Search, Filter, Download, MoreVertical, Eye, ShieldAlert, CheckCircle2 } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 import moment from 'moment'
 
 export default function ManageCandidates() {
@@ -76,13 +76,13 @@ export default function ManageCandidates() {
             View and manage all registered candidates on the platform.
           </p>
         </div>
-        <GlassButton variant="secondary" className="flex items-center gap-2" onClick={handleExportCSV}>
+        <Button variant="secondary" className="flex items-center gap-2" onClick={handleExportCSV}>
           <Download className="h-4 w-4" /> Export CSV
-        </GlassButton>
+        </Button>
       </div>
 
       {/* Toolbar */}
-      <GlassCard className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
+      <Card className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
@@ -107,10 +107,10 @@ export default function ManageCandidates() {
             </select>
           </div>
         </div>
-      </GlassCard>
+      </Card>
 
       {/* Data Table */}
-      <GlassCard className="overflow-hidden bg-slate-950/40 border-white/10">
+      <Card className="overflow-hidden bg-slate-950/40 border-white/10">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm text-white/70">
             <thead className="bg-white/5 text-xs uppercase font-bold text-white/50 border-b border-white/10">
@@ -184,7 +184,7 @@ export default function ManageCandidates() {
             </tbody>
           </table>
         </div>
-      </GlassCard>
+      </Card>
     </div>
   )
 }

@@ -6,6 +6,8 @@ import { Company } from '../models/Company.js'
 
 import { Placement } from '../models/Placement.js'
 import { ActivityLog } from '../models/ActivityLog.js'
+import { NotificationService } from '../services/notification/notification.service.js'
+import { NOTIFICATION_TYPES } from '../utils/notificationTypes.js'
 
 const getCanonicalStatus = (s) => (s && typeof s === 'string' ? s : undefined)
 
@@ -52,6 +54,40 @@ export const applyJob = asyncHandler(async (req, res) => {
     resumeSnapshot,
     appliedAt: new Date(),
   })
+
+  // Fire notification events
+  // 1. Notify Candidate
+  await NotificationService.notify({
+    type: NOTIFICATION_TYPES.APPLICATION_SUBMITTED,
+    recipientId: candidate.userId,
+    recipientRole: 'Candidate',
+    channels: ['in_app', 'email'],
+    payload: {
+      jobTitle: job.title,
+      companyName: 'EPS Platform', // could fetch actual company name if needed
+      jobId: job._id,
+      applicationId: application._id,
+      companyId: job.companyId
+    }
+  });
+
+  // 2. Notify Company
+  const company = await Company.findById(companyId).lean();
+  if (company && company.userId) {
+    await NotificationService.notify({
+      type: NOTIFICATION_TYPES.NEW_APPLICANT,
+      recipientId: company.userId,
+      recipientRole: 'Company',
+      channels: ['in_app', 'email', 'whatsapp'],
+      payload: {
+        jobTitle: job.title,
+        candidateName: candidate.fullName,
+        jobId: job._id,
+        applicationId: application._id,
+        candidateId: candidate._id
+      }
+    });
+  }
 
   res.status(201).json({ application })
 })
@@ -176,4 +212,25 @@ export const applicationDecision = asyncHandler(async (req, res) => {
   res.json({ application: updated })
 })
 
+export const deleteApplication = asyncHandler(async (req, res) => {
+  const application = await Application.findById(req.params.id)
+  if (!application) return res.status(404).json({ message: 'Application not found' })
+
+  // Verify permission
+  if (req.user.role === 'candidate') {
+    const candidate = await Candidate.findOne({ userId: req.user._id }).lean()
+    if (!candidate || application.candidateId.toString() !== candidate._id.toString()) {
+      return res.status(403).json({ message: 'Forbidden' })
+    }
+  }
+
+  await Application.findByIdAndDelete(req.params.id)
+
+  await ActivityLog.create({
+    action: `Application ${application._id} deleted`,
+    user: req.user?.email || 'System'
+  })
+
+  res.json({ message: 'Application deleted successfully' })
+})
 

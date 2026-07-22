@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { GlassButton } from '../../../components/ui/GlassButton'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Button } from '../../../components/ui/Button'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 export default function CandidateSection() {
   const navigate = useNavigate()
@@ -32,7 +32,7 @@ export default function CandidateSection() {
             <div className="absolute inset-0 bg-[#0B4C8C]/5 blur-3xl rounded-full" />
             
             {/* Candidate Card representation */}
-            <GlassCard className="p-6 bg-slate-950/60 border-white/10 w-full max-w-[420px] shadow-2xl relative z-10 space-y-6">
+            <Card className="p-6 bg-slate-950/60 border-white/10 w-full max-w-[420px] shadow-2xl relative z-10 space-y-6">
               
               {/* Profile header */}
               <div className="flex items-center gap-4 border-b border-white/5 pb-4">
@@ -88,7 +88,7 @@ export default function CandidateSection() {
                   <span className="font-bold text-emerald-400">₹14 Lakhs - ₹18 Lakhs</span>
                 </div>
               </div>
-            </GlassCard>
+            </Card>
           </motion.div>
 
           {/* RIGHT SIDE: Description */}
@@ -124,7 +124,7 @@ export default function CandidateSection() {
             </div>
 
             <div className="pt-4">
-              <GlassButton
+              <Button
                 as={motion.button}
                 variant="primary"
                 whileHover={{ scale: 1.03 }}
@@ -133,7 +133,7 @@ export default function CandidateSection() {
                 className="px-6 py-3 font-extrabold text-sm bg-gradient-to-r from-[#0B4C8C] to-[#CCA43B] shadow-[0_0_20px_rgba(11,76,140,0.2)]"
               >
                 Create Candidate Account
-              </GlassButton>
+              </Button>
             </div>
           </motion.div>
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { publicApi } from '../../../api/publicApi'
 import { motion, AnimatePresence } from 'framer-motion'
-import GlassCard from '../../../components/ui/GlassCard'
+import { Card, CardContent } from '../../../components/ui/Card'
 
 
 export default function TestimonialsSection() {
@@ -103,13 +103,13 @@ export default function TestimonialsSection() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <GlassCard className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
+                <Card className="p-10 bg-slate-950/40 border-white/5 text-center max-w-md mx-auto rounded-2xl">
                   <div className="text-2xl mb-2">💬</div>
                   <h4 className="text-sm font-bold text-white mb-2">No Reviews Posted Yet</h4>
                   <p className="text-xs text-white/50 leading-relaxed">
                     Testimonials are gathered during our quarterly placements reviews. Check back soon to read new user stories.
                   </p>
-                </GlassCard>
+                </Card>
               </motion.div>
             ) : (
               /* Grid reviews */
@@ -122,7 +122,7 @@ export default function TestimonialsSection() {
                 className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 text-left"
               >
                 {currentList.map((item, idx) => (
-                  <GlassCard 
+                  <Card 
                     key={item._id}
                     className="p-6 bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:bg-white/[0.01] transition-all duration-300 h-full flex flex-col justify-between"
                   >
@@ -150,7 +150,7 @@ export default function TestimonialsSection() {
                         <p className="text-[10px] text-white/50">{item.role} {item.company ? `@ ${item.company}` : ''}</p>
                       </div>
                     </div>
-                  </GlassCard>
+                  </Card>
                 ))}
               </motion.div>
             )}

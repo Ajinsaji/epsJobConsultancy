@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function EPSDashboard() {
   const [stats, setStats] = useState(null)
@@ -195,34 +195,34 @@ export default function EPSDashboard() {
           <p className="text-sm text-slate-500">Manage candidate reviews, register companies, and schedule interviews</p>
         </div>
         <div className="flex items-center gap-3">
-          <GlassButton variant="primary" onClick={() => setShowCompanyForm(!showCompanyForm)} style={{ minHeight: '44px' }}>
+          <Button variant="primary" onClick={() => setShowCompanyForm(!showCompanyForm)} style={{ minHeight: '44px' }}>
             {showCompanyForm ? 'Show Pipeline' : 'Register Partner Company'}
-          </GlassButton>
+          </Button>
         </div>
       </div>
 
       {/* Stats Widgets */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <GlassCard className="border-l-4 border-l-indigo-500 bg-white p-4 shadow-sm">
+        <Card className="border-l-4 border-l-indigo-500 bg-white p-4 shadow-sm">
           <p className="text-xs font-semibold text-slate-500 uppercase">Candidates</p>
           <h3 className="mt-1 text-2xl font-bold text-slate-800">{stats?.candidates ?? 0}</h3>
-        </GlassCard>
-        <GlassCard className="border-l-4 border-l-violet-500 bg-white p-4 shadow-sm">
+        </Card>
+        <Card className="border-l-4 border-l-violet-500 bg-white p-4 shadow-sm">
           <p className="text-xs font-semibold text-slate-500 uppercase">Companies</p>
           <h3 className="mt-1 text-2xl font-bold text-slate-800">{stats?.companies ?? 0}</h3>
-        </GlassCard>
-        <GlassCard className="border-l-4 border-l-amber-500 bg-white p-4 shadow-sm">
+        </Card>
+        <Card className="border-l-4 border-l-amber-500 bg-white p-4 shadow-sm">
           <p className="text-xs font-semibold text-slate-500 uppercase">Jobs Open</p>
           <h3 className="mt-1 text-2xl font-bold text-slate-800">{stats?.openJobs ?? 0}</h3>
-        </GlassCard>
-        <GlassCard className="border-l-4 border-l-cyan-500 bg-white p-4 shadow-sm">
+        </Card>
+        <Card className="border-l-4 border-l-cyan-500 bg-white p-4 shadow-sm">
           <p className="text-xs font-semibold text-slate-500 uppercase">Applications</p>
           <h3 className="mt-1 text-2xl font-bold text-slate-800">{stats?.applications ?? 0}</h3>
-        </GlassCard>
-        <GlassCard className="border-l-4 border-l-emerald-500 bg-white p-4 shadow-sm">
+        </Card>
+        <Card className="border-l-4 border-l-emerald-500 bg-white p-4 shadow-sm">
           <p className="text-xs font-semibold text-slate-500 uppercase">Interviews</p>
           <h3 className="mt-1 text-2xl font-bold text-slate-800">{stats?.interviews ?? 0}</h3>
-        </GlassCard>
+        </Card>
       </div>
 
       {/* Middle row: Consultancy metrics */}
@@ -247,7 +247,7 @@ export default function EPSDashboard() {
 
       {showCompanyForm ? (
         /* Company creation form */
-        <GlassCard className="bg-white p-6 shadow-sm max-w-2xl mx-auto">
+        <Card className="bg-white p-6 shadow-sm max-w-2xl mx-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-3">Register Partner Company</h2>
           
           <form onSubmit={handleRegisterCompany} className="mt-4 space-y-4">
@@ -324,9 +324,9 @@ export default function EPSDashboard() {
             </div>
 
             <div className="pt-4 border-t flex justify-end">
-              <GlassButton variant="primary" type="submit" disabled={creatingCompany} style={{ minHeight: '44px' }}>
+              <Button variant="primary" type="submit" disabled={creatingCompany} style={{ minHeight: '44px' }}>
                 {creatingCompany ? 'Registering...' : 'Register Company'}
-              </GlassButton>
+              </Button>
             </div>
           </form>
 
@@ -340,10 +340,10 @@ export default function EPSDashboard() {
               <p className="text-xs text-emerald-600 italic">This temporary password must be changed by the company upon their first sign-in.</p>
             </div>
           )}
-        </GlassCard>
+        </Card>
       ) : (
         /* Candidates Pipeline Review */
-        <GlassCard className="bg-white p-6 shadow-sm">
+        <Card className="bg-white p-6 shadow-sm">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-3">Hiring Funnel & Candidate Management</h2>
           
           {applications.length === 0 ? (
@@ -434,7 +434,7 @@ export default function EPSDashboard() {
               </table>
             </div>
           )}
-        </GlassCard>
+        </Card>
       )}
 
       {/* Schedule Interview Modal */}
@@ -521,21 +521,21 @@ export default function EPSDashboard() {
                 </div>
 
                 <div className="mt-6 flex justify-end gap-3 pt-4 border-t">
-                  <GlassButton 
+                  <Button 
                     variant="ghost" 
                     type="button"
                     onClick={() => setSchedulingApp(null)}
                     disabled={scheduling}
                   >
                     Cancel
-                  </GlassButton>
-                  <GlassButton 
+                  </Button>
+                  <Button 
                     variant="primary" 
                     type="submit"
                     disabled={scheduling}
                   >
                     {scheduling ? 'Scheduling...' : 'Schedule Interview'}
-                  </GlassButton>
+                  </Button>
                 </div>
               </form>
             </motion.div>

@@ -5,7 +5,7 @@ export const fetchNotifications = createAsyncThunk(
   'notifications/fetchAll',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/notifications')
+      const response = await axios.get('/api/notifications/me')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch notifications')
@@ -17,7 +17,7 @@ export const markAsRead = createAsyncThunk(
   'notifications/markAsRead',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`/api/notifications/${id}/read`)
+      const response = await axios.patch(`/api/notifications/${id}/read`)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update notification')
@@ -29,7 +29,7 @@ export const markAllAsRead = createAsyncThunk(
   'notifications/markAllAsRead',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.put('/api/notifications/read-all')
+      const response = await axios.patch('/api/notifications/read-all')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update notifications')

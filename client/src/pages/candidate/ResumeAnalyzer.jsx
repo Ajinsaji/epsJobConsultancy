@@ -3,8 +3,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import { UploadCloud, FileText, CheckCircle2, AlertCircle, Sparkles, Loader2, BarChart2 } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function ResumeAnalyzer() {
   const [file, setFile] = useState(null)
@@ -70,7 +70,7 @@ export default function ResumeAnalyzer() {
         
         {/* Upload Section */}
         <div className="lg:col-span-1 space-y-6">
-          <GlassCard className="p-6 bg-slate-950/40 border-white/10">
+          <Card className="p-6 bg-slate-950/40 border-white/10">
             <h3 className="text-sm font-bold text-white mb-4">Upload Resume</h3>
             
             <div 
@@ -92,7 +92,7 @@ export default function ResumeAnalyzer() {
             </div>
 
             <div className="mt-6">
-              <GlassButton 
+              <Button 
                 variant="primary" 
                 className="w-full py-3 flex items-center justify-center gap-2"
                 onClick={handleAnalyze}
@@ -109,9 +109,9 @@ export default function ResumeAnalyzer() {
                     Analyze Resume
                   </>
                 )}
-              </GlassButton>
+              </Button>
             </div>
-          </GlassCard>
+          </Card>
         </div>
 
         {/* Results Section */}
@@ -152,27 +152,27 @@ export default function ResumeAnalyzer() {
               >
                 {/* Score Cards */}
                 <div className="grid grid-cols-2 gap-4">
-                  <GlassCard className={`p-6 border flex items-center justify-between ${getScoreColor(analysisResult.score)}`}>
+                  <Card className={`p-6 border flex items-center justify-between ${getScoreColor(analysisResult.score)}`}>
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider opacity-70">Overall ATS Score</div>
                       <div className="text-4xl font-black mt-1">{analysisResult.score}/100</div>
                     </div>
                     <BarChart2 className="h-10 w-10 opacity-30" />
-                  </GlassCard>
+                  </Card>
 
-                  <GlassCard className="p-6 border border-white/10 bg-white/5 flex items-center justify-between">
+                  <Card className="p-6 border border-white/10 bg-white/5 flex items-center justify-between">
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider text-white/50">Detected Skills</div>
                       <div className="text-4xl font-black mt-1 text-white">{analysisResult.skillsCount || 0}</div>
                     </div>
                     <FileText className="h-10 w-10 opacity-30" />
-                  </GlassCard>
+                  </Card>
                 </div>
 
                 {/* Feedback lists */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Strengths */}
-                  <GlassCard className="p-6 border-white/10 bg-white/5">
+                  <Card className="p-6 border-white/10 bg-white/5">
                     <h3 className="text-sm font-bold text-white flex items-center gap-2 mb-4">
                       <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                       Strengths
@@ -188,10 +188,10 @@ export default function ResumeAnalyzer() {
                         <li className="text-sm text-white/40">No major strengths detected.</li>
                       )}
                     </ul>
-                  </GlassCard>
+                  </Card>
 
                   {/* Improvements */}
-                  <GlassCard className="p-6 border-white/10 bg-white/5">
+                  <Card className="p-6 border-white/10 bg-white/5">
                     <h3 className="text-sm font-bold text-white flex items-center gap-2 mb-4">
                       <AlertCircle className="h-4 w-4 text-amber-400" />
                       Areas for Improvement
@@ -207,7 +207,7 @@ export default function ResumeAnalyzer() {
                         <li className="text-sm text-emerald-400">Your resume looks perfect!</li>
                       )}
                     </ul>
-                  </GlassCard>
+                  </Card>
                 </div>
               </motion.div>
             )}

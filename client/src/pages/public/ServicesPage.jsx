@@ -1,4 +1,4 @@
-import GlassCard from '../../components/ui/GlassCard'
+import { Card, CardContent } from '../../components/ui/Card'
 import SectionTitle from '../../components/ui/SectionTitle'
 import RevealOnScroll from '../../animations/RevealOnScroll'
 import { motion } from 'framer-motion'
@@ -27,7 +27,7 @@ export default function ServicesPage() {
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           <RevealOnScroll>
             <motion.div whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 420, damping: 28 }}>
-              <GlassCard className="h-full">
+              <Card className="h-full">
                 <div className="text-sm font-semibold text-white/80">Candidate Services</div>
                 <List
                   items={[
@@ -37,13 +37,13 @@ export default function ServicesPage() {
                     'Career Guidance',
                   ]}
                 />
-              </GlassCard>
+              </Card>
             </motion.div>
           </RevealOnScroll>
 
           <RevealOnScroll>
             <motion.div whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 420, damping: 28 }}>
-              <GlassCard className="h-full">
+              <Card className="h-full">
                 <div className="text-sm font-semibold text-white/80">Employer Services</div>
                 <List
                   items={[
@@ -53,7 +53,7 @@ export default function ServicesPage() {
                     'Screening Support',
                   ]}
                 />
-              </GlassCard>
+              </Card>
             </motion.div>
           </RevealOnScroll>
         </div>
@@ -80,10 +80,10 @@ export default function ServicesPage() {
               },
             ].map((c) => (
               <RevealOnScroll key={c.t}>
-                <GlassCard>
+                <Card>
                   <div className="text-base font-bold">{c.t}</div>
                   <div className="mt-2 text-sm text-white/70 leading-relaxed">{c.d}</div>
-                </GlassCard>
+                </Card>
               </RevealOnScroll>
             ))}
           </div>

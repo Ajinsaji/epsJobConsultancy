@@ -3,8 +3,8 @@ import { publicApi } from '../../../api/publicApi'
 
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import GlassCard from '../../../components/ui/GlassCard'
-import { GlassButton } from '../../../components/ui/GlassButton'
+import { Card, CardContent } from '../../../components/ui/Card'
+import { Button } from '../../../components/ui/Button'
 
 export default function FeaturedJobsSection() {
   const navigate = useNavigate()
@@ -50,16 +50,16 @@ export default function FeaturedJobsSection() {
           </div>
         ) : jobs.length === 0 ? (
           /* Empty state */
-          <GlassCard className="p-12 bg-slate-950/40 border-white/5 text-center max-w-lg mx-auto rounded-2xl space-y-4">
+          <Card className="p-12 bg-slate-950/40 border-white/5 text-center max-w-lg mx-auto rounded-2xl space-y-4">
             <div className="text-3xl">💼</div>
             <h4 className="text-base font-bold text-white">No Vacancies Listed Currently</h4>
             <p className="text-xs text-white/50 leading-relaxed">
               We are currently pre-screening candidates for upcoming roles. Register an account and upload your resume to be matched as soon as positions open.
             </p>
-            <GlassButton variant="primary" onClick={() => navigate('/register')} className="px-5 py-2 text-xs">
+            <Button variant="primary" onClick={() => navigate('/register')} className="px-5 py-2 text-xs">
               Upload Resume
-            </GlassButton>
-          </GlassCard>
+            </Button>
+          </Card>
         ) : (
           /* Jobs grid */
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left">
@@ -71,7 +71,7 @@ export default function FeaturedJobsSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
               >
-                <GlassCard className="p-6 bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:bg-white/[0.01] transition-all duration-300 h-full flex flex-col justify-between group">
+                <Card className="p-6 bg-slate-950/40 border-white/5 hover:border-violet-500/20 hover:bg-white/[0.01] transition-all duration-300 h-full flex flex-col justify-between group">
                   <div className="space-y-4">
                     {/* Top row */}
                     <div className="flex items-center gap-3">
@@ -111,14 +111,14 @@ export default function FeaturedJobsSection() {
 
                   {/* Apply action */}
                   <div className="mt-6 flex justify-end">
-                    <GlassButton
+                    <Button
                       onClick={() => navigate('/register')}
                       className="px-4 py-2 text-xs font-bold border border-white/10 bg-white/5 hover:bg-violet-600 hover:text-white transition duration-300 w-full"
                     >
                       Apply Now <span className="text-white/40 group-hover:text-white transition ml-1">→</span>
-                    </GlassButton>
+                    </Button>
                   </div>
-                </GlassCard>
+                </Card>
               </motion.div>
             ))}
           </div>

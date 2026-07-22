@@ -1,6 +1,6 @@
 import { Crown, CheckCircle2, Zap, Shield, CreditCard } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function ManageSubscriptions() {
   const plans = [
@@ -76,7 +76,7 @@ export default function ManageSubscriptions() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
         {plans.map((plan) => (
-          <GlassCard key={plan.name} className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group flex flex-col relative overflow-hidden">
+          <Card key={plan.name} className="p-6 bg-slate-950/40 border-white/10 hover:border-[#CCA43B]/30 transition group flex flex-col relative overflow-hidden">
             {plan.name === 'Premium' && (
               <div className="absolute top-0 right-0 left-0 bg-[#CCA43B]/20 py-1 text-center text-[10px] font-bold text-[#CCA43B] uppercase tracking-widest">
                 Most Popular
@@ -103,23 +103,23 @@ export default function ManageSubscriptions() {
               ))}
             </div>
 
-            <GlassButton variant="secondary" className="w-full">
+            <Button variant="secondary" className="w-full">
               Edit Plan Limits
-            </GlassButton>
-          </GlassCard>
+            </Button>
+          </Card>
         ))}
       </div>
 
-      <GlassCard className="p-6 bg-[#0B4C8C]/10 border-[#0B4C8C]/30 text-center mt-8">
+      <Card className="p-6 bg-[#0B4C8C]/10 border-[#0B4C8C]/30 text-center mt-8">
         <Crown className="w-8 h-8 text-[#CCA43B] mx-auto mb-4" />
         <h3 className="text-lg font-bold text-white mb-2">Billing Integration Status</h3>
         <p className="text-sm text-white/70 max-w-xl mx-auto mb-6">
           Currently, subscription upgrades are handled manually by EPS Admins. Integration with Stripe/Razorpay is planned for the next major release to allow employers to self-serve upgrades.
         </p>
-        <GlassButton variant="primary">
+        <Button variant="primary">
           Configure Payment Gateway (Coming Soon)
-        </GlassButton>
-      </GlassCard>
+        </Button>
+      </Card>
     </div>
   )
 }

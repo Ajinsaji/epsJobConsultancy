@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function HomepageCMS() {
   const [activeTab, setActiveTab] = useState('dashboard')
@@ -273,9 +273,9 @@ export default function HomepageCMS() {
         </div>
         <div className="flex items-center gap-3">
           {loading && <div className="h-4 w-4 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />}
-          <GlassButton variant="ghost" onClick={fetchData} className="border-white/10 bg-white/5 text-sm">
+          <Button variant="ghost" onClick={fetchData} className="border-white/10 bg-white/5 text-sm">
             Refresh Data
-          </GlassButton>
+          </Button>
         </div>
       </div>
 
@@ -308,7 +308,7 @@ export default function HomepageCMS() {
       {activeTab === 'dashboard' && (
         <div>
           {/* Quick Actions Panel */}
-          <GlassCard className="p-4 bg-slate-900/40 border-white/10 mb-6">
+          <Card className="p-4 bg-slate-900/40 border-white/10 mb-6">
             <h3 className="text-sm font-bold text-white/80 mb-3 flex items-center gap-2">
               <span>⚡</span> Quick Actions
             </h3>
@@ -350,12 +350,12 @@ export default function HomepageCMS() {
                 ⚙️ Edit Hero Section
               </button>
             </div>
-          </GlassCard>
+          </Card>
 
           {/* Cards Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* Card 1: Platform Health */}
-            <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
+            <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
@@ -397,11 +397,11 @@ export default function HomepageCMS() {
                   Sync Health
                 </button>
               </div>
-            </GlassCard>
+            </Card>
 
             {/* Card 2: Partner Companies */}
             {companies.length === 0 ? (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
                 <div>
                   <div className="text-3xl mb-2">🏢</div>
                   <h3 className="text-lg font-bold text-white">Partner Companies</h3>
@@ -424,9 +424,9 @@ export default function HomepageCMS() {
                     Manage Partners →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             ) : (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
                 <div>
                   <div className="text-3xl mb-2">🏢</div>
                   <h3 className="text-lg font-bold text-white">Partner Companies</h3>
@@ -458,12 +458,12 @@ export default function HomepageCMS() {
                     Manage Partners →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             )}
 
             {/* Card 3: Placements */}
             {placements.length === 0 ? (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
                 <div>
                   <div className="text-3xl mb-2">🎓</div>
                   <h3 className="text-lg font-bold text-white">Placed Candidates</h3>
@@ -486,9 +486,9 @@ export default function HomepageCMS() {
                     Manage Placements →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             ) : (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
                 <div>
                   <div className="text-3xl mb-2">🎓</div>
                   <h3 className="text-lg font-bold text-white">Placed Candidates</h3>
@@ -516,12 +516,12 @@ export default function HomepageCMS() {
                     Manage Placements →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             )}
 
             {/* Card 4: Testimonials */}
             {testimonials.length === 0 ? (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
                 <div>
                   <div className="text-3xl mb-2">💬</div>
                   <h3 className="text-lg font-bold text-white">Testimonials</h3>
@@ -544,9 +544,9 @@ export default function HomepageCMS() {
                     Manage Reviews →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             ) : (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
                 <div>
                   <div className="text-3xl mb-2">💬</div>
                   <h3 className="text-lg font-bold text-white">Testimonials</h3>
@@ -578,12 +578,12 @@ export default function HomepageCMS() {
                     Manage Reviews →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             )}
 
             {/* Card 5: Services */}
             {services.length === 0 ? (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
                 <div>
                   <div className="text-3xl mb-2">💼</div>
                   <h3 className="text-lg font-bold text-white">Consultancy Services</h3>
@@ -606,9 +606,9 @@ export default function HomepageCMS() {
                     Manage Services →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             ) : (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
                 <div>
                   <div className="text-3xl mb-2">💼</div>
                   <h3 className="text-lg font-bold text-white">Consultancy Services</h3>
@@ -636,12 +636,12 @@ export default function HomepageCMS() {
                     Manage Services →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             )}
 
             {/* Card 6: FAQs Accordion */}
             {faqs.length === 0 ? (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64">
                 <div>
                   <div className="text-3xl mb-2">❓</div>
                   <h3 className="text-lg font-bold text-white">FAQs Accordion</h3>
@@ -664,9 +664,9 @@ export default function HomepageCMS() {
                     Manage FAQs →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             ) : (
-              <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
+              <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between h-64 hover:border-indigo-500/30 transition-all duration-300">
                 <div>
                   <div className="text-3xl mb-2">❓</div>
                   <h3 className="text-lg font-bold text-white">FAQs Accordion</h3>
@@ -694,14 +694,14 @@ export default function HomepageCMS() {
                     Manage FAQs →
                   </button>
                 </div>
-              </GlassCard>
+              </Card>
             )}
           </div>
 
           {/* System Overview & Recent Activity Panels */}
           <div className="grid gap-6 lg:grid-cols-2 mt-6">
             {/* System Overview Panel */}
-            <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between">
+            <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                   <span>📊</span> System Overview
@@ -744,10 +744,10 @@ export default function HomepageCMS() {
               <div className="text-[10px] text-white/40 border-t border-white/5 pt-3 mt-6">
                 All platform summary counts are synchronized live from database.
               </div>
-            </GlassCard>
+            </Card>
 
             {/* Recent Activity Panel */}
-            <GlassCard className="p-6 bg-slate-900/50 border-white/10 flex flex-col">
+            <Card className="p-6 bg-slate-900/50 border-white/10 flex flex-col">
               <h3 className="text-lg font-bold text-white mb-4 flex items-center justify-between">
                 <span className="flex items-center gap-2">⏱️ Recent Activity Log</span>
                 <span className="text-[10px] bg-indigo-500/20 text-indigo-300 font-bold px-2 py-0.5 rounded uppercase">Live Audit</span>
@@ -771,7 +771,7 @@ export default function HomepageCMS() {
                   ))
                 )}
               </div>
-            </GlassCard>
+            </Card>
           </div>
         </div>
       )}
@@ -779,7 +779,7 @@ export default function HomepageCMS() {
       {/* TAB CONTENT: HERO CONFIG */}
       {activeTab === 'hero' && (
         <form onSubmit={saveConfig} className="space-y-6">
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-4">Hero Copy Settings</h2>
             <div className="grid gap-4">
               <div>
@@ -810,9 +810,9 @@ export default function HomepageCMS() {
                 />
               </div>
             </div>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-2">Section Visibility Settings</h2>
             <p className="text-xs text-white/60 mb-4">Toggle visibility of sections on the homepage. Disabled sections will not be rendered.</p>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
@@ -828,12 +828,12 @@ export default function HomepageCMS() {
                 </label>
               ))}
             </div>
-          </GlassCard>
+          </Card>
 
           <div className="flex justify-end">
-            <GlassButton type="submit" variant="primary" className="px-6 py-2.5 text-sm">
+            <Button type="submit" variant="primary" className="px-6 py-2.5 text-sm">
               Save Configuration Settings
-            </GlassButton>
+            </Button>
           </div>
         </form>
       )}
@@ -842,7 +842,7 @@ export default function HomepageCMS() {
       {activeTab === 'partners' && (
         <div className="space-y-6">
           {editingCompany ? (
-            <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+            <Card className="p-6 bg-slate-900/50 border-white/10">
               <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-2">
                 <h2 className="text-lg font-bold text-white">Homepage Partner Settings: {editingCompany.companyName}</h2>
                 <button type="button" onClick={() => setEditingCompany(null)} className="text-white/60 hover:text-white">✕ Close</button>
@@ -915,18 +915,18 @@ export default function HomepageCMS() {
                   </label>
                 </div>
                 <div className="flex justify-end gap-2 md:col-span-2 pt-4">
-                  <GlassButton type="button" variant="ghost" onClick={() => setEditingCompany(null)} className="px-4 py-2 text-xs">
+                  <Button type="button" variant="ghost" onClick={() => setEditingCompany(null)} className="px-4 py-2 text-xs">
                     Cancel
-                  </GlassButton>
-                  <GlassButton type="submit" variant="primary" className="px-4 py-2 text-xs">
+                  </Button>
+                  <Button type="submit" variant="primary" className="px-4 py-2 text-xs">
                     Save Partner Info
-                  </GlassButton>
+                  </Button>
                 </div>
               </form>
-            </GlassCard>
+            </Card>
           ) : null}
 
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10 overflow-x-auto">
+          <Card className="p-6 bg-slate-900/50 border-white/10 overflow-x-auto">
             <h2 className="text-lg font-bold text-white mb-4">Registered Companies List</h2>
             {companies.length === 0 ? (
               renderEmptyState(
@@ -968,14 +968,14 @@ export default function HomepageCMS() {
                 </tbody>
               </table>
             )}
-          </GlassCard>
+          </Card>
         </div>
       )}
 
       {/* TAB CONTENT: PLACEMENTS CMS */}
       {activeTab === 'placements' && (
         <div className="space-y-6">
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-4">
               {editingPlacement ? 'Edit Placement Success Story' : 'Publish New Placement Success'}
             </h2>
@@ -1095,18 +1095,18 @@ export default function HomepageCMS() {
               </div>
               <div className="flex justify-end gap-2 md:col-span-2 pt-2">
                 {editingPlacement && (
-                  <GlassButton type="button" variant="ghost" onClick={() => setEditingPlacement(null)} className="px-4 py-2 text-xs">
+                  <Button type="button" variant="ghost" onClick={() => setEditingPlacement(null)} className="px-4 py-2 text-xs">
                     Cancel
-                  </GlassButton>
+                  </Button>
                 )}
-                <GlassButton type="submit" variant="primary" className="px-4 py-2 text-xs">
+                <Button type="submit" variant="primary" className="px-4 py-2 text-xs">
                   {editingPlacement ? 'Update Success Story' : 'Publish Success Card'}
-                </GlassButton>
+                </Button>
               </div>
             </form>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10 overflow-x-auto">
+          <Card className="p-6 bg-slate-900/50 border-white/10 overflow-x-auto">
             <h2 className="text-lg font-bold text-white mb-4">Published Placements</h2>
             {placements.length === 0 ? (
               renderEmptyState(
@@ -1159,14 +1159,14 @@ export default function HomepageCMS() {
                 </tbody>
               </table>
             )}
-          </GlassCard>
+          </Card>
         </div>
       )}
 
       {/* TAB CONTENT: TESTIMONIALS CMS */}
       {activeTab === 'testimonials' && (
         <div className="space-y-6">
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-4">
               {editingTestimonial ? 'Edit Testimonial' : 'Create Homepage Testimonial'}
             </h2>
@@ -1291,18 +1291,18 @@ export default function HomepageCMS() {
               </div>
               <div className="flex justify-end gap-2 md:col-span-2 pt-2">
                 {editingTestimonial && (
-                  <GlassButton type="button" variant="ghost" onClick={() => setEditingTestimonial(null)} className="px-4 py-2 text-xs">
+                  <Button type="button" variant="ghost" onClick={() => setEditingTestimonial(null)} className="px-4 py-2 text-xs">
                     Cancel
-                  </GlassButton>
+                  </Button>
                 )}
-                <GlassButton type="submit" variant="primary" className="px-4 py-2 text-xs">
+                <Button type="submit" variant="primary" className="px-4 py-2 text-xs">
                   {editingTestimonial ? 'Update Testimonial' : 'Save Testimonial'}
-                </GlassButton>
+                </Button>
               </div>
             </form>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10 overflow-x-auto">
+          <Card className="p-6 bg-slate-900/50 border-white/10 overflow-x-auto">
             <h2 className="text-lg font-bold text-white mb-4">Homepage Testimonials</h2>
             {testimonials.length === 0 ? (
               renderEmptyState(
@@ -1350,14 +1350,14 @@ export default function HomepageCMS() {
                 </tbody>
               </table>
             )}
-          </GlassCard>
+          </Card>
         </div>
       )}
 
       {/* TAB CONTENT: FAQS CMS */}
       {activeTab === 'faqs' && (
         <div className="space-y-6">
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-4">
               {editingFaq ? 'Edit FAQ Item' : 'Create FAQ Accordion Item'}
             </h2>
@@ -1418,18 +1418,18 @@ export default function HomepageCMS() {
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 {editingFaq && (
-                  <GlassButton type="button" variant="ghost" onClick={() => setEditingFaq(null)} className="px-4 py-2 text-xs">
+                  <Button type="button" variant="ghost" onClick={() => setEditingFaq(null)} className="px-4 py-2 text-xs">
                     Cancel
-                  </GlassButton>
+                  </Button>
                 )}
-                <GlassButton type="submit" variant="primary" className="px-4 py-2 text-xs">
+                <Button type="submit" variant="primary" className="px-4 py-2 text-xs">
                   {editingFaq ? 'Update FAQ' : 'Save FAQ'}
-                </GlassButton>
+                </Button>
               </div>
             </form>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-4">FAQ Items</h2>
             {faqs.length === 0 ? (
               renderEmptyState(
@@ -1470,14 +1470,14 @@ export default function HomepageCMS() {
                 ))}
               </div>
             )}
-          </GlassCard>
+          </Card>
         </div>
       )}
 
       {/* TAB CONTENT: SERVICES CMS */}
       {activeTab === 'services' && (
         <div className="space-y-6">
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-4">
               {editingService ? 'Edit Consultancy Service' : 'Create Consultancy Service'}
             </h2>
@@ -1558,18 +1558,18 @@ export default function HomepageCMS() {
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 {editingService && (
-                  <GlassButton type="button" variant="ghost" onClick={() => setEditingService(null)} className="px-4 py-2 text-xs">
+                  <Button type="button" variant="ghost" onClick={() => setEditingService(null)} className="px-4 py-2 text-xs">
                     Cancel
-                  </GlassButton>
+                  </Button>
                 )}
-                <GlassButton type="submit" variant="primary" className="px-4 py-2 text-xs">
+                <Button type="submit" variant="primary" className="px-4 py-2 text-xs">
                   {editingService ? 'Update Service' : 'Save Service'}
-                </GlassButton>
+                </Button>
               </div>
             </form>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="p-6 bg-slate-900/50 border-white/10">
+          <Card className="p-6 bg-slate-900/50 border-white/10">
             <h2 className="text-lg font-bold text-white mb-4">Consultancy Services</h2>
             {services.length === 0 ? (
               renderEmptyState(
@@ -1615,7 +1615,7 @@ export default function HomepageCMS() {
                 ))}
               </div>
             )}
-          </GlassCard>
+          </Card>
         </div>
       )}
     </div>

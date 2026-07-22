@@ -1,9 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-    'Apple Color Emoji', 'Segoe UI Emoji';
+@layer base {
+  body {
+    @apply bg-eps-bg text-eps-text font-inter antialiased selection:bg-eps-blue selection:text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-manrope font-bold tracking-tight text-eps-navy;
+  }
 }
 
+@layer utilities {
+  .text-hero {
+    @apply font-manrope font-extrabold text-4xl md:text-6xl leading-tight;
+  }
+  .text-page-title {
+    @apply font-manrope font-bold text-3xl md:text-4xl;
+  }
+  .text-section-title {
+    @apply font-manrope font-bold text-2xl md:text-3xl;
+  }
+  .text-card-title {
+    @apply font-manrope font-semibold text-lg md:text-xl;
+  }
+  .text-body {
+    @apply font-inter text-base;
+  }
+  .text-caption {
+    @apply font-inter text-sm text-eps-text2;
+  }
+}
+
+/* Custom Webkit Scrollbar for Premium Feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-eps-border rounded-full hover:bg-eps-text2 transition-colors;
+}

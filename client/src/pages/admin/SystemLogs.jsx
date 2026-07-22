@@ -3,8 +3,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
 import { Server, Search, Filter, Download, Activity, Clock, Shield } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 import moment from 'moment'
 
 export default function SystemLogs() {
@@ -65,13 +65,13 @@ export default function SystemLogs() {
             Track system activities, configuration changes, and administrative actions.
           </p>
         </div>
-        <GlassButton variant="secondary" className="flex items-center gap-2" onClick={handleExportCSV}>
+        <Button variant="secondary" className="flex items-center gap-2" onClick={handleExportCSV}>
           <Download className="h-4 w-4" /> Export Logs
-        </GlassButton>
+        </Button>
       </div>
 
       {/* Toolbar */}
-      <GlassCard className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
+      <Card className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
@@ -83,15 +83,15 @@ export default function SystemLogs() {
           />
         </div>
         <div className="flex gap-2">
-          <GlassButton variant="ghost" className="px-4 text-white/70 hover:text-white border border-white/10">
+          <Button variant="ghost" className="px-4 text-white/70 hover:text-white border border-white/10">
             <Filter className="w-4 h-4 mr-2" />
             Last 7 Days
-          </GlassButton>
+          </Button>
         </div>
-      </GlassCard>
+      </Card>
 
       {/* Log Feed */}
-      <GlassCard className="overflow-hidden bg-slate-950/40 border-white/10">
+      <Card className="overflow-hidden bg-slate-950/40 border-white/10">
         <div className="p-6 border-b border-white/10 bg-white/5 flex justify-between items-center">
           <h3 className="text-sm font-bold text-white uppercase tracking-wider">Activity Feed</h3>
           <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
@@ -148,7 +148,7 @@ export default function SystemLogs() {
             </div>
           )}
         </div>
-      </GlassCard>
+      </Card>
     </div>
   )
 }

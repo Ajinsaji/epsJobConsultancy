@@ -9,6 +9,7 @@ import {
   updateApplicationStatus,
   getCompanyApplications,
   applicationDecision,
+  deleteApplication,
 } from '../controllers/applicationController.js'
 
 export const applicationRoutes = express.Router()
@@ -30,6 +31,12 @@ applicationRoutes.patch(
   authenticate,
   roleMiddleware('eps_admin'),
   updateApplicationStatus,
+)
+applicationRoutes.delete(
+  '/:id',
+  authenticate,
+  roleMiddleware('eps_admin', 'candidate'),
+  deleteApplication,
 )
 
 // Company

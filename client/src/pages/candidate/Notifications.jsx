@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { motion } from 'framer-motion'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function Notifications() {
   const [loading, setLoading] = useState(true)
@@ -70,7 +70,7 @@ export default function Notifications() {
         ) : null}
       </div>
 
-      <GlassCard className="bg-white p-4 shadow-sm">
+      <Card className="bg-white p-4 shadow-sm">
         {newestFirst.length === 0 ? (
           <div className="py-8 text-center text-sm text-slate-500">No notifications available.</div>
         ) : (
@@ -105,14 +105,14 @@ export default function Notifications() {
 
                     <div className="shrink-0">
                       {!n.read ? (
-                        <GlassButton
+                        <Button
                           variant="primary"
                           className="min-h-[44px] px-4"
                           style={{ minHeight: '44px' }}
                           onClick={() => markRead(n._id)}
                         >
                           Mark Read
-                        </GlassButton>
+                        </Button>
                       ) : null}
                     </div>
                   </div>
@@ -121,7 +121,7 @@ export default function Notifications() {
             ))}
           </div>
         )}
-      </GlassCard>
+      </Card>
     </div>
   )
 }

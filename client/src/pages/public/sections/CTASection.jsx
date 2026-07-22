@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { GlassButton } from '../../../components/ui/GlassButton'
+import { Button } from '../../../components/ui/Button'
 
 export default function CTASection() {
   const navigate = useNavigate()
@@ -31,7 +31,7 @@ export default function CTASection() {
 
           {/* Action buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <GlassButton
+            <Button
               as={motion.button}
               variant="primary"
               whileHover={{ scale: 1.03 }}
@@ -40,8 +40,8 @@ export default function CTASection() {
               className="px-8 py-3 text-sm font-extrabold bg-gradient-to-r from-[#0B4C8C] via-[#CCA43B] to-[#1F7BE5] shadow-[0_0_20px_rgba(11,76,140,0.3)] w-full sm:w-auto min-h-[48px]"
             >
               Build Your Career (Candidates)
-            </GlassButton>
-            <GlassButton
+            </Button>
+            <Button
               as={motion.button}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
@@ -49,7 +49,7 @@ export default function CTASection() {
               className="px-8 py-3 text-sm font-extrabold border border-white/10 bg-white/5 hover:bg-white/10 transition w-full sm:w-auto min-h-[48px]"
             >
               Hire Top Talent (Employers)
-            </GlassButton>
+            </Button>
           </div>
 
         </div>

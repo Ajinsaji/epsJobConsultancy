@@ -3,8 +3,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import moment from 'moment'
 import { Award, Briefcase, Calendar, CheckCircle2, Circle, ArrowRight, Building2, Download, Upload } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
-import { GlassButton } from '../../components/ui/GlassButton'
+import { Card, CardContent } from '../../components/ui/Card'
+import { Button } from '../../components/ui/Button'
 
 export default function PlacementTracking() {
   const [placements, setPlacements] = useState([])
@@ -56,14 +56,14 @@ export default function PlacementTracking() {
       </div>
 
       {placements.length === 0 ? (
-        <GlassCard className="p-12 text-center text-white/50 border-dashed border-2">
+        <Card className="p-12 text-center text-white/50 border-dashed border-2">
           <Award className="w-12 h-12 mx-auto mb-4 opacity-20" />
           <h2 className="text-lg font-bold text-white mb-2">No active placements yet.</h2>
           <p className="text-sm">Keep applying and attending interviews. Your job offers will appear here.</p>
-        </GlassCard>
+        </Card>
       ) : (
         placements.map(placement => (
-          <GlassCard key={placement._id} className="p-0 bg-slate-950/40 border-white/10 overflow-hidden">
+          <Card key={placement._id} className="p-0 bg-slate-950/40 border-white/10 overflow-hidden">
             
             {/* Header */}
             <div className="p-6 bg-gradient-to-r from-[#0B4C8C]/20 to-transparent border-b border-white/10">
@@ -107,9 +107,9 @@ export default function PlacementTracking() {
                     <h3 className="font-bold text-white mb-1">Offer Generated</h3>
                     <p className="text-sm text-white/60 mb-3">The company has extended a formal job offer.</p>
                     {placement.offerLetterUrl && (
-                      <GlassButton as="a" href={placement.offerLetterUrl} target="_blank" download variant="secondary" className="text-xs flex items-center gap-2 max-w-xs">
+                      <Button as="a" href={placement.offerLetterUrl} target="_blank" download variant="secondary" className="text-xs flex items-center gap-2 max-w-xs">
                         <Download className="w-3 h-3" /> Download Offer Letter
-                      </GlassButton>
+                      </Button>
                     )}
                   </div>
 
@@ -122,9 +122,9 @@ export default function PlacementTracking() {
                     <p className="text-sm text-white/60 mb-3">Upload your signed offer letter to accept the job.</p>
                     {getStepStatus(placement.status, 'Offer Accepted') !== 'completed' && placement.status !== 'Draft' && (
                       <div className="flex gap-2">
-                        <GlassButton className="text-xs flex items-center gap-2">
+                        <Button className="text-xs flex items-center gap-2">
                           <Upload className="w-3 h-3" /> Upload Signed Copy
-                        </GlassButton>
+                        </Button>
                       </div>
                     )}
                   </div>
@@ -154,7 +154,7 @@ export default function PlacementTracking() {
                 </div>
               </div>
             </div>
-          </GlassCard>
+          </Card>
         ))
       )}
     </div>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Users, Search, Filter, Shield, Key, Power, UserCheck, UserX } from 'lucide-react'
-import GlassCard from '../../components/ui/GlassCard'
+import { Card, CardContent } from '../../components/ui/Card'
 import moment from 'moment'
 
 export default function ManageUsers() {
@@ -77,7 +77,7 @@ export default function ManageUsers() {
       </div>
 
       {/* Toolbar */}
-      <GlassCard className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
+      <Card className="p-4 bg-slate-950/40 border-white/10 flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
@@ -104,10 +104,10 @@ export default function ManageUsers() {
             </select>
           </div>
         </div>
-      </GlassCard>
+      </Card>
 
       {/* Data Table */}
-      <GlassCard className="overflow-hidden bg-slate-950/40 border-white/10">
+      <Card className="overflow-hidden bg-slate-950/40 border-white/10">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm text-white/70">
             <thead className="bg-white/5 text-xs uppercase font-bold text-white/50 border-b border-white/10">
@@ -196,7 +196,7 @@ export default function ManageUsers() {
             </tbody>
           </table>
         </div>
-      </GlassCard>
+      </Card>
     </div>
   )
 }

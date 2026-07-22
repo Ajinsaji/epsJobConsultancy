@@ -2,7 +2,7 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { selectAuth, logout } from '../redux/slices/authSlice'
-import { GlassButton } from '../components/ui/GlassButton'
+import { Button } from '../components/ui/Button'
 
 function EPSSidebar() {
   const location = useLocation()
@@ -72,9 +72,9 @@ export default function EPSLayout() {
 
           <div className="hidden items-center gap-3 md:flex">
             <div className="text-xs text-white/60">Hi, {user?.name}</div>
-            <GlassButton as="button" variant="ghost" onClick={handleLogout}>
+            <Button as="button" variant="ghost" onClick={handleLogout}>
               Logout
-            </GlassButton>
+            </Button>
           </div>
         </div>
       </div>
