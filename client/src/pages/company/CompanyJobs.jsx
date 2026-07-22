@@ -23,7 +23,7 @@ export default function CompanyJobs() {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get(`/api/jobs/company/${user.companyId}`)
+      const response = await axios.get(`/api/v1/jobs/company/${user.companyId}`)
       setJobs(response.data.jobs || [])
     } catch (e) {
       toast.error('Failed to load jobs')
@@ -38,7 +38,7 @@ export default function CompanyJobs() {
       // Let's assume PATCH /api/jobs/:id/close toggles it or sets it to closed.
       // For this demo, let's just make a PUT update to toggle status.
       const newStatus = currentStatus === 'active' ? 'closed' : 'active'
-      await axios.put(`/api/jobs/${jobId}`, { status: newStatus })
+      await axios.put(`/api/v1/jobs/${jobId}`, { status: newStatus })
       toast.success(`Job marked as ${newStatus}`)
       fetchJobs()
     } catch (e) {
@@ -49,7 +49,7 @@ export default function CompanyJobs() {
   const handleDelete = async (jobId) => {
     if (!window.confirm('Are you sure you want to delete this job?')) return
     try {
-      await axios.delete(`/api/jobs/${jobId}`)
+      await axios.delete(`/api/v1/jobs/${jobId}`)
       toast.success('Job deleted successfully')
       fetchJobs()
     } catch (e) {

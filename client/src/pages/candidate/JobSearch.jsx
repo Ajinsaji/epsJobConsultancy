@@ -30,7 +30,7 @@ export default function JobSearch() {
 
   // Fetch candidate profile to get ID
   useState(() => {
-    axios.get('/api/candidates/me').then(res => {
+    axios.get('/api/v1/candidates/me').then(res => {
       setCandidateId(res.data?.candidate?._id);
     }).catch(() => {});
   }, []);
@@ -84,7 +84,7 @@ export default function JobSearch() {
     if (!selectedJob) return
     setApplying(true)
     try {
-      await axios.post('/api/applications', {
+      await axios.post('/api/v1/applications', {
         jobId: selectedJob._id,
         remarks,
       })

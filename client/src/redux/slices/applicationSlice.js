@@ -6,7 +6,7 @@ export const applyJob = createAsyncThunk(
   'applications/apply',
   async (applicationData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/api/applications', applicationData)
+      const response = await axios.post('/api/v1/applications', applicationData)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to submit application')
@@ -18,7 +18,7 @@ export const withdrawApplication = createAsyncThunk(
   'applications/withdraw',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`/api/applications/${id}`)
+      const response = await axios.delete(`/api/v1/applications/${id}`)
       return { id, message: response.data.message }
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to withdraw application')
@@ -30,7 +30,7 @@ export const fetchMyApplications = createAsyncThunk(
   'applications/fetchMy',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/applications/me')
+      const response = await axios.get('/api/v1/applications/me')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch your applications')
@@ -42,7 +42,7 @@ export const fetchCompanyApplications = createAsyncThunk(
   'applications/fetchCompany',
   async (params = {}, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/applications/company/me', { params })
+      const response = await axios.get('/api/v1/applications/company/me', { params })
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch company applications')
@@ -54,7 +54,7 @@ export const updateApplicationStatus = createAsyncThunk(
   'applications/updateStatus',
   async ({ id, status, remarks }, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`/api/applications/${id}/status`, { status, remarks })
+      const response = await axios.patch(`/api/v1/applications/${id}/status`, { status, remarks })
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update application status')

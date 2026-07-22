@@ -17,7 +17,7 @@ export default function Interviews() {
 
   const fetchInterviews = async () => {
     try {
-      const response = await axios.get('/api/interviews')
+      const response = await axios.get('/api/v1/interviews')
       setInterviews(response.data.interviews || [])
     } catch (e) {
       toast.error('Failed to load interviews')

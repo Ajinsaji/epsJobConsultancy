@@ -25,7 +25,7 @@ export default function SavedCandidates() {
   const fetchSaved = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('/api/companies/me/candidates/saved')
+      const res = await axios.get('/api/v1/companies/me/candidates/saved')
       setCandidates(res.data?.candidates || res.data || [])
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to load saved candidates')
@@ -42,7 +42,7 @@ export default function SavedCandidates() {
 
   const handleShortlist = async (candidateId) => {
     try {
-      await axios.post(`/api/companies/me/candidates/${candidateId}/shortlist`)
+      await axios.post(`/api/v1/companies/me/candidates/${candidateId}/shortlist`)
       toast.success('Candidate shortlisted')
       fetchSaved()
     } catch (err) {

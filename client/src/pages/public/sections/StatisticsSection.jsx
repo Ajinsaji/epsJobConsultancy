@@ -71,7 +71,7 @@ export default function StatisticsSection() {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get('/api/public/stats')
+        const res = await axios.get('/api/v1/public/stats')
         setStats(res.data)
       } catch (err) {
         console.error('Error fetching statistics:', err)

@@ -16,7 +16,7 @@ export default function Analytics() {
 
   const fetchAnalytics = async () => {
     try {
-      const response = await axios.get('/api/analytics/dashboard')
+      const response = await axios.get('/api/v1/analytics/dashboard')
       setData(response.data)
     } catch (e) {
       toast.error('Failed to load analytics data')

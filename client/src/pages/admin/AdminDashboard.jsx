@@ -19,8 +19,8 @@ export default function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const [healthRes, activityRes] = await Promise.all([
-        axios.get('/api/admin/health'),
-        axios.get('/api/admin/activities')
+        axios.get('/api/v1/admin/health'),
+        axios.get('/api/v1/admin/activities')
       ])
       
       if (healthRes.data.success) {

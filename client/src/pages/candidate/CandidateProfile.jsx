@@ -213,7 +213,7 @@ export default function CandidateProfile() {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get('/api/candidates/me')
+      const res = await axios.get('/api/v1/candidates/me')
       const p = res.data?.candidate || {}
       setProfile(p)
       setCompletion(computeCompletion(p))
@@ -275,7 +275,7 @@ export default function CandidateProfile() {
   const onSubmit = async (data) => {
     setSaving(true)
     try {
-      const res = await axios.put('/api/candidates/profile', data)
+      const res = await axios.put('/api/v1/candidates/profile', data)
       toast.success('Profile updated successfully!')
       const updated = res.data?.profile
       setProfile(updated)

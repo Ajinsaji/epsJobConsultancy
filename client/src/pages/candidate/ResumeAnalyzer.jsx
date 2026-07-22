@@ -35,7 +35,7 @@ export default function ResumeAnalyzer() {
     formData.append('resume', file)
 
     try {
-      const response = await axios.post('/api/resume/analyze', formData, {
+      const response = await axios.post('/api/v1/resume/analyze', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
       setAnalysisResult(response.data.analysis)

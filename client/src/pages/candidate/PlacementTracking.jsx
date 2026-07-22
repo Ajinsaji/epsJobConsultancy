@@ -16,7 +16,7 @@ export default function PlacementTracking() {
 
   const fetchPlacements = async () => {
     try {
-      const response = await axios.get('/api/placements/me')
+      const response = await axios.get('/api/v1/placements/me')
       setPlacements(response.data.placements || [])
     } catch (e) {
       toast.error('Failed to load placement data')

@@ -66,12 +66,12 @@ export default function CompanyDashboard() {
 
         const [companyRes, jobsRes, savedRes, shortlistedRes, historyRes, commRes] =
           await Promise.all([
-            axios.get('/api/companies/me'),
-            axios.get('/api/jobs/company/me'),
-            axios.get('/api/companies/me/candidates/saved'),
-            axios.get('/api/companies/me/candidates/shortlisted'),
-            axios.get('/api/companies/me/candidates/history'),
-            axios.get('/api/companies/me/communications'),
+            axios.get('/api/v1/companies/me'),
+            axios.get('/api/v1/jobs/company/me'),
+            axios.get('/api/v1/companies/me/candidates/saved'),
+            axios.get('/api/v1/companies/me/candidates/shortlisted'),
+            axios.get('/api/v1/companies/me/candidates/history'),
+            axios.get('/api/v1/companies/me/communications'),
           ])
 
         if (!mounted) return

@@ -32,10 +32,10 @@ export default function CandidateDashboard() {
     const fetchData = async () => {
       try {
         const [candRes, appsRes, intsRes, notifsRes] = await Promise.all([
-          axios.get('/api/candidates/me'),
-          axios.get('/api/applications/me'),
-          axios.get('/api/interviews/me'),
-          axios.get('/api/notifications/me')
+          axios.get('/api/v1/candidates/me'),
+          axios.get('/api/v1/applications/me'),
+          axios.get('/api/v1/interviews/me'),
+          axios.get('/api/v1/notifications/me')
         ])
 
         if (!active) return

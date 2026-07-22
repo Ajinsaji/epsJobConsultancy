@@ -16,7 +16,7 @@ export default function InterviewSchedule() {
 
   const fetchInterviews = async () => {
     try {
-      const response = await axios.get('/api/interviews/me')
+      const response = await axios.get('/api/v1/interviews/me')
       setInterviews(response.data.interviews || [])
     } catch (e) {
       toast.error('Failed to load interview schedule')

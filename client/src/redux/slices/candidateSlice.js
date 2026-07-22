@@ -5,7 +5,7 @@ export const fetchCandidateProfile = createAsyncThunk(
   'candidate/fetchProfile',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/candidates/profile')
+      const response = await axios.get('/api/v1/candidates/profile')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch profile')
@@ -17,7 +17,7 @@ export const updateCandidateProfile = createAsyncThunk(
   'candidate/updateProfile',
   async (profileData, { rejectWithValue }) => {
     try {
-      const response = await axios.put('/api/candidates/profile', profileData)
+      const response = await axios.put('/api/v1/candidates/profile', profileData)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update profile')

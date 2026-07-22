@@ -19,7 +19,7 @@ export default function ManageCandidates() {
 
   const fetchCandidates = async () => {
     try {
-      const response = await axios.get('/api/admin/candidates')
+      const response = await axios.get('/api/v1/admin/candidates')
       setCandidates(response.data || [])
     } catch (e) {
       toast.error('Failed to load candidates')

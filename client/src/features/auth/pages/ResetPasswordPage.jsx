@@ -25,7 +25,7 @@ export default function ResetPasswordPage() {
     setInlineError('')
     setIsSubmitting(true)
     try {
-      await axios.post('/api/auth/reset-password', {
+      await axios.post('/api/v1/auth/reset-password', {
         token,
         password: data.password,
       })

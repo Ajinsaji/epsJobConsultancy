@@ -162,9 +162,15 @@ export const updateApplicationStatus = asyncHandler(async (req, res) => {
 })
 
 export const getCompanyApplications = asyncHandler(async (req, res) => {
-  const { companyId } = req.params
+  let { companyId } = req.params
 
-  if (req.user.role === 'company') {
+  if (companyId === 'me' && req.user.role === 'company') {
+    const company = await Company.findOne({ userId: req.user._id }).lean()
+    if (!company) {
+      return res.status(404).json({ message: 'Company profile not found' })
+    }
+    companyId = company._id.toString()
+  } else if (req.user.role === 'company') {
     const company = await Company.findOne({ userId: req.user._id }).lean()
     if (!company || company._id.toString() !== companyId) {
       return res.status(403).json({ message: 'Forbidden: access denied to other company applications' })

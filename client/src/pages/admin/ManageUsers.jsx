@@ -17,7 +17,7 @@ export default function ManageUsers() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/api/admin/users')
+      const response = await axios.get('/api/v1/admin/users')
       setUsers(response.data || [])
     } catch (e) {
       toast.error('Failed to load users')
@@ -28,7 +28,7 @@ export default function ManageUsers() {
 
   const handleToggleStatus = async (userId, currentStatus) => {
     try {
-      await axios.put(`/api/admin/users/${userId}/status`, { isActive: !currentStatus })
+      await axios.put(`/api/v1/admin/users/${userId}/status`, { isActive: !currentStatus })
       toast.success(currentStatus ? 'User suspended' : 'User activated')
       fetchUsers()
     } catch (e) {
@@ -39,7 +39,7 @@ export default function ManageUsers() {
   const handleRoleChange = async (userId, newRole) => {
     if (!window.confirm(`Are you sure you want to change this user's role to ${newRole}?`)) return
     try {
-      await axios.put(`/api/admin/users/${userId}/status`, { role: newRole })
+      await axios.put(`/api/v1/admin/users/${userId}/status`, { role: newRole })
       toast.success('User role updated')
       fetchUsers()
     } catch (e) {

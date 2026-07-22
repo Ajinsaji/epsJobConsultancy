@@ -18,7 +18,7 @@ export default function SystemLogs() {
 
   const fetchLogs = async () => {
     try {
-      const response = await axios.get('/api/admin/system-logs')
+      const response = await axios.get('/api/v1/admin/system-logs')
       setLogs(response.data.logs || [])
     } catch (e) {
       toast.error('Failed to load system logs')

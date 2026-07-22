@@ -18,7 +18,7 @@ export default function SavedJobs() {
 
   const fetchSavedJobs = async () => {
     try {
-      const response = await axios.get('/api/saved-jobs')
+      const response = await axios.get('/api/v1/saved-jobs')
       setSavedJobs(response.data.jobs || [])
     } catch (e) {
       toast.error('Failed to load saved jobs')
@@ -30,7 +30,7 @@ export default function SavedJobs() {
   const handleUnsave = async (jobId) => {
     setRemovingId(jobId)
     try {
-      await axios.delete(`/api/saved-jobs/${jobId}`)
+      await axios.delete(`/api/v1/saved-jobs/${jobId}`)
       toast.success('Job removed from saved list')
       setSavedJobs((prev) => prev.filter((job) => job._id !== jobId))
     } catch (e) {

@@ -39,10 +39,10 @@ export default function EPSDashboard() {
   const loadAllData = async () => {
     try {
       const [statsRes, jobsRes, appsRes, intsRes] = await Promise.all([
-        axios.get('/api/public/stats'),
-        axios.get('/api/jobs'),
-        axios.get('/api/applications'),
-        axios.get('/api/interviews'),
+        axios.get('/api/v1/public/stats'),
+        axios.get('/api/v1/jobs'),
+        axios.get('/api/v1/applications'),
+        axios.get('/api/v1/interviews'),
       ])
 
       setStats(statsRes.data)
@@ -77,7 +77,7 @@ export default function EPSDashboard() {
     }
 
     try {
-      const res = await axios.post('/api/companies', payload)
+      const res = await axios.post('/api/v1/companies', payload)
       toast.success('Company registered successfully!')
       setCredentials(res.data?.credentials)
       
@@ -100,7 +100,7 @@ export default function EPSDashboard() {
 
   const handleStatusTransition = async (appId, currentStatus, nextStatus) => {
     try {
-      await axios.patch(`/api/applications/${appId}/status`, {
+      await axios.patch(`/api/v1/applications/${appId}/status`, {
         status: nextStatus,
         remarks: `Status updated by EPS Admin to: ${nextStatus}`,
       })
@@ -119,7 +119,7 @@ export default function EPSDashboard() {
     try {
       await handleStatusTransition(schedulingApp._id, schedulingApp.status, 'Interview Scheduled')
       
-      await axios.post('/api/interviews', {
+      await axios.post('/api/v1/interviews', {
         applicationId: schedulingApp._id,
         interviewDate: intDate,
         time: intTime,
@@ -130,7 +130,7 @@ export default function EPSDashboard() {
       })
 
       // Auto-create notification for candidate
-      await axios.post('/api/notifications', {
+      await axios.post('/api/v1/notifications', {
         userId: schedulingApp.candidateId?.userId || schedulingApp.candidateId,
         title: 'Interview Scheduled',
         message: `An interview has been scheduled for you for the position of ${schedulingApp.jobId?.title || 'Job'}. Check your upcoming interviews widget.`,

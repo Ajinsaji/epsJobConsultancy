@@ -24,7 +24,7 @@ export default function CommunicationCenter() {
     const load = async () => {
       try {
         setLoading(true)
-        const res = await axios.get('/api/companies/me/communications')
+        const res = await axios.get('/api/v1/companies/me/communications')
         if (!active) return
         setCommunications(res.data?.communications || res.data || [])
       } catch (e) {

@@ -50,7 +50,7 @@ export default function TalentSearch() {
   const fetchCandidates = async () => {
     setLoading(true)
     try {
-      const res = await axios.get(`/api/companies/me/talent-search?${query.toString()}`)
+      const res = await axios.get(`/api/v1/companies/me/talent-search?${query.toString()}`)
       setCandidates(res.data?.candidates || [])
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to search candidates')
@@ -68,7 +68,7 @@ export default function TalentSearch() {
 
   const handleSave = async (candidateId) => {
     try {
-      await axios.post(`/api/companies/me/candidates/${candidateId}/save`)
+      await axios.post(`/api/v1/companies/me/candidates/${candidateId}/save`)
       toast.success('Candidate saved')
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to save candidate')
@@ -77,7 +77,7 @@ export default function TalentSearch() {
 
   const handleShortlist = async (candidateId) => {
     try {
-      await axios.post(`/api/companies/me/candidates/${candidateId}/shortlist`)
+      await axios.post(`/api/v1/companies/me/candidates/${candidateId}/shortlist`)
       toast.success('Candidate shortlisted')
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to shortlist candidate')

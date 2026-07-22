@@ -13,7 +13,7 @@ export default function AdminLoginPage() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('/api/auth/login', {
+      const res = await axios.post('/api/v1/auth/login', {
         email: data.email,
         password: data.password,
       })

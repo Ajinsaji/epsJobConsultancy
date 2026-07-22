@@ -25,7 +25,7 @@ export default function ShortlistedCandidates() {
   const fetchShortlisted = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('/api/companies/me/candidates/shortlisted')
+      const res = await axios.get('/api/v1/companies/me/candidates/shortlisted')
       setCandidates(res.data?.candidates || res.data || [])
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to load shortlisted candidates')
@@ -42,7 +42,7 @@ export default function ShortlistedCandidates() {
 
   const handleContact = async (candidateId) => {
     try {
-      await axios.post(`/api/companies/me/candidates/${candidateId}/contact`)
+      await axios.post(`/api/v1/companies/me/candidates/${candidateId}/contact`)
       toast.success('Contact request sent')
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to contact candidate')

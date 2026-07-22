@@ -5,7 +5,7 @@ export const fetchCompanyProfile = createAsyncThunk(
   'company/fetchProfile',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/companies/me')
+      const response = await axios.get('/api/v1/companies/me')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch company profile')
@@ -17,7 +17,7 @@ export const updateCompanyProfile = createAsyncThunk(
   'company/updateProfile',
   async ({ id, companyData }, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`/api/companies/${id}`, companyData)
+      const response = await axios.put(`/api/v1/companies/${id}`, companyData)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update company profile')
@@ -29,7 +29,7 @@ export const fetchSavedCandidates = createAsyncThunk(
   'company/fetchSaved',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/companies/me/candidates/saved')
+      const response = await axios.get('/api/v1/companies/me/candidates/saved')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch saved candidates')
@@ -41,7 +41,7 @@ export const toggleSaveCandidate = createAsyncThunk(
   'company/toggleSave',
   async (candidateId, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`/api/companies/me/candidates/${candidateId}/save`)
+      const response = await axios.post(`/api/v1/companies/me/candidates/${candidateId}/save`)
       return { candidateId, data: response.data }
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update candidate save status')

@@ -80,7 +80,7 @@ export default function HomepageCMS() {
 
   // Helper loaders for separate sections (Live Refresh performance optimization)
   const fetchConfig = async () => {
-    const res = await axios.get('/api/admin/homepage-config')
+    const res = await axios.get('/api/v1/admin/homepage-config')
     setConfig({
       ...res.data,
       visibleSections: res.data.visibleSections || {}
@@ -88,37 +88,37 @@ export default function HomepageCMS() {
   }
 
   const fetchPlacements = async () => {
-    const res = await axios.get('/api/admin/placements')
+    const res = await axios.get('/api/v1/admin/placements')
     setPlacements(res.data)
   }
 
   const fetchTestimonials = async () => {
-    const res = await axios.get('/api/admin/testimonials')
+    const res = await axios.get('/api/v1/admin/testimonials')
     setTestimonials(res.data)
   }
 
   const fetchFAQs = async () => {
-    const res = await axios.get('/api/admin/faqs')
+    const res = await axios.get('/api/v1/admin/faqs')
     setFaqs(res.data)
   }
 
   const fetchServices = async () => {
-    const res = await axios.get('/api/admin/services')
+    const res = await axios.get('/api/v1/admin/services')
     setServices(res.data)
   }
 
   const fetchCompanies = async () => {
-    const res = await axios.get('/api/admin/companies')
+    const res = await axios.get('/api/v1/admin/companies')
     setCompanies(res.data)
   }
 
   const fetchActivities = async () => {
-    const res = await axios.get('/api/admin/activities')
+    const res = await axios.get('/api/v1/admin/activities')
     setActivities(res.data)
   }
 
   const fetchHealth = async () => {
-    const res = await axios.get('/api/admin/health')
+    const res = await axios.get('/api/v1/admin/health')
     if (res.data && res.data.success) {
       setHealth(res.data.data.health)
       setSystemOverview(res.data.data.overview)
@@ -158,7 +158,7 @@ export default function HomepageCMS() {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await axios.put('/api/admin/homepage-config', config)
+      const res = await axios.put('/api/v1/admin/homepage-config', config)
       setConfig({
         ...res.data,
         visibleSections: res.data.visibleSections || {}
@@ -187,11 +187,11 @@ export default function HomepageCMS() {
     setLoading(true)
     try {
       if (editingPlacement) {
-        await axios.put(`/api/admin/placements/${editingPlacement._id}`, editingPlacement)
+        await axios.put(`/api/v1/admin/placements/${editingPlacement._id}`, editingPlacement)
         toast.success('Placement success story updated!')
         setEditingPlacement(null)
       } else {
-        await axios.post('/api/admin/placements', newPlacement)
+        await axios.post('/api/v1/admin/placements', newPlacement)
         toast.success('Placement success story published!')
         setNewPlacement({
           candidateName: '',
@@ -218,7 +218,7 @@ export default function HomepageCMS() {
     if (!window.confirm('Delete this placement story?')) return
     setLoading(true)
     try {
-      await axios.delete(`/api/admin/placements/${id}`)
+      await axios.delete(`/api/v1/admin/placements/${id}`)
       toast.success('Placement story deleted!')
       await Promise.all([fetchPlacements(), fetchHealth(), fetchActivities()])
     } catch (err) {

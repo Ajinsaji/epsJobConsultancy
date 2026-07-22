@@ -9,24 +9,24 @@ const unwrap = (res) => {
 }
 
 export const publicApi = {
-  getStats: async () => unwrap(await axios.get('/api/public/stats')),
+  getStats: async () => unwrap(await axios.get('/api/v1/public/stats')),
 
-  getJobs: async (params = {}) => unwrap(await axios.get('/api/public/jobs', { params })),
+  getJobs: async (params = {}) => unwrap(await axios.get('/api/v1/public/jobs', { params })),
 
-  getPartners: async (params = {}) => unwrap(await axios.get('/api/public/partners', { params })),
+  getPartners: async (params = {}) => unwrap(await axios.get('/api/v1/public/partners', { params })),
 
-  getServices: async (params = {}) => unwrap(await axios.get('/api/public/services', { params })),
+  getServices: async (params = {}) => unwrap(await axios.get('/api/v1/public/services', { params })),
 
-  getPlacements: async (params = {}) => unwrap(await axios.get('/api/public/placements', { params })),
+  getPlacements: async (params = {}) => unwrap(await axios.get('/api/v1/public/placements', { params })),
 
   getCandidateTestimonials: async (params = {}) =>
-    unwrap(await axios.get('/api/public/testimonials/candidates', { params })),
+    unwrap(await axios.get('/api/v1/public/testimonials/candidates', { params })),
 
   getEmployerTestimonials: async (params = {}) =>
-    unwrap(await axios.get('/api/public/testimonials/employers', { params })),
+    unwrap(await axios.get('/api/v1/public/testimonials/employers', { params })),
 
-  getFAQs: async (params = {}) => unwrap(await axios.get('/api/public/faqs', { params })),
+  getFAQs: async (params = {}) => unwrap(await axios.get('/api/v1/public/faqs', { params })),
 
-  getHomepageConfig: async () => unwrap(await axios.get('/api/public/config'))
+  getHomepageConfig: async () => unwrap(await axios.get('/api/v1/public/config'))
 }
 

@@ -86,7 +86,7 @@ export default function AppliedJobs() {
 
   const fetchApplications = async () => {
     try {
-      const res = await axios.get('/api/applications/me')
+      const res = await axios.get('/api/v1/applications/me')
       setApplications(res.data?.applications || [])
     } catch (err) {
       toast.error('Failed to load applications')

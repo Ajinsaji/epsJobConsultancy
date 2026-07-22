@@ -6,7 +6,7 @@ export const fetchJobs = createAsyncThunk(
   'jobs/fetchAll',
   async (params = {}, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/jobs', { params })
+      const response = await axios.get('/api/v1/jobs', { params })
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch jobs')
@@ -18,7 +18,7 @@ export const fetchJobById = createAsyncThunk(
   'jobs/fetchById',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/api/jobs/${id}`)
+      const response = await axios.get(`/api/v1/jobs/${id}`)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch job details')
@@ -30,7 +30,7 @@ export const createJob = createAsyncThunk(
   'jobs/create',
   async (jobData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/api/jobs', jobData)
+      const response = await axios.post('/api/v1/jobs', jobData)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to create job')
@@ -42,7 +42,7 @@ export const updateJob = createAsyncThunk(
   'jobs/update',
   async ({ id, jobData }, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`/api/jobs/${id}`, jobData)
+      const response = await axios.put(`/api/v1/jobs/${id}`, jobData)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update job')
@@ -54,7 +54,7 @@ export const deleteJob = createAsyncThunk(
   'jobs/delete',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`/api/jobs/${id}`)
+      const response = await axios.delete(`/api/v1/jobs/${id}`)
       return { id, message: response.data.message }
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to delete job')

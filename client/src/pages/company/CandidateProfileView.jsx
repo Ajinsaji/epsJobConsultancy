@@ -65,7 +65,7 @@ export default function CandidateProfileView() {
     try {
       // Prefer existing candidate profile endpoint on company scope.
       // If it doesn't exist, server should add it per spec.
-      const res = await axios.get(`/api/companies/me/candidates/${id}`)
+      const res = await axios.get(`/api/v1/companies/me/candidates/${id}`)
       setCandidate(res.data?.candidate || res.data || null)
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Failed to load candidate profile')
@@ -82,9 +82,9 @@ export default function CandidateProfileView() {
 
   const postAction = async (type) => {
     const map = {
-      save: { busyKey: 'save', url: `/api/companies/me/candidates/${id}/save` },
-      shortlist: { busyKey: 'shortlist', url: `/api/companies/me/candidates/${id}/shortlist` },
-      contact: { busyKey: 'contact', url: `/api/companies/me/candidates/${id}/contact` },
+      save: { busyKey: 'save', url: `/api/v1/companies/me/candidates/${id}/save` },
+      shortlist: { busyKey: 'shortlist', url: `/api/v1/companies/me/candidates/${id}/shortlist` },
+      contact: { busyKey: 'contact', url: `/api/v1/companies/me/candidates/${id}/contact` },
     }
 
     const cfg = map[type]
@@ -307,10 +307,10 @@ export default function CandidateProfileView() {
                           const kind = modal.kind
                           const url =
                             kind === 'contact'
-                              ? `/api/companies/me/candidates/${id}/contact-request`
+                              ? `/api/v1/companies/me/candidates/${id}/contact-request`
                               : kind === 'interview'
-                                ? `/api/companies/me/candidates/${id}/interview-invite`
-                                : `/api/companies/me/candidates/${id}/message`
+                                ? `/api/v1/companies/me/candidates/${id}/interview-invite`
+                                : `/api/v1/companies/me/candidates/${id}/message`
 
                           await axios.post(url, { subject, message })
                           toast.success('Communication sent')

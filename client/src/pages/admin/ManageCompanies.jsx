@@ -17,7 +17,7 @@ export default function ManageCompanies() {
 
   const fetchCompanies = async () => {
     try {
-      const response = await axios.get('/api/admin/companies')
+      const response = await axios.get('/api/v1/admin/companies')
       setCompanies(response.data || [])
     } catch (e) {
       toast.error('Failed to load companies')
@@ -28,7 +28,7 @@ export default function ManageCompanies() {
 
   const handleUpdateCompany = async (companyId, updates) => {
     try {
-      await axios.put(`/api/admin/companies/${companyId}/homepage`, updates)
+      await axios.put(`/api/v1/admin/companies/${companyId}/homepage`, updates)
       toast.success('Company updated successfully')
       fetchCompanies()
     } catch (e) {

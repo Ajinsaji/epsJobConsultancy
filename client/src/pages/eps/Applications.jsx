@@ -30,7 +30,7 @@ export default function Applications() {
 
   const fetchApplications = async () => {
     try {
-      const response = await axios.get('/api/applications')
+      const response = await axios.get('/api/v1/applications')
       setApplications(response.data.applications || [])
     } catch (e) {
       toast.error('Failed to load applications')
@@ -70,7 +70,7 @@ export default function Applications() {
     ))
 
     try {
-      await axios.patch(`/api/applications/${draggedApp._id}/status`, { status: targetStatus })
+      await axios.patch(`/api/v1/applications/${draggedApp._id}/status`, { status: targetStatus })
       toast.success(`Application moved to ${targetStatus}`)
     } catch (error) {
       toast.error('Failed to update status')

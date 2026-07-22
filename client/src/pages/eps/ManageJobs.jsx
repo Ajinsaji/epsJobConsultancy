@@ -20,7 +20,7 @@ export default function ManageJobs() {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('/api/jobs')
+      const response = await axios.get('/api/v1/jobs')
       setJobs(response.data.jobs || [])
     } catch (e) {
       toast.error('Failed to load jobs')
@@ -32,7 +32,7 @@ export default function ManageJobs() {
   const handleToggleStatus = async (jobId, currentStatus) => {
     try {
       const newStatus = currentStatus === 'active' ? 'closed' : 'active'
-      await axios.put(`/api/jobs/${jobId}`, { status: newStatus })
+      await axios.put(`/api/v1/jobs/${jobId}`, { status: newStatus })
       toast.success(`Job marked as ${newStatus}`)
       fetchJobs()
     } catch (e) {
@@ -43,7 +43,7 @@ export default function ManageJobs() {
   const handleDelete = async (jobId) => {
     if (!window.confirm('Are you sure you want to delete this job? This action cannot be undone.')) return
     try {
-      await axios.delete(`/api/jobs/${jobId}`)
+      await axios.delete(`/api/v1/jobs/${jobId}`)
       toast.success('Job deleted successfully')
       fetchJobs()
     } catch (e) {

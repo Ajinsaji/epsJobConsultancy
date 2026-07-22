@@ -26,7 +26,7 @@ export default function JobsPage() {
 
     const run = async () => {
       try {
-        const res = await axios.get('/api/public/jobs')
+        const res = await axios.get('/api/v1/public/jobs')
         if (!active) return
         setJobs(Array.isArray(res.data) ? res.data : [])
       } catch (err) {

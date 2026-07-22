@@ -17,7 +17,7 @@ export default function FeedbackPage() {
 
   const fetchFeedbacks = async () => {
     try {
-      const response = await axios.get('/api/feedback/company')
+      const response = await axios.get('/api/v1/feedback/company')
       setFeedbacks(response.data.feedbacks || [])
     } catch (e) {
       toast.error('Failed to load feedback history')

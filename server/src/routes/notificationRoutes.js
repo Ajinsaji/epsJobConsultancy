@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.use(authenticate);
 
-router.get('/', getNotifications);
+router.get('/me', getNotifications);
 router.get('/unread-count', getUnreadCount);
-router.put('/read-all', markAllAsRead);
-router.put('/:id/read', markAsRead);
+router.patch('/read-all', markAllAsRead);
+router.patch('/:id/read', markAsRead);
 
 export { router as notificationRoutes };

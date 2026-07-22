@@ -25,7 +25,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const res = await axios.get('/api/public/config')
+        const res = await axios.get('/api/v1/public/config')
         setConfig(res.data)
       } catch (err) {
         console.error('Error fetching homepage config:', err)

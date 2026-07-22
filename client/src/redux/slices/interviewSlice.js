@@ -5,7 +5,7 @@ export const fetchAllInterviews = createAsyncThunk(
   'interviews/fetchAll',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/interviews')
+      const response = await axios.get('/api/v1/interviews')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch interviews')
@@ -17,7 +17,7 @@ export const fetchMyInterviews = createAsyncThunk(
   'interviews/fetchMy',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/interviews/me')
+      const response = await axios.get('/api/v1/interviews/me')
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch your interviews')
@@ -29,7 +29,7 @@ export const fetchCompanyInterviews = createAsyncThunk(
   'interviews/fetchCompany',
   async (companyId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/api/interviews/company/${companyId}`)
+      const response = await axios.get(`/api/v1/interviews/company/${companyId}`)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch company interviews')
@@ -41,7 +41,7 @@ export const scheduleInterview = createAsyncThunk(
   'interviews/schedule',
   async (interviewData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/api/interviews', interviewData)
+      const response = await axios.post('/api/v1/interviews', interviewData)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to schedule interview')
@@ -53,7 +53,7 @@ export const updateInterviewDetails = createAsyncThunk(
   'interviews/update',
   async ({ id, interviewData }, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`/api/interviews/${id}`, interviewData)
+      const response = await axios.put(`/api/v1/interviews/${id}`, interviewData)
       return response.data
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to update interview')
@@ -65,7 +65,7 @@ export const cancelInterview = createAsyncThunk(
   'interviews/cancel',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`/api/interviews/${id}`)
+      const response = await axios.delete(`/api/v1/interviews/${id}`)
       return { id, message: response.data.message }
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to cancel interview')
