@@ -71,9 +71,21 @@ import {
 import { ProtectedRoute } from './routes/ProtectedRoute'
 
 
+import { PresentationBoard } from './presentation/PresentationBoard'
+import { CaseStudyPage } from './pages/CaseStudyPage'
+import { DesignSystemPage } from './pages/DesignSystemPage'
+import { PrototypePage } from './pages/PrototypePage'
+
 export default function App() {
   return (
     <Routes>
+      {/* Behance Case Study & World-Class Routes */}
+      <Route path="/case-study" element={<CaseStudyPage />} />
+      <Route path="/presentation" element={<PresentationBoard />} />
+      <Route path="/presentation-board" element={<PresentationBoard />} />
+      <Route path="/design-system" element={<DesignSystemPage />} />
+      <Route path="/prototype" element={<PrototypePage />} />
+
       {/* Public marketing */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<HomePage />} />
