@@ -28,16 +28,23 @@ import {
   getAllCandidates,
   getAllUsers,
   updateUserStatus,
+  getAuditLogs,
+  exportAuditLogs,
 } from '../controllers/adminController.js'
+import { hasPermission } from '../middleware/permissionMiddleware.js'
 
 export const adminRoutes = express.Router()
 
 // Secure all admin routes for eps_admin
-adminRoutes.use(authenticate, authorizeRoles('eps_admin'))
+adminRoutes.use(authenticate, authorizeRoles('eps_admin', 'super_admin'))
 
 adminRoutes.get('/system-logs', getSystemLogs)
 adminRoutes.get('/activities', getAdminActivities)
 adminRoutes.get('/health', getPlatformHealth)
+
+// Audit logs
+adminRoutes.get('/audit-logs', hasPermission('audit:read'), getAuditLogs)
+adminRoutes.get('/audit-logs/export', hasPermission('audit:export'), exportAuditLogs)
 
 // Homepage config
 adminRoutes.get('/homepage-config', getAdminHomepageConfig)

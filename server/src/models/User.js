@@ -11,9 +11,8 @@ const UserSchema = new mongoose.Schema(
     role: {
       type: String,
       required: true,
-      enum: ['candidate', 'company', 'eps_admin', 'super_admin'],
+      enum: ['candidate', 'company', 'recruiter', 'eps_admin', 'super_admin', 'developer'],
     },
-
 
     username: { type: String, unique: true, sparse: true, lowercase: true, trim: true },
     mustChangePassword: { type: Boolean, default: false },
@@ -23,6 +22,17 @@ const UserSchema = new mongoose.Schema(
     verificationExpires: { type: Date },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
+
+    // Two-Factor Authentication (2FA / TOTP)
+    twoFactorEnabled: { type: Boolean, default: false },
+    twoFactorSecret: { type: String },
+    twoFactorBackupCodes: [{ type: String }],
+
+    // Password Security & Audit
+    passwordChangedAt: { type: Date },
+    lastLogin: { type: Date },
+    lastLoginIp: { type: String },
+
     status: {
       type: String,
       default: 'Active',

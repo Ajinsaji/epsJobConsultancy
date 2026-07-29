@@ -482,3 +482,40 @@ export const updateUserStatus = asyncHandler(async (req, res) => {
 
   res.json({ message: 'User updated successfully', user })
 })
+
+// Enterprise Audit Logs
+export const getAuditLogs = asyncHandler(async (req, res) => {
+  const { category, status, page = 1, limit = 50 } = req.query
+  const query = {}
+  if (category) query.category = category
+  if (status) query.status = status
+
+  const AuditLogModule = await import('../models/AuditLog.js')
+  const logs = await AuditLogModule.AuditLog.find(query)
+    .populate('userId', 'name email role')
+    .sort({ createdAt: -1 })
+    .skip((page - 1) * limit)
+    .limit(Number(limit))
+
+  const total = await AuditLogModule.AuditLog.countDocuments(query)
+
+  res.json({
+    logs,
+    pagination: {
+      page: Number(page),
+      limit: Number(limit),
+      total,
+      pages: Math.ceil(total / limit),
+    },
+  })
+})
+
+export const exportAuditLogs = asyncHandler(async (req, res) => {
+  const AuditLogModule = await import('../models/AuditLog.js')
+  const logs = await AuditLogModule.AuditLog.find().populate('userId', 'name email role').sort({ createdAt: -1 }).limit(1000)
+
+  res.setHeader('Content-Type', 'application/json')
+  res.setHeader('Content-Disposition', 'attachment; filename="audit_logs_export.json"')
+  res.json(logs)
+})
+

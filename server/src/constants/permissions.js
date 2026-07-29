@@ -1,0 +1,71 @@
+export const PERMISSIONS = {
+  // Candidate
+  CANDIDATE_READ: 'candidate:read',
+  CANDIDATE_UPDATE: 'candidate:update',
+  APPLICATIONS_SUBMIT: 'applications:submit',
+  APPLICATIONS_READ: 'applications:read',
+
+  // Employer / Company
+  COMPANY_UPDATE: 'company:update',
+  JOBS_CREATE: 'jobs:create',
+  JOBS_UPDATE: 'jobs:update',
+  JOBS_DELETE: 'jobs:delete',
+  CANDIDATES_SEARCH: 'candidates:search',
+
+  // Recruiter
+  RECRUITER_MANAGE: 'recruiter:manage',
+  INTERVIEW_SCHEDULE: 'interview:schedule',
+  INTERVIEW_FEEDBACK: 'interview:feedback',
+
+  // EPS Admin / Super Admin
+  ADMIN_READ: 'admin:read',
+  ADMIN_WRITE: 'admin:write',
+  USERS_MANAGE: 'users:manage',
+  SYSTEM_SETTINGS: 'system:settings',
+  AUDIT_READ: 'audit:read',
+  AUDIT_EXPORT: 'audit:export',
+
+  // Developer API
+  API_READ: 'api:read',
+  API_WRITE: 'api:write',
+}
+
+export const ROLE_PERMISSIONS = {
+  candidate: [
+    PERMISSIONS.CANDIDATE_READ,
+    PERMISSIONS.CANDIDATE_UPDATE,
+    PERMISSIONS.APPLICATIONS_SUBMIT,
+    PERMISSIONS.APPLICATIONS_READ,
+  ],
+  company: [
+    PERMISSIONS.COMPANY_UPDATE,
+    PERMISSIONS.JOBS_CREATE,
+    PERMISSIONS.JOBS_UPDATE,
+    PERMISSIONS.JOBS_DELETE,
+    PERMISSIONS.CANDIDATES_SEARCH,
+    PERMISSIONS.APPLICATIONS_READ,
+    PERMISSIONS.INTERVIEW_SCHEDULE,
+  ],
+  recruiter: [
+    PERMISSIONS.JOBS_CREATE,
+    PERMISSIONS.JOBS_UPDATE,
+    PERMISSIONS.CANDIDATES_SEARCH,
+    PERMISSIONS.APPLICATIONS_READ,
+    PERMISSIONS.INTERVIEW_SCHEDULE,
+    PERMISSIONS.INTERVIEW_FEEDBACK,
+    PERMISSIONS.RECRUITER_MANAGE,
+  ],
+  eps_admin: [
+    PERMISSIONS.ADMIN_READ,
+    PERMISSIONS.ADMIN_WRITE,
+    PERMISSIONS.USERS_MANAGE,
+    PERMISSIONS.AUDIT_READ,
+    PERMISSIONS.CANDIDATES_SEARCH,
+  ],
+  super_admin: Object.values(PERMISSIONS),
+  developer: [
+    PERMISSIONS.API_READ,
+    PERMISSIONS.API_WRITE,
+    PERMISSIONS.AUDIT_READ,
+  ],
+}
