@@ -4,23 +4,23 @@ import { cn } from '../../lib/cn';
 import { Loader2 } from 'lucide-react';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-button text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-eps-blue disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-xl text-xs font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
   {
     variants: {
       variant: {
-        default: 'bg-eps-blue text-white hover:bg-eps-blue/90 shadow-soft',
-        destructive: 'bg-eps-danger text-white hover:bg-eps-danger/90',
-        outline: 'border border-eps-border bg-transparent hover:bg-eps-surface text-eps-text',
-        secondary: 'bg-eps-surface text-eps-navy hover:bg-eps-surface/80',
-        ghost: 'hover:bg-eps-surface hover:text-eps-navy text-eps-text',
-        link: 'text-eps-blue underline-offset-4 hover:underline',
-        whatsapp: 'bg-eps-whatsapp text-white hover:bg-eps-whatsapp/90 shadow-soft',
+        default: 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-2xs hover:shadow-md',
+        primary: 'bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-2xs hover:shadow-md',
+        destructive: 'bg-[#EF4444] text-white hover:bg-red-600 shadow-2xs',
+        outline: 'border border-[#E5E7EB] bg-white hover:bg-gray-50 text-[#111827] hover:border-gray-300 shadow-2xs',
+        secondary: 'bg-[#3B82F6] text-white hover:bg-blue-600 shadow-2xs',
+        ghost: 'hover:bg-gray-100 text-[#4B5563] hover:text-[#111827]',
+        link: 'text-[#2563EB] underline-offset-4 hover:underline p-0 h-auto font-semibold',
       },
       size: {
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8 text-base',
-        icon: 'h-10 w-10',
+        default: 'h-[44px] px-5 py-2.5',
+        sm: 'h-[36px] rounded-lg px-3 py-1.5 text-[11px]',
+        lg: 'h-[48px] rounded-xl px-8 text-sm',
+        icon: 'h-[44px] w-[44px]',
       },
     },
     defaultVariants: {

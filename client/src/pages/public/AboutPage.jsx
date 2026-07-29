@@ -1,165 +1,195 @@
-import { Card, CardContent } from '../../components/ui/Card'
-import RevealOnScroll from '../../animations/RevealOnScroll'
+import React from 'react'
+import { Link, useOutletContext } from 'react-router-dom'
+import { 
+  Building2, Users, Target, Eye, Award, CheckCircle2, ShieldCheck, 
+  Sparkles, Globe2, Heart, TrendingUp, MapPin 
+} from 'lucide-react'
 
-function Bullets({ items }) {
+export function AboutPage() {
+  const context = useOutletContext()
+  const onRequestDemo = context?.onRequestDemo || (() => {})
+
+  const leadership = [
+    {
+      name: 'Alexander Wright',
+      title: 'Founder & Chief Executive Officer',
+      bio: 'Ex-VP Engineering at TechCorp. 15+ years experience building large-scale enterprise SaaS products.',
+      bg: 'bg-blue-600'
+    },
+    {
+      name: 'Dr. Evelyn Chen',
+      title: 'Chief AI & Science Officer',
+      bio: 'Ph.D. in Computer Science from Stanford. Pioneer in neural semantic parsing and NLP candidate matching models.',
+      bg: 'bg-indigo-600'
+    },
+    {
+      name: 'Michael Sterling',
+      title: 'Head of Global Talent Operations',
+      bio: 'Former Executive Recruiter at Fortune 500 tech firms. Scaled hiring pipelines for 10,000+ engineers.',
+      bg: 'bg-emerald-600'
+    },
+    {
+      name: 'Sophia Patel',
+      title: 'Head of Product & Design',
+      bio: 'Lead Systems Designer behind Behance-featured enterprise applications and accessible design systems.',
+      bg: 'bg-slate-800'
+    },
+  ]
+
+  const values = [
+    {
+      title: 'Engineering Rigor',
+      desc: 'We build enterprise software with zero compromises on security, performance, or accessibility.',
+      icon: Award
+    },
+    {
+      title: 'Explainable AI Confidence',
+      desc: 'Every candidate match score is transparent, objective, and backed by empirical skill matrices.',
+      icon: Sparkles
+    },
+    {
+      title: 'Speed & Velocity',
+      desc: 'Reducing recruitment friction to help candidates find fulfilling careers and companies scale faster.',
+      icon: TrendingUp
+    },
+    {
+      title: 'Diversity & Inclusion',
+      desc: 'Ensuring unbiased, merit-based candidate evaluation across all background demographics.',
+      icon: Heart
+    },
+  ]
+
   return (
-    <ul className="mt-4 space-y-3 text-sm text-white/70">
-      {items.map((x) => (
-        <li key={x} className="flex items-start gap-3">
-          <span className="mt-1 h-2 w-2 rounded-full bg-indigo-400" />
-          <span>{x}</span>
-        </li>
-      ))}
-    </ul>
-  )
-}
+    <div className="w-full bg-[#F8FAFC] text-[#111827] font-sans selection:bg-[#2563EB] selection:text-white space-y-16 pb-24">
+      
+      {/* 1. HERO SECTION */}
+      <section className="bg-white border-b border-gray-200 py-16 px-6 md:px-12">
+        <div className="max-w-[1440px] mx-auto text-center space-y-4">
+          <span className="inline-flex items-center gap-2 bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold border border-blue-200">
+            <Globe2 className="w-4 h-4 text-blue-600" /> About EPS Workforce Solutions
+          </span>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+            Reimagining How Global Talent Meets Opportunity
+          </h1>
+          <p className="text-sm text-gray-500 max-w-2xl mx-auto font-normal">
+            EPS Workforce Solutions is an enterprise AI recruitment SaaS platform bridging top tech candidates with industry-leading companies through semantic intelligence.
+          </p>
+        </div>
+      </section>
 
-export default function AboutPage() {
-  return (
-    <div className="min-h-screen bg-[#0F172A] text-white">
-      <div className="mx-auto max-w-6xl px-4 py-10 md:py-14">
-        {/* HERO */}
-        <section className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-8 md:p-12">
-          <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl" />
-          <div aria-hidden className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl" />
-
-          <RevealOnScroll>
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70 backdrop-blur">
-                EPS helps hiring teams and candidates move with clarity
-              </div>
-              <h1 className="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight">
-                Hiring that feels simple—built for real outcomes.
-              </h1>
-              <p className="mt-4 text-base leading-relaxed text-white/70">
-                EPS combines smart matching with human-reviewed quality so candidates get the right opportunities and employers build
-                shortlists they can trust.
-              </p>
+      {/* 2. MISSION & VISION CARDS */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-4">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] flex items-center justify-center">
+              <Target className="w-6 h-6" />
             </div>
-          </RevealOnScroll>
-        </section>
-
-        {/* MISSION */}
-        <section className="mt-10 grid gap-4 md:grid-cols-2">
-          <RevealOnScroll>
-            <Card className="h-full">
-              <div className="text-sm font-semibold text-white/80">Mission</div>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">
-                Make job search and candidate discovery faster, more accurate, and less stressful—by aligning skills, roles, and
-                expectations.
-              </p>
-            </Card>
-          </RevealOnScroll>
-          <RevealOnScroll>
-            <Card className="h-full">
-              <div className="text-sm font-semibold text-white/80">Who we are</div>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">
-                A recruitment platform and consultancy layer focused on high-signal hiring: AI-assisted matching + review-driven
-                confidence.
-              </p>
-            </Card>
-          </RevealOnScroll>
-        </section>
-
-        {/* WHAT MAKES US DIFFERENT */}
-        <section className="mt-10">
-          <RevealOnScroll>
-            <div className="text-sm font-semibold text-white/70">What makes us different</div>
-            <h2 className="mt-2 text-2xl font-extrabold tracking-tight">Quality shortlists, not noisy pipelines</h2>
-          </RevealOnScroll>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <RevealOnScroll>
-              <Card>
-                <div className="text-sm font-semibold text-white/80">Candidates</div>
-                <Bullets items={['Right role recommendations', 'Resume score clarity', 'Interview readiness support']} />
-              </Card>
-            </RevealOnScroll>
-            <RevealOnScroll>
-              <Card>
-                <div className="text-sm font-semibold text-white/80">Employers</div>
-                <Bullets items={['Active job visibility', 'Candidate match signals', 'Shortlist confidence with review']} />
-              </Card>
-            </RevealOnScroll>
-            <RevealOnScroll>
-              <Card>
-                <div className="text-sm font-semibold text-white/80">Recruiters / Teams</div>
-                <Bullets items={['Faster screening outcomes', 'Structured interviewing workflow', 'Hiring decisions with context']} />
-              </Card>
-            </RevealOnScroll>
+            <h3 className="text-xl font-bold text-gray-900">Our Mission</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              To eliminate hiring friction and bias worldwide by providing recruiters and job seekers with transparent, AI-driven candidate match scoring, automated interview telemetry, and real-time skill insight.
+            </p>
           </div>
-        </section>
 
-        {/* OUR PROCESS */}
-        <section className="mt-10">
-          <RevealOnScroll>
-            <div className="text-sm font-semibold text-white/70">Our process</div>
-            <h2 className="mt-2 text-2xl font-extrabold tracking-tight">From discovery to shortlist</h2>
-          </RevealOnScroll>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {[
-              {
-                t: 'Discover',
-                d: 'Match candidates to roles using resume scoring and signal-aware recommendations.',
-              },
-              {
-                t: 'Review',
-                d: 'EPS applies a quality layer so shortlists reflect the right fit, not just keyword overlap.',
-              },
-              {
-                t: 'Decide',
-                d: 'Support teams move into interviews with clear context and better alignment.',
-              },
-            ].map((c) => (
-              <RevealOnScroll key={c.t}>
-                <Card>
-                  <div className="text-base font-bold">{c.t}</div>
-                  <div className="mt-2 text-sm text-white/70 leading-relaxed">{c.d}</div>
-                </Card>
-              </RevealOnScroll>
-            ))}
+          <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-4">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <Eye className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">Our Vision</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
+              To become the global standard for enterprise recruitment intelligence, empowering 10,000+ organizations to build diverse, high-performing engineering and business teams effortlessly.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* IMPACT */}
-        <section className="mt-10">
-          <RevealOnScroll>
-            <div className="text-sm font-semibold text-white/70">Impact</div>
-            <h2 className="mt-2 text-2xl font-extrabold tracking-tight">Better outcomes for every side</h2>
-          </RevealOnScroll>
+      {/* 3. CORE VALUES */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12 space-y-8">
+        <div className="text-center space-y-2">
+          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest">Our Guiding Principles</span>
+          <h2 className="text-3xl font-extrabold text-gray-900">Core Values Driving EPS</h2>
+        </div>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <RevealOnScroll>
-              <Card>
-                <div className="text-sm font-semibold text-white/80">For Candidates</div>
-                <Bullets
-                  items={[
-                    'More accurate opportunities aligned with your profile',
-                    'Clear feedback from resume scoring',
-                    'Interview support that improves readiness',
-                  ]}
-                />
-              </Card>
-            </RevealOnScroll>
-            <RevealOnScroll>
-              <Card>
-                <div className="text-sm font-semibold text-white/80">For Employers</div>
-                <Bullets
-                  items={[
-                    'Shortlists built on relevance and quality review',
-                    'Candidate match signals to reduce screening time',
-                    'A smoother hiring flow into interviews',
-                  ]}
-                />
-              </Card>
-            </RevealOnScroll>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map((v, idx) => {
+            const Icon = v.icon
+            return (
+              <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] flex items-center justify-center">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h4 className="font-bold text-sm text-gray-900">{v.title}</h4>
+                <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
+              </div>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* 4. LEADERSHIP TEAM GRID */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12 space-y-8">
+        <div className="text-center space-y-2">
+          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest">Executive Leadership</span>
+          <h2 className="text-3xl font-extrabold text-gray-900">Meet the Team Behind EPS</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {leadership.map((leader, idx) => (
+            <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-4">
+              <div className={`w-14 h-14 rounded-2xl ${leader.bg} text-white font-extrabold text-lg flex items-center justify-center shadow-md`}>
+                {leader.name.split(' ').map(n=>n[0]).join('')}
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-bold text-base text-gray-900">{leader.name}</h4>
+                <p className="text-xs font-bold text-blue-600">{leader.title}</p>
+              </div>
+              <p className="text-xs text-gray-500 leading-relaxed">{leader.bio}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. GLOBAL OFFICES & ACHIEVEMENTS */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12">
+        <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-sm space-y-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-6">
+            <div>
+              <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest">Global Reach</span>
+              <h3 className="text-2xl font-bold text-gray-900">Headquarters & Regional Hubs</h3>
+            </div>
+            <span className="text-xs font-mono text-gray-500">San Francisco • London • Bangalore</span>
           </div>
-        </section>
-      </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-gray-600">
+            <div className="p-4 bg-slate-50 rounded-xl border border-gray-200 space-y-2">
+              <span className="flex items-center gap-1.5 font-bold text-gray-900 text-sm">
+                <MapPin className="w-4 h-4 text-blue-600" /> San Francisco, CA
+              </span>
+              <p>500 Howard Street, Suite 400, San Francisco, CA 94105</p>
+              <p className="text-gray-400 font-mono">Americas HQ</p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-xl border border-gray-200 space-y-2">
+              <span className="flex items-center gap-1.5 font-bold text-gray-900 text-sm">
+                <MapPin className="w-4 h-4 text-blue-600" /> London, UK
+              </span>
+              <p>25 Bank Street, Canary Wharf, London E14 5JP</p>
+              <p className="text-gray-400 font-mono">EMEA HQ</p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-xl border border-gray-200 space-y-2">
+              <span className="flex items-center gap-1.5 font-bold text-gray-900 text-sm">
+                <MapPin className="w-4 h-4 text-blue-600" /> Bangalore, India
+              </span>
+              <p>Outer Ring Road, Bellandur, Bangalore 560103</p>
+              <p className="text-gray-400 font-mono">APAC Innovation Hub</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   )
 }
 
-
+export default AboutPage
 

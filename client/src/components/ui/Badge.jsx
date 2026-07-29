@@ -3,16 +3,19 @@ import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/cn';
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-eps-accent focus:ring-offset-2',
+  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider transition-colors focus:outline-none',
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-eps-navy text-white hover:bg-eps-navy/80',
-        secondary: 'border-transparent bg-eps-surface text-eps-navy hover:bg-eps-surface/80',
-        destructive: 'border-transparent bg-eps-danger text-white hover:bg-eps-danger/80',
-        success: 'border-transparent bg-eps-success text-white hover:bg-eps-success/80',
-        warning: 'border-transparent bg-eps-warning text-white hover:bg-eps-warning/80',
-        outline: 'text-eps-text border-eps-border',
+        default: 'border-blue-200 bg-blue-50 text-[#2563EB]',
+        primary: 'border-blue-200 bg-blue-50 text-[#2563EB]',
+        secondary: 'border-sky-200 bg-sky-50 text-[#3B82F6]',
+        accent: 'border-teal-200 bg-teal-50 text-[#14B8A6]',
+        success: 'border-emerald-200 bg-emerald-50 text-[#22C55E]',
+        warning: 'border-amber-200 bg-amber-50 text-[#F59E0B]',
+        destructive: 'border-red-200 bg-red-50 text-[#EF4444]',
+        danger: 'border-red-200 bg-red-50 text-[#EF4444]',
+        outline: 'border-[#E5E7EB] bg-white text-[#4B5563]',
       },
     },
     defaultVariants: {

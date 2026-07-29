@@ -1,54 +1,14 @@
-import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { selectAuth, logout } from '../redux/slices/authSlice'
-import { Button } from '../components/ui/Button'
-
-function CompanySidebar() {
-  const location = useLocation()
-  const nav = [
-    { to: '/company', label: 'Dashboard' },
-    { to: '/company/talent-search', label: 'Talent Search' },
-    { to: '/company/jobs', label: 'Jobs' },
-    { to: '/company/saved', label: 'Saved Candidates' },
-    { to: '/company/shortlisted', label: 'Shortlisted Candidates' },
-
-    { to: '/company/feedback', label: 'Interviews' },
-    { to: '/company/communications', label: 'Communications' },
-    { to: '/company/profile', label: 'Profile' },
-
-
-  ]
-
-
-  return (
-    <aside className="hidden w-64 shrink-0 lg:block">
-      <div className="sticky top-[5.25rem] rounded-2xl border border-white/10 bg-white/5 p-4">
-        <div className="text-xs font-semibold text-white/70 mb-3">Company</div>
-        <nav className="space-y-2">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className={
-                location.pathname === n.to
-                  ? 'block rounded-xl bg-indigo-500/20 text-indigo-200 px-3 py-2 text-sm font-semibold'
-                  : 'block rounded-xl text-white/70 hover:bg-white/10 hover:text-white px-3 py-2 text-sm transition'
-              }
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </aside>
-  )
-}
+import React, { useState, useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectAuth } from '../redux/slices/authSlice'
+import { EnterpriseSidebar } from '../components/dashboard/EnterpriseSidebar'
+import { EnterpriseTopbar } from '../components/dashboard/EnterpriseTopbar'
 
 export default function CompanyLayout() {
   const { user } = useSelector(selectAuth)
-  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [collapsed, setCollapsed] = useState(false)
 
   useEffect(() => {
     if (!user) return
@@ -57,39 +17,27 @@ export default function CompanyLayout() {
     }
   }, [user, navigate])
 
-  const handleLogout = () => {
-    dispatch(logout())
-    navigate('/login')
-  }
-
   return (
-    <div className="min-h-screen bg-[#0F172A] text-white">
-      <div className="border-b border-white/10 bg-[#0B1020]/60 backdrop-blur supports-[backdrop-filter]:bg-[#0B1020]/50">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <Link to="/company" className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600" />
-            <div>
-              <div className="text-sm font-bold">EPS Company</div>
-              <div className="text-[10px] text-white/50">Hiring portal</div>
-            </div>
-          </Link>
+    <div className="min-h-screen bg-[#F8FAFC] text-[#111827] flex font-sans selection:bg-[#2563EB] selection:text-white">
+      {/* Fixed Enterprise Sidebar */}
+      <EnterpriseSidebar portalType="company" collapsed={collapsed} setCollapsed={setCollapsed} />
 
-          <div className="hidden items-center gap-3 md:flex">
-            <div className="text-xs text-white/60">Hi, {user?.name}</div>
-            <Button as="button" variant="ghost" onClick={handleLogout}>
-              Logout
-            </Button>
-          </div>
-        </div>
-      </div>
+      {/* Main Content Layout */}
+      <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${collapsed ? 'md:ml-20' : 'md:ml-64'}`}>
+        
+        {/* Topbar */}
+        <EnterpriseTopbar 
+          title="Employer Portal" 
+          subtitle="Enterprise Hiring & AI Candidate Intelligence" 
+          onQuickAction={() => navigate('/company/jobs')}
+        />
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 lg:grid-cols-[16rem_1fr] gap-6 px-4 py-6">
-        <CompanySidebar />
-        <div>
+        {/* Scrollable Page Content */}
+        <main className="flex-1 p-6 md:p-8 space-y-6 overflow-y-auto">
           <Outlet />
-        </div>
+        </main>
+
       </div>
     </div>
   )
 }
-
